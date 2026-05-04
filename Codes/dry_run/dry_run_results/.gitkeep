@@ -1,0 +1,7 @@
+# dry_run_results/
+# This directory receives dry-run output files:
+#   dry_run_study3.csv       — one-row pipeline test results per model
+#   dry_run_report.json      — pass/fail summary per dry-run step
+#
+# Generated automatically when dry_run.py runs.
+# Committed to keep this directory in version control.

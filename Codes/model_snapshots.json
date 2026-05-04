@@ -1,0 +1,92 @@
+{
+  "_comment": "Model snapshot identifiers for TACL A.10.1 reproducibility requirements.",
+  "_instructions": "Run python3 main.py to auto-populate sha256 hashes after first execution. The 'sha256' fields below are populated by models.build_model_snapshots() at runtime.",
+  "recorded_at": null,
+  "models": {
+    "gemini": {
+      "model_name": "gemini",
+      "display_name": "Gemini 2.5 Flash",
+      "type": "api",
+      "provider": "Google",
+      "model_id": "gemini-2.5-flash",
+      "api_endpoint": "https://generativelanguage.googleapis.com/v1beta/models/{model_id}:generateContent",
+      "sha256": null,
+      "version_string": null,
+      "date_accessed": null,
+      "notes": "Version retrieved at runtime via generativelanguage.googleapis.com model metadata"
+    },
+    "deepseek": {
+      "model_name": "deepseek",
+      "display_name": "DeepSeek V3",
+      "type": "api",
+      "provider": "DeepSeek",
+      "model_id": "deepseek-chat",
+      "api_endpoint": "https://api.deepseek.com/v1/chat/completions",
+      "sha256": null,
+      "version_string": null,
+      "date_accessed": null,
+      "notes": "deepseek-chat maps to DeepSeek-V3-0324 or later; version string fetched from API response headers"
+    },
+    "llama": {
+      "model_name": "llama",
+      "display_name": "LLaMA 3.3 70B Instruct",
+      "type": "local",
+      "provider": "Meta",
+      "hf_repo_id": "meta-llama/Llama-3.3-70B-Instruct",
+      "quantization": "4-bit NF4 (BitsAndBytesConfig, double_quant=True, compute_dtype=bfloat16)",
+      "attn_implementation": "flash_attention_2 with eager fallback",
+      "sha256": null,
+      "hf_commit_sha": null,
+      "date_downloaded": null,
+      "notes": "SHA-256 computed over safetensors shards at runtime via checkpointing.compute_sha256()"
+    },
+    "gemma": {
+      "model_name": "gemma",
+      "display_name": "Gemma 2 27B IT",
+      "type": "local",
+      "provider": "Google",
+      "hf_repo_id": "google/gemma-2-27b-it",
+      "quantization": "4-bit NF4 (BitsAndBytesConfig, double_quant=True, compute_dtype=bfloat16)",
+      "attn_implementation": "flash_attention_2 with eager fallback",
+      "sha256": null,
+      "hf_commit_sha": null,
+      "date_downloaded": null,
+      "notes": "SHA-256 computed over safetensors shards at runtime"
+    }
+  },
+  "datasets": {
+    "crows_pairs": {
+      "hf_repo_id": "Debk/Multi-CrowS-Pairs",
+      "sha256": null,
+      "date_accessed": null,
+      "sample_size": 180
+    },
+    "indian_bias": {
+      "hf_repo_id": "Debk/Indian-Multilingual-Bias-Dataset",
+      "sha256": null,
+      "date_accessed": null,
+      "sample_size": 120
+    },
+    "stereoset": {
+      "hf_repo_id": "McGill-NLP/stereoset",
+      "sha256": null,
+      "date_accessed": null,
+      "sample_size": 300
+    },
+    "honest": {
+      "hf_repo_id": "MilaNLProc/honest",
+      "sha256": null,
+      "date_accessed": null,
+      "sample_size": 100
+    }
+  },
+  "seeds": [42, 123, 7],
+  "environment": {
+    "python_version": null,
+    "torch_version": null,
+    "cuda_version": null,
+    "transformers_version": null,
+    "bitsandbytes_version": null,
+    "platform": null
+  }
+}
