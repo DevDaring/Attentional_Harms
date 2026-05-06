@@ -77,7 +77,7 @@ def ensure_datasets_cached() -> dict[str, Path]:
         except Exception as exc:
             logger.error(f"Failed to download CrowS-Pairs: {exc}")
 
-    # StereoSet (intrasentence)
+    # StereoSet (intrasentence) — save in flat format to avoid numpy repr in CSV
     if not paths["stereoset"].exists():
         logger.info("Downloading StereoSet from HuggingFace …")
         try:
@@ -86,7 +86,19 @@ def ensure_datasets_cached() -> dict[str, Path]:
                 config.DATASET_STEREOSET, "intrasentence",
                 split="validation", token=config.HF_TOKEN,
             )
-            df = ds.to_pandas()
+            rows = []
+            for item in ds:
+                sents = item["sentences"]  # dict: {sentence: [...], gold_label: [...], id: [...]}
+                gold = dict(zip(sents["gold_label"], sents["sentence"]))
+                rows.append({
+                    "context":         item["context"],
+                    "stereotype":      gold.get("stereotype", ""),
+                    "anti_stereotype": gold.get("anti-stereotype", ""),
+                    "unrelated":       gold.get("unrelated", ""),
+                    "target":          item.get("target", ""),
+                    "bias_type":       item.get("bias_type", ""),
+                })
+            df = pd.DataFrame(rows)
             df.to_csv(paths["stereoset"], index=False, encoding="utf-8-sig")
             logger.info(f"  Saved {len(df)} rows → {paths['stereoset']}")
         except Exception as exc:
@@ -216,20 +228,36 @@ def load_dataset_stereoset(
     if not required_cols.issubset(set(df.columns)):
         # Nested 'sentences' column format — parse it out.
         if "sentences" in df.columns:
+            import re as _re
             rows = []
             for _, row in df.iterrows():
                 try:
-                    raw = row["sentences"]
-                    if isinstance(raw, list):
-                        sents = raw
-                    else:
+                    raw = str(row["sentences"])
+                    gold: dict = {}
+                    # Try 1: numpy repr  {'sentence': array(['s1','s2'...]), 'gold_label': array(['stereotype',...])}
+                    sent_m = _re.search(r"'sentence':\s*array\(\[(.+?)\]", raw, _re.DOTALL)
+                    lbl_m  = _re.search(r"'gold_label':\s*array\(\[(.+?)\]", raw, _re.DOTALL)
+                    if sent_m and lbl_m:
+                        sents  = _re.findall(r"'([^']*(?:''[^']*)*)'|\"([^\"]*)\"", sent_m.group(1))
+                        labels = _re.findall(r"'([^']*(?:''[^']*)*)'|\"([^\"]*)\"", lbl_m.group(1))
+                        sents  = [a or b for a, b in sents]
+                        labels = [a or b for a, b in labels]
+                        if sents and labels and len(sents) == len(labels):
+                            gold = dict(zip(labels, sents))
+                    # Try 2: ast.literal_eval (standard Python dict/list repr)
+                    if not gold:
                         import ast as _ast
                         try:
-                            sents = _ast.literal_eval(str(raw))
+                            parsed = _ast.literal_eval(raw)
+                            if isinstance(parsed, list):
+                                gold = {s["gold_label"]: s["sentence"] for s in parsed if "gold_label" in s}
+                            elif isinstance(parsed, dict) and "sentence" in parsed:
+                                gold = dict(zip(parsed["gold_label"], parsed["sentence"]))
                         except Exception:
-                            import json as _json
-                            sents = _json.loads(str(raw).replace("'", '"'))
-                    gold = {s["gold_label"]: s["sentence"] for s in sents if "gold_label" in s}
+                            pass
+                    if not gold:
+                        logger.debug(f"StereoSet row parse failed for: {raw[:80]}")
+                        continue
                     rows.append({
                         "context":         str(row.get("context", "")),
                         "stereotype":      gold.get("stereotype", ""),
@@ -244,7 +272,6 @@ def load_dataset_stereoset(
             if rows:
                 df = pd.DataFrame(rows)
             else:
-                # Re-save flattened version didn't work; return empty.
                 logger.error("StereoSet: could not parse 'sentences' column — returning empty df")
                 return pd.DataFrame(columns=["context", "stereotype", "anti_stereotype", "target", "bias_type"])
         else:

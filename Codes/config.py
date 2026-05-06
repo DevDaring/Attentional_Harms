@@ -52,7 +52,7 @@ GEMINI_KEYS: list[str] = [
 GEMINI_MODEL_ID: str = (
     _strip(os.environ.get("GEMINI_MODEL_NAME"))
     or _strip(os.environ.get("GEMINI_MODEL_ID"))
-    or "gemini-2.0-flash"
+    or "gemini-1.5-flash"
 )
 GEMINI_ENDPOINT = (
     "https://generativelanguage.googleapis.com/v1beta/models/{model_id}:generateContent"
@@ -231,8 +231,8 @@ MODELS: dict[str, dict] = {
         "trust_remote_code": True,
     },
     "gemma3": {
-        "display_name": "Gemma-3-4B",
-        "model_id": "google/gemma-3-4b-it",
+        "display_name": "Gemma-2-2B",
+        "model_id": "google/gemma-2-2b-it",
         "type": "local",
         "provider": "hf",
         "torch_dtype": "bfloat16",
