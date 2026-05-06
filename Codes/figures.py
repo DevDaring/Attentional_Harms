@@ -378,6 +378,11 @@ def generate_all_figures(
     if study1_df is None:
         study1_df = pd.DataFrame()
 
+    # Alias gss_mean -> gss for figure functions (studies.py outputs gss_mean)
+    if "gss" not in study3_df.columns and "gss_mean" in study3_df.columns:
+        study3_df = study3_df.copy()
+        study3_df["gss"] = study3_df["gss_mean"]
+
     figure1_gss_heatmap(study3_df)
     figure2_var_bars(study3_df)
     figure3_accumulation(study4_df)
