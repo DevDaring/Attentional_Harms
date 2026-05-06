@@ -112,7 +112,7 @@ def call_gemini_api(
             "maxOutputTokens": 512,
             "responseMimeType": "application/json",
         },
-        "thinkingConfig": {"thinkingBudget": 0},
+        # thinkingConfig removed: gemini-2.5-flash rejects thinkingBudget:0 with 400
     }
 
     for attempt in range(_MAX_RETRIES + 1):

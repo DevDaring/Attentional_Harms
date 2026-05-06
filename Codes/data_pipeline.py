@@ -86,10 +86,19 @@ def ensure_datasets_cached() -> dict[str, Path]:
                 config.DATASET_STEREOSET, "intrasentence",
                 split="validation", token=config.HF_TOKEN,
             )
+            # Decode ClassLabel integers → string names (gold_label is ClassLabel in HF dataset)
+            gl_feature = ds.features["sentences"].feature["gold_label"]
+            label_names = gl_feature.names if hasattr(gl_feature, "names") else None
+
             rows = []
             for item in ds:
                 sents = item["sentences"]  # dict: {sentence: [...], gold_label: [...], id: [...]}
-                gold = dict(zip(sents["gold_label"], sents["sentence"]))
+                raw_labels = sents["gold_label"]
+                if label_names is not None:
+                    labels = [label_names[l] if isinstance(l, int) else l for l in raw_labels]
+                else:
+                    labels = raw_labels
+                gold = dict(zip(labels, sents["sentence"]))
                 rows.append({
                     "context":         item["context"],
                     "stereotype":      gold.get("stereotype", ""),
