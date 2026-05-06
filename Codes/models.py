@@ -127,6 +127,9 @@ def call_gemini_api(
                     time.sleep(2 ** (attempt + 1))
                     continue
                 return {"success": False, "error": "RATE_LIMIT", "text": "", "raw_json": {}}
+            if not resp.ok:
+                body_snippet = resp.text[:300] if resp.text else "(empty)"
+                logger.warning(f"Gemini HTTP {resp.status_code} body: {body_snippet}")
             resp.raise_for_status()
             data = resp.json()
             raw_text = (
