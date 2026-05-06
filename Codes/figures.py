@@ -73,6 +73,10 @@ def figure1_gss_heatmap(study3_df: pd.DataFrame) -> None:
         logger.warning("Figure 1: no data available.")
         return
 
+    if "language" not in study3_df.columns:
+        logger.warning("Figure 1: no language column â€” cross-lingual heatmap not available.")
+        return
+
     df = study3_df.copy()
     # Average over seeds
     agg = df.groupby(["model_name", "language", "category"])["gss"].mean().reset_index()
@@ -124,8 +128,10 @@ def figure1_gss_heatmap(study3_df: pd.DataFrame) -> None:
 
 def figure2_var_bars(study3_df: pd.DataFrame) -> None:
     """VAR rate grouped bar chart: x=model, hue=language."""
-    if study3_df.empty or "var" not in study3_df.columns:
-        logger.warning("Figure 2: no data available.")
+    # Main.py writes judge output as 'hurtful_label' (VAR = Volunteered Attribute Reference)
+    var_col = "hurtful_label" if "hurtful_label" in study3_df.columns else "var"
+    if study3_df.empty or var_col not in study3_df.columns:
+        logger.warning("Figure 2: no VAR/hurtful_label data available.")
         return
 
     df = study3_df.copy()
@@ -246,6 +252,10 @@ def figure4_crosslingual_scatter(study3_df: pd.DataFrame) -> None:
     """
     if study3_df.empty or "gss" not in study3_df.columns:
         logger.warning("Figure 4: no data available.")
+        return
+
+    if "language" not in study3_df.columns or "prompt_id" not in study3_df.columns:
+        logger.warning("Figure 4: no cross-lingual or prompt_id data â€” scatter not available.")
         return
 
     df = study3_df.groupby(["prompt_id", "model_name", "language"])["gss"].mean().reset_index()
