@@ -67,7 +67,10 @@ def ensure_datasets_cached() -> dict[str, Path]:
         logger.info("Downloading CrowS-Pairs from HuggingFace …")
         try:
             from datasets import load_dataset
-            ds = load_dataset(config.DATASET_CROWS_PAIRS, split="test", token=config.HF_TOKEN)
+            ds = load_dataset(
+                config.DATASET_CROWS_PAIRS, split="test",
+                token=config.HF_TOKEN, trust_remote_code=True,
+            )
             df = ds.to_pandas()
             df.to_csv(paths["crows_pairs"], index=False, encoding="utf-8-sig")
             logger.info(f"  Saved {len(df)} rows → {paths['crows_pairs']}")
@@ -207,27 +210,47 @@ def load_dataset_stereoset(
         logger.warning("StereoSet cache missing — attempting fresh download")
         ensure_datasets_cached()
     df = pd.read_csv(path)
-    # StereoSet schema can be nested — handle both flat and serialised-list formats
-    if "sentences" in df.columns:
-        rows = []
-        for _, row in df.iterrows():
-            try:
-                sents = (
-                    row["sentences"] if isinstance(row["sentences"], list)
-                    else __import__("ast").literal_eval(row["sentences"])
-                )
-                gold = {s["gold_label"]: s["sentence"] for s in sents if "gold_label" in s}
-                rows.append({
-                    "context":         row.get("context", ""),
-                    "stereotype":      gold.get("stereotype", ""),
-                    "anti_stereotype": gold.get("anti-stereotype", ""),
-                    "unrelated":       gold.get("unrelated", ""),
-                    "target":          row.get("target", ""),
-                    "bias_type":       row.get("bias_type", ""),
-                })
-            except Exception:
-                continue
-        df = pd.DataFrame(rows)
+
+    # If the CSV already has flat columns (context/stereotype/anti_stereotype), use directly.
+    required_cols = {"context", "stereotype", "anti_stereotype"}
+    if not required_cols.issubset(set(df.columns)):
+        # Nested 'sentences' column format — parse it out.
+        if "sentences" in df.columns:
+            rows = []
+            for _, row in df.iterrows():
+                try:
+                    raw = row["sentences"]
+                    if isinstance(raw, list):
+                        sents = raw
+                    else:
+                        import ast as _ast
+                        try:
+                            sents = _ast.literal_eval(str(raw))
+                        except Exception:
+                            import json as _json
+                            sents = _json.loads(str(raw).replace("'", '"'))
+                    gold = {s["gold_label"]: s["sentence"] for s in sents if "gold_label" in s}
+                    rows.append({
+                        "context":         str(row.get("context", "")),
+                        "stereotype":      gold.get("stereotype", ""),
+                        "anti_stereotype": gold.get("anti-stereotype", ""),
+                        "unrelated":       gold.get("unrelated", ""),
+                        "target":          row.get("target", ""),
+                        "bias_type":       row.get("bias_type", ""),
+                    })
+                except Exception as _exc:
+                    logger.debug(f"StereoSet row parse failed: {_exc}")
+                    continue
+            if rows:
+                df = pd.DataFrame(rows)
+            else:
+                # Re-save flattened version didn't work; return empty.
+                logger.error("StereoSet: could not parse 'sentences' column — returning empty df")
+                return pd.DataFrame(columns=["context", "stereotype", "anti_stereotype", "target", "bias_type"])
+        else:
+            logger.error(f"StereoSet CSV has unexpected columns: {list(df.columns)}")
+            return pd.DataFrame(columns=["context", "stereotype", "anti_stereotype", "target", "bias_type"])
+
     df = df.dropna(subset=["context", "stereotype", "anti_stereotype"])
     if sample_n is not None:
         df = df.sample(n=min(sample_n, len(df)), random_state=seed)
