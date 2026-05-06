@@ -356,7 +356,9 @@ def main():
 
     model_names = list(config.MODELS.keys())  # 6 models
 
+    all_study1_dfs = []
     all_study3_dfs = []
+    all_study4_dfs = []
 
     for model_name in model_names:
         logger.info(f"--- Processing model: {model_name} ---")
@@ -364,7 +366,10 @@ def main():
 
         # Phase 6 — Study 1 SAR
         from studies import run_study_crows_pairs
-        run_study_crows_pairs(model_name, checkpoint_dir=results_dir, **kwargs)
+        s1 = run_study_crows_pairs(model_name, checkpoint_dir=results_dir, **kwargs)
+        if s1 is not None:
+            s1["model_name"] = model_name
+            all_study1_dfs.append(s1)
 
         # Phase 7 — Study 2 SS
         from studies import run_study_stereoset
@@ -380,9 +385,12 @@ def main():
 
         # Phase 9 — Study 4 multi-turn
         from studies import run_study_multi_turn
-        run_study_multi_turn(
+        s4 = run_study_multi_turn(
             model_name, multiturn_prompts, checkpoint_dir=results_dir, **kwargs
         )
+        if s4 is not None:
+            s4["model_name"] = model_name
+            all_study4_dfs.append(s4)
 
         # Phase 10 — Study 5 control
         from studies import run_control_study
@@ -390,7 +398,9 @@ def main():
 
     # Phase 11 — LLM judge ensemble on Study 3 responses
     import pandas as pd
+    combined_s1 = pd.concat(all_study1_dfs, ignore_index=True) if all_study1_dfs else pd.DataFrame()
     combined_s3 = pd.concat(all_study3_dfs, ignore_index=True) if all_study3_dfs else pd.DataFrame()
+    combined_s4 = pd.concat(all_study4_dfs, ignore_index=True) if all_study4_dfs else pd.DataFrame()
 
     if not combined_s3.empty and "rep_response" in combined_s3.columns:
         logger.info("=== Phase 11: LLM judge ensemble ===")
@@ -423,7 +433,7 @@ def main():
     try:
         logger.info("=== Phase 13: Figures ===")
         from figures import generate_all_figures
-        generate_all_figures(combined_s3)
+        generate_all_figures(combined_s3, study4_df=combined_s4, study1_df=combined_s1)
     except Exception as exc:
         logger.warning(f"Figure generation failed (non-fatal): {exc}")
 

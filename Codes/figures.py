@@ -183,54 +183,62 @@ def figure2_var_bars(study3_df: pd.DataFrame) -> None:
 
 def figure3_accumulation(study4_df: pd.DataFrame) -> None:
     """
-    Line plot: GSS over turns (1→3) per model, with 95% CI shading.
-    One line per model, x-axis = turn number, y-axis = mean GSS.
+    Line plot: GSS over turns (Turn 1 → Turn 2) per model, with 95% CI shading.
+    Reshapes study4 wide format (gss_turn1, gss_last) into long format internally.
     """
-    if study4_df.empty or "gss" not in study4_df.columns:
+    if study4_df.empty or "gss_turn1" not in study4_df.columns:
         logger.warning("Figure 3: no multi-turn data available.")
         return
 
+    # Reshape wide → long: gss_turn1=turn 1, gss_last=turn 2
     df = study4_df.copy()
+    long_rows = []
+    for _, row in df.iterrows():
+        for turn_num, col in [(1, "gss_turn1"), (2, "gss_last")]:
+            val = row.get(col, float("nan"))
+            if pd.notna(val):
+                long_rows.append({
+                    "model_name":  row["model_name"],
+                    "item_id":     row.get("item_id", ""),
+                    "category":    row.get("category", "unknown"),
+                    "turn_number": turn_num,
+                    "gss":         float(val),
+                })
+    if not long_rows:
+        logger.warning("Figure 3: all turn GSS values are NaN.")
+        return
+    df = pd.DataFrame(long_rows)
+
     model_order = _filter_order(df["model_name"], MODEL_ORDER)
-    lang_order = _filter_order(df["language"], LANG_ORDER)
+    if not model_order:
+        logger.warning("Figure 3: no recognised models in study4 data.")
+        return
 
-    n_langs = len(lang_order)
-    fig, axes = plt.subplots(1, n_langs, figsize=(5 * n_langs, 4), sharey=True)
-    if n_langs == 1:
-        axes = [axes]
-
+    fig, ax = plt.subplots(figsize=(7, 5))
     colors = sns.color_palette(PALETTE, len(model_order))
 
-    for ax, lang in zip(axes, lang_order):
-        lang_df = df[df["language"] == lang]
-        for model_name, color in zip(model_order, colors):
-            model_df = lang_df[lang_df["model_name"] == model_name]
-            turn_stats = (
-                model_df.groupby("turn_number")["gss"]
-                .agg(["mean", "std", "count"])
-                .reset_index()
-            )
-            if turn_stats.empty:
-                continue
-            turns = turn_stats["turn_number"].values
-            means = turn_stats["mean"].values
-            sems = turn_stats["std"].values / np.sqrt(np.maximum(turn_stats["count"].values, 1))
-            # 95% CI ≈ 1.96 × SEM
-            ci = 1.96 * sems
-            ax.plot(turns, means, marker="o", label=model_name, color=color, linewidth=2)
-            ax.fill_between(turns, means - ci, means + ci, alpha=0.15, color=color)
+    for model_name, color in zip(model_order, colors):
+        model_df = df[df["model_name"] == model_name]
+        turn_stats = (
+            model_df.groupby("turn_number")["gss"]
+            .agg(["mean", "std", "count"])
+            .reset_index()
+        )
+        if turn_stats.empty:
+            continue
+        turns = turn_stats["turn_number"].values
+        means = turn_stats["mean"].values
+        sems = turn_stats["std"].values / np.sqrt(np.maximum(turn_stats["count"].values, 1))
+        ci = 1.96 * sems
+        ax.plot(turns, means, marker="o", label=model_name, color=color, linewidth=2)
+        ax.fill_between(turns, means - ci, means + ci, alpha=0.15, color=color)
 
-        ax.set_title(f"{lang}", fontsize=11, fontweight="bold")
-        ax.set_xlabel("Conversation Turn", fontsize=10)
-        ax.set_ylabel("Mean GSS (%)" if ax == axes[0] else "", fontsize=10)
-        ax.set_xticks([1, 2, 3])
-        ax.set_xticklabels(["Turn 1", "Turn 2", "Turn 3"])
-        ax.grid(True, alpha=0.3)
-
-    handles, labels = axes[0].get_legend_handles_labels()
-    if handles:
-        fig.legend(handles, labels, title="Model", loc="upper right",
-                   bbox_to_anchor=(1.02, 0.95), fontsize=8)
+    ax.set_xlabel("Conversation Turn", fontsize=10)
+    ax.set_ylabel("Mean GSS (%)", fontsize=10)
+    ax.set_xticks([1, 2])
+    ax.set_xticklabels(["Turn 1 (neutral)", "Turn 2 (identity prompt)"])
+    ax.grid(True, alpha=0.3)
+    ax.legend(title="Model", fontsize=8, bbox_to_anchor=(1.01, 1), loc="upper left")
 
     fig.suptitle(
         "Figure 3: GSS Accumulation Across Conversation Turns (±95% CI)\n"
@@ -326,8 +334,8 @@ def figure5_rad_scatter(
     gss_ranks = {m: i + 1 for i, m in enumerate(gss_means.index)}
 
     # Compute SAR rank if study1 available
-    if study1_df is not None and "is_stereo_preferred" in study1_df.columns:
-        sar_means = study1_df.groupby("model_name")["is_stereo_preferred"].mean().sort_values()
+    if study1_df is not None and "prefers_stereo" in study1_df.columns:
+        sar_means = study1_df.groupby("model_name")["prefers_stereo"].mean().sort_values()
         sar_ranks = {m: i + 1 for i, m in enumerate(sar_means.index)}
     else:
         sar_ranks = gss_ranks  # fallback
