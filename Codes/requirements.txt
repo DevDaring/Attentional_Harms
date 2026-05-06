@@ -1,6 +1,6 @@
 ﻿# Requirements — TACL Research Pipeline
 # Attentional Salience as a Complementary Bias Lens in Language Models
-# Python 3.12 | Ubuntu 22.04 LTS | CUDA 12.4 | NVIDIA H100 80GB SXM5
+# Python 3.10 | Ubuntu 22.04 LTS | CUDA 12.4 | NVIDIA H100 80GB SXM5
 # English-only experiment — 3 API + 3 local models (≤8B, no quantization)
 #
 # Pin exact versions for TACL A.10 reproducibility.
@@ -9,8 +9,10 @@
 # NOTE: Install PyTorch separately with CUDA 12.4 first:
 #   pip install torch==2.4.0+cu124 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124
 #
-# NOTE: Install Flash Attention 2 separately (needs CUDA toolkit):
-#   pip install flash-attn==2.6.3 --no-build-isolation
+# NOTE: Install Flash Attention 2 via prebuilt wheel (no source compile needed).
+# flash-attn 2.6.3 has no cu124 wheel — use cu123 (runs on CUDA 12.4 via backward compat).
+# PyTorch from pytorch.org uses cxx11abiFALSE — the wheel ABI must match.
+#   pip install https://github.com/Dao-AILab/flash-attention/releases/download/v2.6.3/flash_attn-2.6.3+cu123torch2.4cxx11abiFALSE-cp310-cp310-linux_x86_64.whl
 #
 # Removed from previous version:
 #   bitsandbytes  — models ≤8B run natively in float16/bfloat16, no quantization needed
@@ -23,7 +25,6 @@ transformers==4.46.3
 accelerate==1.1.1
 tokenizers==0.20.3
 safetensors==0.4.5
-huggingface-hub==0.26.2
 datasets==3.1.0
 
 # ── HTTP (Mistral uses raw requests; DeepSeek + OpenRouter use requests too) ──

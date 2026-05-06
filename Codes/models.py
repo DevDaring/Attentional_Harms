@@ -367,8 +367,8 @@ def load_local_model(model_name: str):
 
     logger.info(f"Loading {cfg['display_name']} ({model_id}) dtype={dtype_str} …")
 
-    # Try Flash Attention 2, fall back to eager
-    for attn_impl in ("flash_attention_2", "eager"):
+    # Try Flash Attention 2, fall back to sdpa (PyTorch optimized), then eager
+    for attn_impl in ("flash_attention_2", "sdpa", "eager"):
         try:
             model = AutoModelForCausalLM.from_pretrained(
                 model_id,
@@ -382,7 +382,9 @@ def load_local_model(model_name: str):
             break
         except Exception as exc:
             if attn_impl == "flash_attention_2":
-                logger.warning(f"  Flash Attention 2 unavailable: {exc}. Falling back to eager.")
+                logger.warning(f"  Flash Attention 2 unavailable: {exc}. Falling back to sdpa.")
+            elif attn_impl == "sdpa":
+                logger.warning(f"  sdpa unavailable: {exc}. Falling back to eager.")
             else:
                 raise
 
