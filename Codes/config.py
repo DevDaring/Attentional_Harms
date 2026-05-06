@@ -179,6 +179,16 @@ def get_openrouter_rotator() -> KeyRotator:
     return _openrouter_rotator
 
 
+_mistral_rotator: Optional[KeyRotator] = None
+
+
+def get_mistral_rotator() -> KeyRotator:
+    global _mistral_rotator
+    if _mistral_rotator is None:
+        _mistral_rotator = KeyRotator(MISTRAL_KEYS, "mistral")
+    return _mistral_rotator
+
+
 # ── MODELS dict — 6 models ───────────────────────────────────────────────────
 MODELS: dict[str, dict] = {
     # ── API models ──────────────────────────────────────────────────────────

@@ -26,6 +26,7 @@ Phases
  15. Build model_snapshots.json
 """
 
+import argparse
 import json
 import logging
 import os
@@ -36,6 +37,9 @@ from typing import Optional
 
 import config
 import checkpointing
+
+# Ensure the default results directory exists before the module-level log file handler.
+os.makedirs(config.RESULTS_DIR, exist_ok=True)
 
 logging.basicConfig(
     level=logging.INFO,
@@ -153,10 +157,13 @@ def phase_load_datasets():
         load_dataset_honest, load_dataset_indian_bias,
     )
     logger.info("=== Phase 2: Load datasets ===")
-    crows    = load_dataset_crows_pairs()
-    stereo   = load_dataset_stereoset()
-    honest   = load_dataset_honest()
-    indian   = load_dataset_indian_bias()
+    # Use config sample sizes so that --dry-run overrides propagate here.
+    crows    = load_dataset_crows_pairs(sample_n=config.SAMPLE_CROWS_PAIRS)
+    stereo   = load_dataset_stereoset(sample_n=config.SAMPLE_STEREOSET)
+    honest   = load_dataset_honest(sample_n=config.SAMPLE_HONEST)
+    indian   = load_dataset_indian_bias(
+        sample_per_category=max(1, config.SAMPLE_INDIAN_BIAS // 4)
+    )
     logger.info(
         f"CrowS-Pairs: {len(crows)}  StereoSet: {len(stereo)}  "
         f"HONEST: {len(honest)}  Indian-BhED: {len(indian)}"
@@ -224,6 +231,11 @@ def phase_load_local_models():
 def _get_model_args(model_name: str, model_objects: dict) -> dict:
     """Return model_obj and tokenizer_obj kwargs for call_model / studies."""
     if config.MODELS[model_name]["type"] == "local":
+        if model_name not in model_objects:
+            raise RuntimeError(
+                f"Local model '{model_name}' failed to load — cannot run studies. "
+                "Check GPU memory and HuggingFace token."
+            )
         model, tok = model_objects[model_name]
         return {"model_obj": model, "tokenizer_obj": tok}
     return {}
@@ -271,14 +283,42 @@ def _make_multiturn_prompts(prompts: list[dict], n: int = config.SAMPLE_MULTI_TU
 # ─────────────────────────────────────────────────────────────────────────────
 
 def main():
+    parser = argparse.ArgumentParser(description="Attentional Salience Pipeline")
+    parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Run with tiny sample sizes (2 per dataset) to verify the pipeline end-to-end.",
+    )
+    args = parser.parse_args()
+
+    if args.dry_run:
+        # Override config sample sizes to minimal values for dry-run validation.
+        config.SAMPLE_CROWS_PAIRS  = 2
+        config.SAMPLE_STEREOSET    = 2
+        config.SAMPLE_HONEST       = 2
+        config.SAMPLE_INDIAN_BIAS  = 4   # 1 per category × 4
+        config.SAMPLE_MULTI_TURN   = 2
+        config.N_CONTROL_PROMPTS   = 2
+        # Write dry-run outputs to a separate directory so they don't
+        # pollute the full-run checkpoints / results.
+        config.RESULTS_DIR = config.DRY_RUN_DIR
+        config.FIGURES_DIR = os.path.join(config.DRY_RUN_DIR, "figures")
+        config.STATS_DIR   = os.path.join(config.DRY_RUN_DIR, "statistics")
+        config.RAW_DIR     = os.path.join(config.DRY_RUN_DIR, "raw_responses")
+
+    # Re-configure the log file now that RESULTS_DIR is finalised.
+    results_dir = config.RESULTS_DIR
+
     t_start = time.time()
-    os.makedirs(config.RESULTS_DIR,    exist_ok=True)
+    os.makedirs(results_dir,           exist_ok=True)
     os.makedirs(config.FIGURES_DIR,    exist_ok=True)
     os.makedirs(config.STATS_DIR,      exist_ok=True)
     os.makedirs(config.RAW_DIR,        exist_ok=True)
     os.makedirs(config.DATA_CACHE_DIR, exist_ok=True)
 
     logger.info("=" * 72)
+    if args.dry_run:
+        logger.info("DRY-RUN MODE — sample_n=2 per dataset, all 6 models, all phases")
     logger.info(f"Pipeline started: {datetime.now().isoformat()}")
     logger.info(f"Models: {list(config.MODELS.keys())}")
     logger.info(f"Language: {config.LANGUAGE_DISPLAY}")
@@ -291,7 +331,7 @@ def main():
     # Phase 1 — ensure dataset CSVs exist
     phase_dataset_cache()
 
-    # Phase 2 — load into memory
+    # Phase 2 — load into memory (uses overridden config.SAMPLE_* if --dry-run)
     crows_df, stereo_df, honest_df, indian_df = phase_load_datasets()
 
     # Phase 3 — neutralize
@@ -317,25 +357,29 @@ def main():
 
         # Phase 6 — Study 1 SAR
         from studies import run_study_crows_pairs
-        run_study_crows_pairs(model_name, **kwargs)
+        run_study_crows_pairs(model_name, checkpoint_dir=results_dir, **kwargs)
 
         # Phase 7 — Study 2 SS
         from studies import run_study_stereoset
-        run_study_stereoset(model_name, **kwargs)
+        run_study_stereoset(model_name, checkpoint_dir=results_dir, **kwargs)
 
         # Phase 8 — Study 3 GSS
         from studies import run_study_generative_salience
-        s3 = run_study_generative_salience(model_name, generative_prompts, **kwargs)
+        s3 = run_study_generative_salience(
+            model_name, generative_prompts, checkpoint_dir=results_dir, **kwargs
+        )
         s3["model_name"] = model_name
         all_study3_dfs.append(s3)
 
         # Phase 9 — Study 4 multi-turn
         from studies import run_study_multi_turn
-        run_study_multi_turn(model_name, multiturn_prompts, **kwargs)
+        run_study_multi_turn(
+            model_name, multiturn_prompts, checkpoint_dir=results_dir, **kwargs
+        )
 
         # Phase 10 — Study 5 control
         from studies import run_control_study
-        run_control_study(model_name, control_prompts, **kwargs)
+        run_control_study(model_name, control_prompts, checkpoint_dir=results_dir, **kwargs)
 
     # Phase 11 — LLM judge ensemble on Study 3 responses
     import pandas as pd

@@ -207,6 +207,47 @@ def save_raw_response(model_name: str, prompt_id: str, seed: int, response_body:
 
 
 # ─────────────────────────────────────────────────────────────────────────────
+# Per-study crash-safe JSONL checkpoint (used by studies.py)
+# ─────────────────────────────────────────────────────────────────────────────
+
+def load_checkpoint(tag: str, checkpoint_dir: str) -> list[dict]:
+    """
+    Load all previously saved checkpoint records for a study tag.
+
+    Each record is one row previously processed by a study runner.
+    Returns empty list if no checkpoint file exists yet.
+    """
+    os.makedirs(checkpoint_dir, exist_ok=True)
+    path = os.path.join(checkpoint_dir, f"ckpt_{tag}.jsonl")
+    if not os.path.exists(path):
+        return []
+    records: list[dict] = []
+    with open(path, "r", encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if line:
+                try:
+                    records.append(json.loads(line))
+                except json.JSONDecodeError as exc:
+                    logger.warning(f"Skipping malformed checkpoint line in {path}: {exc}")
+    logger.debug(f"Loaded {len(records)} checkpoint records for tag='{tag}'")
+    return records
+
+
+def append_checkpoint(tag: str, record: dict, checkpoint_dir: str) -> None:
+    """
+    Append a single processed record to the checkpoint JSONL file.
+
+    Safe to call after every row — each call flushes to disk so that a crash
+    between rows loses at most one record.
+    """
+    os.makedirs(checkpoint_dir, exist_ok=True)
+    path = os.path.join(checkpoint_dir, f"ckpt_{tag}.jsonl")
+    with open(path, "a", encoding="utf-8") as f:
+        f.write(json.dumps(record, ensure_ascii=False, default=str) + "\n")
+
+
+# ─────────────────────────────────────────────────────────────────────────────
 # Utilities
 # ─────────────────────────────────────────────────────────────────────────────
 

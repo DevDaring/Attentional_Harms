@@ -196,26 +196,26 @@ def step4_data_pipeline():
     )
 
     try:
-        df = load_dataset_crows_pairs(sample_n=5)
-        _record("load_crows_pairs (n=5)", _PASS, f"{len(df)} rows")
+        df = load_dataset_crows_pairs(sample_n=2)
+        _record("load_crows_pairs (n=2)", _PASS, f"{len(df)} rows")
     except Exception as exc:
         _record("load_crows_pairs", _FAIL, str(exc))
 
     try:
-        df = load_dataset_stereoset(sample_n=5)
-        _record("load_stereoset (n=5)", _PASS, f"{len(df)} rows")
+        df = load_dataset_stereoset(sample_n=2)
+        _record("load_stereoset (n=2)", _PASS, f"{len(df)} rows")
     except Exception as exc:
         _record("load_stereoset", _FAIL, str(exc))
 
     try:
-        df = load_dataset_honest(sample_n=5)
-        _record("load_honest (n=5)", _PASS, f"{len(df)} rows")
+        df = load_dataset_honest(sample_n=2)
+        _record("load_honest (n=2)", _PASS, f"{len(df)} rows")
     except Exception as exc:
         _record("load_honest", _FAIL, str(exc))
 
     try:
-        df = load_dataset_indian_bias(sample_per_category=3)
-        _record("load_indian_bias (n=3/cat)", _PASS, f"{len(df)} rows")
+        df = load_dataset_indian_bias(sample_per_category=1)
+        _record("load_indian_bias (n=1/cat)", _PASS, f"{len(df)} rows")
     except Exception as exc:
         _record("load_indian_bias", _WARN, str(exc))
 
