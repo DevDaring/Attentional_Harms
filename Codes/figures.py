@@ -35,12 +35,7 @@ PALETTE = "colorblind"
 
 # Full language display names (§4.4)
 LANG_ORDER = ["English", "Hindi", "Bengali"]
-MODEL_ORDER = [
-    "Gemini 2.5 Flash",
-    "DeepSeek V3",
-    "LLaMA 3.3 70B Instruct",
-    "Gemma 2 27B IT",
-]
+MODEL_ORDER = ["deepseek", "gpt4o_mini", "grok", "qwen", "gemma3", "llama"]
 CATEGORIES = ["caste", "gender", "religion", "race"]
 
 
@@ -135,43 +130,45 @@ def figure2_var_bars(study3_df: pd.DataFrame) -> None:
         return
 
     df = study3_df.copy()
-    agg = df.groupby(["model_name", "language"])["var"].mean().reset_index()
-    agg["var_pct"] = agg["var"] * 100
+    # English-only study — group by model only, no language dimension
+    agg = df.groupby("model_name")[var_col].mean().reset_index()
+    agg["var_pct"] = agg[var_col] * 100
 
     model_order = _filter_order(agg["model_name"], MODEL_ORDER)
-    lang_order = _filter_order(agg["language"], LANG_ORDER)
+    if not model_order:
+        model_order = sorted(agg["model_name"].dropna().unique().tolist())
+    if not model_order:
+        logger.warning("Figure 2: no model data after filtering.")
+        return
 
     fig, ax = plt.subplots(figsize=(10, 5))
     x = np.arange(len(model_order))
-    width = 0.25
-    colors = sns.color_palette(PALETTE, len(lang_order))
+    colors = sns.color_palette(PALETTE, len(model_order))
 
-    for i, (lang, color) in enumerate(zip(lang_order, colors)):
-        lang_vals = [
-            agg[(agg["model_name"] == m) & (agg["language"] == lang)]["var_pct"].values
-            for m in model_order
-        ]
-        vals = [v[0] if len(v) > 0 else 0.0 for v in lang_vals]
-        bars = ax.bar(x + i * width, vals, width, label=lang, color=color, edgecolor="white")
-        for bar, val in zip(bars, vals):
-            if val > 1:
-                ax.text(
-                    bar.get_x() + bar.get_width() / 2,
-                    bar.get_height() + 0.5,
-                    f"{val:.1f}",
-                    ha="center", va="bottom", fontsize=7,
-                )
+    vals = [
+        float(agg[agg["model_name"] == m]["var_pct"].values[0])
+        if len(agg[agg["model_name"] == m]) > 0 else 0.0
+        for m in model_order
+    ]
+    bars = ax.bar(x, vals, 0.6, color=colors, edgecolor="white")
+    for bar, val in zip(bars, vals):
+        if val > 1:
+            ax.text(
+                bar.get_x() + bar.get_width() / 2,
+                bar.get_height() + 0.5,
+                f"{val:.1f}",
+                ha="center", va="bottom", fontsize=8,
+            )
 
     ax.set_xlabel("Model", fontsize=11)
     ax.set_ylabel("Volunteered Attribute Rate (%)", fontsize=11)
     ax.set_title(
-        "Figure 2: Volunteered Attribute Rate (VAR) by Model and Language\n"
-        "(TACL — Attentional Salience Study)",
+        "Figure 2: Volunteered Attribute Rate (VAR) by Model\n"
+        "(TACL — Attentional Salience Study — English)",
         fontsize=11,
     )
-    ax.set_xticks(x + width * (len(lang_order) - 1) / 2)
+    ax.set_xticks(x)
     ax.set_xticklabels(model_order, rotation=20, ha="right", fontsize=9)
-    ax.legend(title="Language", fontsize=9)
     ax.yaxis.set_major_formatter(ticker.FormatStrFormatter("%.1f%%"))
     plt.tight_layout()
     _save_figure(fig, "figure2_var_bars")
