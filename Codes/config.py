@@ -29,7 +29,8 @@ def _strip(v: Optional[str]) -> Optional[str]:
 
 # ── HuggingFace ───────────────────────────────────────────────────────────────
 HF_TOKEN: Optional[str] = (
-    _strip(os.environ.get("HF_Classic_Token"))
+    _strip(os.environ.get("HUGGINGFACE_TOKEN"))
+    or _strip(os.environ.get("HF_Classic_Token"))
     or _strip(os.environ.get("HF_KEY"))
     or _strip(os.environ.get("HF_TOKEN"))
 )
@@ -37,6 +38,11 @@ HF_TOKEN: Optional[str] = (
 # ── Gemini / GCP (judge-only — 4 keys, round-robin) ─────────────────────────
 GEMINI_KEYS: list[str] = [
     k for k in [
+        _strip(os.environ.get("GEMINI_API_KEY_1")),
+        _strip(os.environ.get("GEMINI_API_KEY_2")),
+        _strip(os.environ.get("GEMINI_API_KEY_3")),
+        _strip(os.environ.get("GEMINI_API_KEY_4")),
+        # legacy key names
         _strip(os.environ.get("GCP_Key1")),
         _strip(os.environ.get("GCP_Key2")),
         _strip(os.environ.get("GCP_Key3")),
@@ -44,7 +50,9 @@ GEMINI_KEYS: list[str] = [
     ] if k
 ]
 GEMINI_MODEL_ID: str = (
-    _strip(os.environ.get("GEMINI_MODEL_ID")) or "gemini-2.0-flash"
+    _strip(os.environ.get("GEMINI_MODEL_NAME"))
+    or _strip(os.environ.get("GEMINI_MODEL_ID"))
+    or "gemini-2.0-flash"
 )
 GEMINI_ENDPOINT = (
     "https://generativelanguage.googleapis.com/v1beta/models/{model_id}:generateContent"
@@ -53,6 +61,9 @@ GEMINI_ENDPOINT = (
 # ── DeepSeek (up to 2 keys, round-robin) ─────────────────────────────────────
 DEEPSEEK_KEYS: list[str] = [
     k for k in [
+        _strip(os.environ.get("DEEPSEEK_API_KEY_1")),
+        _strip(os.environ.get("DEEPSEEK_API_KEY_2")),
+        # legacy key names
         _strip(os.environ.get("Deepseek_API_key")),
         _strip(os.environ.get("Deepseek_API_key2")),
         _strip(os.environ.get("DEEPSEEK_API_KEY")),
@@ -62,14 +73,26 @@ DEEPSEEK_KEYS: list[str] = [
 # ── OpenRouter (up to 2 keys, round-robin) ────────────────────────────────────
 OPENROUTER_KEYS: list[str] = [
     k for k in [
+        _strip(os.environ.get("OPENROUTER_API_KEY_1")),
+        _strip(os.environ.get("OPENROUTER_API_KEY_2")),
+        # legacy key names
         _strip(os.environ.get("OR_Key1")),
         _strip(os.environ.get("OR_Key2")),
         _strip(os.environ.get("OPENROUTER_API_KEY")),
     ] if k
 ]
 
-# ── Mistral (single key, judge tertiary) ─────────────────────────────────────
-MISTRAL_API_KEY: Optional[str] = _strip(os.environ.get("MISTRAL_API_KEY"))
+# ── Mistral (up to 2 keys, round-robin, judge tertiary) ──────────────────────
+MISTRAL_KEYS: list[str] = [
+    k for k in [
+        _strip(os.environ.get("MISTRAL_API_KEY1")),
+        _strip(os.environ.get("Mistral_API_KEY2")),
+        # legacy single-key name
+        _strip(os.environ.get("MISTRAL_API_KEY")),
+    ] if k
+]
+# Backward-compat alias used by models.py
+MISTRAL_API_KEY: Optional[str] = MISTRAL_KEYS[0] if MISTRAL_KEYS else None
 MISTRAL_MODEL_NAME: str = (
     _strip(os.environ.get("MISTRAL_MODEL_NAME")) or "mistral-small-latest"
 )
@@ -246,13 +269,13 @@ DATASET_INDIAN_BIAS  = "Debk/Indian-Multilingual-Bias-Dataset"
 # Studies 1 & 2 use full datasets (perplexity-only, < 30 min, no sampling criticism)
 SAMPLE_CROWS_PAIRS = None    # full English CrowS-Pairs (~1,508 rows)
 SAMPLE_STEREOSET   = None    # full StereoSet English intrasentence (~2,100 rows)
-SAMPLE_HONEST      = 100     # stratified (hurtful sub-analysis only)
-SAMPLE_INDIAN_BIAS = 120     # 30 per category × 4 categories (English only)
+SAMPLE_HONEST      = 200     # stratified sample (200 rows)
+SAMPLE_INDIAN_BIAS = 200     # 50 per category × 4 categories (English only)
 SAMPLE_MULTI_TURN  = 60      # 20 caste + 20 gender + 20 religion
 
 N_PARAPHRASE_VARIANTS = 3
 PARAPHRASE_TEMPERATURE = 0.9
-N_CONTROL_PROMPTS = 50
+N_CONTROL_PROMPTS = 200
 
 RANDOM_SEED = 42
 
@@ -275,7 +298,7 @@ def validate_keys() -> dict[str, bool]:
         "GEMINI_KEYS":     len(GEMINI_KEYS) >= 1,
         "DEEPSEEK_KEYS":   len(DEEPSEEK_KEYS) >= 1,
         "OPENROUTER_KEYS": len(OPENROUTER_KEYS) >= 1,
-        "MISTRAL_API_KEY": bool(MISTRAL_API_KEY),
+        "MISTRAL_KEYS":    len(MISTRAL_KEYS) >= 1,
     }
 
 
@@ -285,5 +308,6 @@ if __name__ == "__main__":
     print(f"GEMINI_KEYS:     {len(GEMINI_KEYS)} key(s)")
     print(f"DEEPSEEK_KEYS:   {len(DEEPSEEK_KEYS)} key(s)")
     print(f"OPENROUTER_KEYS: {len(OPENROUTER_KEYS)} key(s)")
+    print(f"MISTRAL_KEYS:    {len(MISTRAL_KEYS)} key(s)")
     print(f"MISTRAL_API_KEY: {'present' if MISTRAL_API_KEY else 'MISSING'}")
 

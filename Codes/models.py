@@ -289,9 +289,9 @@ def call_mistral_api(
 ) -> dict[str, Any]:
     """
     Up to _MAX_RETRIES+1 attempts with exponential backoff (2 s, 4 s, 8 s).
-    Single Mistral key (no rotation). Used exclusively as Judge C in llm_judge.py.
+    Rotates across MISTRAL_KEYS (up to 2 keys) round-robin. Used exclusively as Judge C in llm_judge.py.
     """
-    api_key = config.MISTRAL_API_KEY
+    api_key = config.get_mistral_rotator().get_next_key()
     if not api_key:
         return {"success": False, "error": "NO_MISTRAL_KEY", "text": "", "raw_json": {}}
 

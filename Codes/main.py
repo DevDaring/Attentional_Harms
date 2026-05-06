@@ -99,8 +99,8 @@ def verify_environment() -> bool:
         elif key_name in ("OPENROUTER_KEYS",) and not present:
             logger.error(f"CRITICAL: No {key_name} — OpenRouter models (GPT-4o Mini, Grok) unavailable")
             critical_ok = False
-        elif key_name == "MISTRAL_API_KEY" and not present:
-            warnings.append("No MISTRAL_API_KEY — LLM Judge C (Mistral) will fail")
+        elif key_name == "MISTRAL_KEYS" and not present:
+            warnings.append("No MISTRAL_KEYS — LLM Judge C (Mistral) will fail")
 
     if not config.HF_TOKEN:
         warnings.append("HF_TOKEN not set — gated models (Llama) may fail to download")
