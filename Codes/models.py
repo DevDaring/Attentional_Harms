@@ -495,6 +495,10 @@ def call_local_model(
     new_tokens = output_ids[0][input_ids.shape[1]:]
     raw_text = tokenizer.decode(new_tokens, skip_special_tokens=True)
     parsed = _parse_json_response(raw_text)
+    # Local models (especially small ones) may not reliably emit JSON.
+    # Fall back to raw text so success=True whenever the model produced output.
+    if "error" in parsed and raw_text.strip():
+        parsed = {"response": raw_text.strip()}
     return {
         "success": "error" not in parsed,
         "text": _extract_response_text(parsed),
