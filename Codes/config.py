@@ -49,10 +49,13 @@ GEMINI_KEYS: list[str] = [
         _strip(os.environ.get("GCP_Key4")),
     ] if k
 ]
+# gemini-2.5-flash is the current stable model (not deprecated).
+# gemini-2.0-flash and gemini-1.5-flash are deprecated and shut down soon.
+# Next upgrade: gemini-3-flash-preview (no shutdown date, frontier-class).
 GEMINI_MODEL_ID: str = (
     _strip(os.environ.get("GEMINI_MODEL_NAME"))
     or _strip(os.environ.get("GEMINI_MODEL_ID"))
-    or "gemini-1.5-flash"
+    or "gemini-2.5-flash"
 )
 GEMINI_ENDPOINT = (
     "https://generativelanguage.googleapis.com/v1beta/models/{model_id}:generateContent"
