@@ -441,14 +441,32 @@ def phase6_figures(results_dir: str) -> None:
 
     logger.info("Phase 6: Regenerating figures …")
     try:
-        from regenerate_figures import regenerate_all_figures
-        regenerate_all_figures(results_dir=results_dir)
-        logger.info("Phase 6: figures done")
-    except ImportError:
-        logger.warning(
-            "Phase 6: regenerate_figures.py not found — figures not regenerated. "
-            "Run manually if needed."
-        )
+        import glob
+        from figures import generate_all_figures
+
+        ALL_MODELS = ["deepseek", "gpt4o_mini", "grok", "qwen", "gemma3", "llama", "qwen72b"]
+
+        def _load_combined(prefix, required_col=None):
+            dfs = []
+            for m in ALL_MODELS:
+                p = os.path.join(results_dir, f"{prefix}_{m}.csv")
+                if os.path.exists(p):
+                    df = pd.read_csv(p, encoding="utf-8-sig")
+                    if required_col is None or required_col in df.columns:
+                        dfs.append(df)
+            return pd.concat(dfs, ignore_index=True) if dfs else pd.DataFrame()
+
+        study3_df = _load_combined("study3_gss",      required_col="gss_mean")
+        study4_df = _load_combined("study4_multiturn", required_col="gss_turn1")
+        study1_df = _load_combined("study1_sar",       required_col="prefers_stereo")
+
+        if study3_df.empty:
+            logger.warning("Phase 6: study3 CSVs not found — figures skipped")
+        else:
+            generate_all_figures(study3_df, study4_df=study4_df, study1_df=study1_df)
+            logger.info("Phase 6: figures done")
+    except Exception as exc:
+        logger.warning(f"Phase 6: figure generation failed: {exc}", exc_info=True)
 
     _mark_done("figures", results_dir)
 

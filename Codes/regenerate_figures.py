@@ -15,7 +15,7 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)-8s %(na
 logger = logging.getLogger("regenerate_figures")
 
 RESULTS_DIR = "./results"
-MODEL_NAMES = ["deepseek", "gpt4o_mini", "grok", "qwen", "gemma3", "llama"]
+MODEL_NAMES = ["deepseek", "gpt4o_mini", "grok", "qwen", "gemma3", "llama", "qwen72b"]
 
 
 def load_combined(prefix: str, models: list, required_col: str | None = None) -> pd.DataFrame:
