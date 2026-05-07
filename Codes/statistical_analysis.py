@@ -102,10 +102,28 @@ def run_mixed_effects_regression(
     work["category_cat"] = work["category"].astype("category")
     work = work.dropna(subset=[outcome])
 
-    formula = (
-        f"{outcome} ~ model_cat + category_cat "
-        f"+ model_cat:category_cat + tokenizer_fertility_en"
+    if len(work) < 10:
+        logger.warning("Mixed-effects regression skipped: too few rows after dropna")
+        return None
+    if work["category_cat"].nunique() < 2:
+        logger.warning("Mixed-effects regression skipped: fewer than 2 category groups")
+        return None
+
+    # Only include tokenizer_fertility_en if it has valid variance
+    has_fertility = (
+        "tokenizer_fertility_en" in work.columns
+        and work["tokenizer_fertility_en"].dropna().nunique() >= 2
     )
+    if has_fertility:
+        formula = (
+            f"{outcome} ~ model_cat + category_cat "
+            f"+ model_cat:category_cat + tokenizer_fertility_en"
+        )
+    else:
+        formula = f"{outcome} ~ model_cat + category_cat + model_cat:category_cat"
+        if not has_fertility:
+            logger.info("tokenizer_fertility_en has no valid data — omitted from regression formula")
+
     try:
         md = smf.mixedlm(formula, work, groups=work["category_cat"])
         result = md.fit(reml=False)
