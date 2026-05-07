@@ -1,0 +1,1443 @@
+2026-05-07 04:41:53 INFO     __main__ — DRY-RUN mode: all sample sizes overridden to 2
+2026-05-07 04:41:53 INFO     __main__ — ============================================================
+2026-05-07 04:41:53 INFO     __main__ — TACL Re_Run pipeline starting
+2026-05-07 04:41:53 INFO     __main__ — ============================================================
+2026-05-07 04:41:53 INFO     __main__ — Phase 0: Validating environment …
+2026-05-07 04:41:53 INFO     __main__ — Phase 0: API keys OK
+2026-05-07 04:41:54 INFO     __main__ — Phase 0: GPU=NVIDIA H100 80GB HBM3  VRAM=79.2 GB
+2026-05-07 04:41:54 INFO     __main__ — Phase 0: HONEST dataset found at ./data/en_honest.csv
+2026-05-07 04:41:54 INFO     __main__ — Phase 0: Indian bias dataset found at ./data/en_indian_caste.csv
+2026-05-07 04:41:54 INFO     __main__ — Phase 0: PASSED
+2026-05-07 04:41:54 INFO     __main__ — Loading datasets …
+2026-05-07 04:41:54 INFO     data_pipeline — HONEST: 2 rows loaded
+2026-05-07 04:41:54 INFO     data_pipeline — Indian-BhED: 200 rows loaded (4 categories × 50)
+2026-05-07 04:41:54 INFO     __main__ — Datasets loaded: 202 generative prompts, 2 control prompts
+2026-05-07 04:41:54 INFO     __main__ — Phase 1: Loading local models onto GPU …
+2026-05-07 04:41:55 INFO     models — Loading Qwen2.5-1.5B (Qwen/Qwen2.5-1.5B-Instruct) dtype=float16 …
+2026-05-07 04:42:01 WARNING  models —   Flash Attention 2 unavailable: FlashAttention2 has been toggled on, but it cannot be used due to the following error: the package flash_attn seems to be not installed. Please refer to the documentation of https://huggingface.co/docs/transformers/perf_infer_gpu_one#flashattention-2 to install Flash Attention 2.. Falling back to sdpa.
+2026-05-07 04:42:01 INFO     accelerate.utils.modeling — We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+2026-05-07 04:42:10 INFO     models —   attn_implementation='sdpa'
+2026-05-07 04:42:12 INFO     models — GPU [after loading Qwen2.5-1.5B]: allocated=3.09 GB  reserved=3.29 GB
+2026-05-07 04:42:12 INFO     models — Loading Gemma-2-2B (google/gemma-2-2b-it) dtype=bfloat16 …
+2026-05-07 04:42:30 WARNING  models —   Flash Attention 2 unavailable: FlashAttention2 has been toggled on, but it cannot be used due to the following error: the package flash_attn seems to be not installed. Please refer to the documentation of https://huggingface.co/docs/transformers/perf_infer_gpu_one#flashattention-2 to install Flash Attention 2.. Falling back to sdpa.
+2026-05-07 04:42:30 INFO     accelerate.utils.modeling — We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+2026-05-07 04:42:32 INFO     models —   attn_implementation='sdpa'
+2026-05-07 04:42:33 INFO     models — GPU [after loading Gemma-2-2B]: allocated=8.32 GB  reserved=8.72 GB
+2026-05-07 04:42:33 INFO     models — Loading Llama-3.1-8B (meta-llama/Llama-3.1-8B-Instruct) dtype=float16 …
+2026-05-07 04:43:32 WARNING  models —   Flash Attention 2 unavailable: FlashAttention2 has been toggled on, but it cannot be used due to the following error: the package flash_attn seems to be not installed. Please refer to the documentation of https://huggingface.co/docs/transformers/perf_infer_gpu_one#flashattention-2 to install Flash Attention 2.. Falling back to sdpa.
+2026-05-07 04:43:32 INFO     accelerate.utils.modeling — We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+2026-05-07 04:43:49 INFO     models —   attn_implementation='sdpa'
+2026-05-07 04:43:50 INFO     models — GPU [after loading Llama-3.1-8B]: allocated=24.38 GB  reserved=24.91 GB
+2026-05-07 04:43:50 INFO     models — GPU [after loading all local models]: allocated=24.38 GB  reserved=24.91 GB
+2026-05-07 04:43:50 INFO     __main__ — Phase 1: 3 local models loaded in 116s
+2026-05-07 04:43:50 INFO     __main__ — Phase 2A: Study 4 expanded — API models (parallel) …
+2026-05-07 04:43:50 INFO     Re_Run.study4_expanded — Study4-exp [deepseek]: 2 items, checkpoint has 0 done
+2026-05-07 04:43:50 INFO     Re_Run.study4_expanded — Study4-exp [gpt4o_mini]: 2 items, checkpoint has 0 done
+2026-05-07 04:43:50 INFO     Re_Run.study4_expanded — Study4-exp [grok]: 2 items, checkpoint has 0 done
+2026-05-07 04:44:00 INFO     Re_Run.study4_expanded — Study4-exp [gpt4o_mini]: mean_drift=0.0217  n=2  → ./results/study4_multiturn_gpt4o_mini.csv
+2026-05-07 04:44:00 INFO     __main__ — Phase 2A [gpt4o_mini]: Study4 complete  n=2
+2026-05-07 04:44:04 INFO     Re_Run.study4_expanded — Study4-exp [deepseek]: mean_drift=0.0000  n=2  → ./results/study4_multiturn_deepseek.csv
+2026-05-07 04:44:04 INFO     __main__ — Phase 2A [deepseek]: Study4 complete  n=2
+2026-05-07 04:45:58 INFO     Re_Run.study4_expanded — Study4-exp [grok]: mean_drift=-0.0135  n=2  → ./results/study4_multiturn_grok.csv
+2026-05-07 04:45:58 INFO     __main__ — Phase 2A [grok]: Study4 complete  n=2
+2026-05-07 04:45:58 INFO     __main__ — Phase 2B: Study 4 expanded — local models (sequential) …
+2026-05-07 04:45:58 INFO     Re_Run.study4_expanded — Study4-exp [qwen]: 2 items, checkpoint has 0 done
+2026-05-07 04:46:06 INFO     Re_Run.study4_expanded — Study4-exp [qwen]: mean_drift=-0.0208  n=2  → ./results/study4_multiturn_qwen.csv
+2026-05-07 04:46:06 INFO     __main__ — Phase 2B [qwen]: Study4 complete  n=2
+2026-05-07 04:46:06 INFO     Re_Run.study4_expanded — Study4-exp [gemma3]: 2 items, checkpoint has 0 done
+2026-05-07 04:46:33 INFO     Re_Run.study4_expanded — Study4-exp [gemma3]: mean_drift=0.0000  n=2  → ./results/study4_multiturn_gemma3.csv
+2026-05-07 04:46:33 INFO     __main__ — Phase 2B [gemma3]: Study4 complete  n=2
+2026-05-07 04:46:33 INFO     Re_Run.study4_expanded — Study4-exp [llama]: 2 items, checkpoint has 0 done
+2026-05-07 04:46:55 INFO     Re_Run.study4_expanded — Study4-exp [llama]: mean_drift=0.0000  n=2  → ./results/study4_multiturn_llama.csv
+2026-05-07 04:46:55 INFO     __main__ — Phase 2B [llama]: Study4 complete  n=2
+2026-05-07 04:46:55 INFO     __main__ — Phase 3: GenSAR/GenSS (3 API models) + Qwen72B Study3 …
+2026-05-07 04:46:55 INFO     __main__ — Phase 3: GenSAR [deepseek] …
+2026-05-07 04:46:55 INFO     __main__ — Phase 3: Study3 [qwen72b] …
+2026-05-07 04:46:55 INFO     Re_Run.study_qwen72b — Study3 [qwen72b]: 202 prompts to process (checkpoint: 0 done)
+2026-05-07 04:46:55 INFO     Re_Run.study1_2_gensar — GenSAR [deepseek]: 1508/1508 rows need processing
+2026-05-07 04:47:22 INFO     Re_Run.study1_2_gensar — GenSAR [deepseek]: 200/1508 rows done
+2026-05-07 04:47:48 INFO     Re_Run.study1_2_gensar — GenSAR [deepseek]: 400/1508 rows done
+2026-05-07 04:48:14 INFO     Re_Run.study1_2_gensar — GenSAR [deepseek]: 600/1508 rows done
+2026-05-07 04:48:40 INFO     Re_Run.study1_2_gensar — GenSAR [deepseek]: 800/1508 rows done
+2026-05-07 04:49:06 INFO     Re_Run.study1_2_gensar — GenSAR [deepseek]: 1000/1508 rows done
+2026-05-07 04:49:08 INFO     Re_Run.study_qwen72b — Study3 [qwen72b]: 50/202 done
+2026-05-07 04:49:32 INFO     Re_Run.study1_2_gensar — GenSAR [deepseek]: 1200/1508 rows done
+2026-05-07 04:49:58 INFO     Re_Run.study1_2_gensar — GenSAR [deepseek]: 1400/1508 rows done
+2026-05-07 04:50:12 INFO     Re_Run.study1_2_gensar — GenSAR [deepseek]: GenSAR=0.766  n_valid=1508  → ./results/study1_sar_deepseek.csv
+2026-05-07 04:50:12 INFO     __main__ — Phase 3: GenSS [deepseek] …
+2026-05-07 04:50:12 INFO     data_pipeline — StereoSet: 2106 rows loaded
+2026-05-07 04:50:12 INFO     Re_Run.study1_2_gensar — GenSS [deepseek]: merged stereotype/anti_stereotype from cache (2106/2106 rows matched)
+2026-05-07 04:50:12 INFO     Re_Run.study1_2_gensar — GenSS [deepseek]: 2106/2106 rows need processing
+2026-05-07 04:50:39 INFO     Re_Run.study1_2_gensar — GenSS [deepseek]: 200/2106 rows done
+2026-05-07 04:51:05 INFO     Re_Run.study1_2_gensar — GenSS [deepseek]: 400/2106 rows done
+2026-05-07 04:51:31 INFO     Re_Run.study1_2_gensar — GenSS [deepseek]: 600/2106 rows done
+2026-05-07 04:51:57 INFO     Re_Run.study1_2_gensar — GenSS [deepseek]: 800/2106 rows done
+2026-05-07 04:52:03 INFO     Re_Run.study_qwen72b — Study3 [qwen72b]: 100/202 done
+2026-05-07 04:52:23 INFO     Re_Run.study1_2_gensar — GenSS [deepseek]: 1000/2106 rows done
+2026-05-07 04:52:49 INFO     Re_Run.study1_2_gensar — GenSS [deepseek]: 1200/2106 rows done
+2026-05-07 04:53:15 INFO     Re_Run.study1_2_gensar — GenSS [deepseek]: 1400/2106 rows done
+2026-05-07 04:53:41 INFO     Re_Run.study1_2_gensar — GenSS [deepseek]: 1600/2106 rows done
+2026-05-07 04:54:07 INFO     Re_Run.study1_2_gensar — GenSS [deepseek]: 1800/2106 rows done
+2026-05-07 04:54:34 INFO     Re_Run.study1_2_gensar — GenSS [deepseek]: 2000/2106 rows done
+2026-05-07 04:54:47 INFO     Re_Run.study1_2_gensar — GenSS [deepseek]: GenSS=0.756  n_valid=2106  → ./results/study2_ss_deepseek.csv
+2026-05-07 04:54:47 INFO     __main__ — Phase 3: GenSAR [gpt4o_mini] …
+2026-05-07 04:54:47 INFO     Re_Run.study1_2_gensar — GenSAR [gpt4o_mini]: 1508/1508 rows need processing
+2026-05-07 04:55:10 INFO     Re_Run.study1_2_gensar — GenSAR [gpt4o_mini]: 200/1508 rows done
+2026-05-07 04:55:30 INFO     Re_Run.study1_2_gensar — GenSAR [gpt4o_mini]: 400/1508 rows done
+2026-05-07 04:55:52 INFO     Re_Run.study1_2_gensar — GenSAR [gpt4o_mini]: 600/1508 rows done
+2026-05-07 04:56:06 INFO     Re_Run.study_qwen72b — Study3 [qwen72b]: 150/202 done
+2026-05-07 04:56:12 INFO     Re_Run.study1_2_gensar — GenSAR [gpt4o_mini]: 800/1508 rows done
+2026-05-07 04:56:32 INFO     Re_Run.study1_2_gensar — GenSAR [gpt4o_mini]: 1000/1508 rows done
+2026-05-07 04:56:54 INFO     Re_Run.study1_2_gensar — GenSAR [gpt4o_mini]: 1200/1508 rows done
+2026-05-07 04:57:15 INFO     Re_Run.study1_2_gensar — GenSAR [gpt4o_mini]: 1400/1508 rows done
+2026-05-07 04:57:27 INFO     Re_Run.study1_2_gensar — GenSAR [gpt4o_mini]: GenSAR=0.761  n_valid=1508  → ./results/study1_sar_gpt4o_mini.csv
+2026-05-07 04:57:27 INFO     __main__ — Phase 3: GenSS [gpt4o_mini] …
+2026-05-07 04:57:27 INFO     data_pipeline — StereoSet: 2106 rows loaded
+2026-05-07 04:57:27 INFO     Re_Run.study1_2_gensar — GenSS [gpt4o_mini]: merged stereotype/anti_stereotype from cache (2106/2106 rows matched)
+2026-05-07 04:57:27 INFO     Re_Run.study1_2_gensar — GenSS [gpt4o_mini]: 2106/2106 rows need processing
+2026-05-07 04:57:50 INFO     Re_Run.study1_2_gensar — GenSS [gpt4o_mini]: 200/2106 rows done
+2026-05-07 04:58:10 INFO     Re_Run.study1_2_gensar — GenSS [gpt4o_mini]: 400/2106 rows done
+2026-05-07 04:58:31 INFO     Re_Run.study1_2_gensar — GenSS [gpt4o_mini]: 600/2106 rows done
+2026-05-07 04:58:51 INFO     Re_Run.study1_2_gensar — GenSS [gpt4o_mini]: 800/2106 rows done
+2026-05-07 04:59:11 INFO     Re_Run.study1_2_gensar — GenSS [gpt4o_mini]: 1000/2106 rows done
+2026-05-07 04:59:31 INFO     Re_Run.study1_2_gensar — GenSS [gpt4o_mini]: 1200/2106 rows done
+2026-05-07 04:59:49 INFO     Re_Run.study1_2_gensar — GenSS [gpt4o_mini]: 1400/2106 rows done
+2026-05-07 04:59:49 INFO     Re_Run.study_qwen72b — Study3 [qwen72b]: 200/202 done
+2026-05-07 04:59:55 INFO     Re_Run.study_qwen72b — Study3 [qwen72b]: mean_gss=0.0249  → ./results/study3_gss_qwen72b.csv
+2026-05-07 05:00:09 INFO     Re_Run.study1_2_gensar — GenSS [gpt4o_mini]: 1600/2106 rows done
+2026-05-07 05:00:30 INFO     Re_Run.study1_2_gensar — GenSS [gpt4o_mini]: 1800/2106 rows done
+2026-05-07 05:00:52 INFO     Re_Run.study1_2_gensar — GenSS [gpt4o_mini]: 2000/2106 rows done
+2026-05-07 05:01:03 INFO     Re_Run.study1_2_gensar — GenSS [gpt4o_mini]: GenSS=0.684  n_valid=2106  → ./results/study2_ss_gpt4o_mini.csv
+2026-05-07 05:01:03 INFO     __main__ — Phase 3: GenSAR [grok] …
+2026-05-07 05:01:03 INFO     Re_Run.study1_2_gensar — GenSAR [grok]: 1508/1508 rows need processing
+2026-05-07 05:07:37 INFO     Re_Run.study1_2_gensar — GenSAR [grok]: 200/1508 rows done
+2026-05-07 05:14:32 INFO     Re_Run.study1_2_gensar — GenSAR [grok]: 400/1508 rows done
+2026-05-07 05:20:46 INFO     Re_Run.study1_2_gensar — GenSAR [grok]: 600/1508 rows done
+2026-05-07 05:26:51 INFO     Re_Run.study1_2_gensar — GenSAR [grok]: 800/1508 rows done
+2026-05-07 05:33:11 INFO     Re_Run.study1_2_gensar — GenSAR [grok]: 1000/1508 rows done
+2026-05-07 05:35:17 INFO     __main__ — ============================================================
+2026-05-07 05:35:17 INFO     __main__ — TACL Re_Run pipeline starting
+2026-05-07 05:35:17 INFO     __main__ — ============================================================
+2026-05-07 05:35:17 INFO     __main__ — Phase 0: skipped (already validated)
+2026-05-07 05:35:17 INFO     __main__ — Loading datasets …
+2026-05-07 05:35:17 INFO     data_pipeline — HONEST: 200 rows loaded
+2026-05-07 05:35:17 INFO     data_pipeline — Indian-BhED: 200 rows loaded (4 categories × 50)
+2026-05-07 05:35:17 INFO     __main__ — Datasets loaded: 400 generative prompts, 200 control prompts
+2026-05-07 05:35:17 INFO     __main__ — Phase 1: local models already loaded marker found (in new process, will reload)
+2026-05-07 05:35:17 INFO     __main__ — Phase 1: Loading local models onto GPU …
+2026-05-07 05:35:18 INFO     models — Loading Qwen2.5-1.5B (Qwen/Qwen2.5-1.5B-Instruct) dtype=float16 …
+2026-05-07 05:35:19 WARNING  models —   Flash Attention 2 unavailable: FlashAttention2 has been toggled on, but it cannot be used due to the following error: the package flash_attn seems to be not installed. Please refer to the documentation of https://huggingface.co/docs/transformers/perf_infer_gpu_one#flashattention-2 to install Flash Attention 2.. Falling back to sdpa.
+2026-05-07 05:35:20 INFO     accelerate.utils.modeling — We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+2026-05-07 05:35:29 INFO     models —   attn_implementation='sdpa'
+2026-05-07 05:35:30 INFO     models — GPU [after loading Qwen2.5-1.5B]: allocated=3.09 GB  reserved=3.29 GB
+2026-05-07 05:35:30 INFO     models — Loading Gemma-2-2B (google/gemma-2-2b-it) dtype=bfloat16 …
+2026-05-07 05:35:30 WARNING  models —   Flash Attention 2 unavailable: FlashAttention2 has been toggled on, but it cannot be used due to the following error: the package flash_attn seems to be not installed. Please refer to the documentation of https://huggingface.co/docs/transformers/perf_infer_gpu_one#flashattention-2 to install Flash Attention 2.. Falling back to sdpa.
+2026-05-07 05:35:30 INFO     accelerate.utils.modeling — We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+2026-05-07 05:35:31 INFO     models —   attn_implementation='sdpa'
+2026-05-07 05:35:32 INFO     models — GPU [after loading Gemma-2-2B]: allocated=8.32 GB  reserved=8.72 GB
+2026-05-07 05:35:32 INFO     models — Loading Llama-3.1-8B (meta-llama/Llama-3.1-8B-Instruct) dtype=float16 …
+2026-05-07 05:35:32 WARNING  models —   Flash Attention 2 unavailable: FlashAttention2 has been toggled on, but it cannot be used due to the following error: the package flash_attn seems to be not installed. Please refer to the documentation of https://huggingface.co/docs/transformers/perf_infer_gpu_one#flashattention-2 to install Flash Attention 2.. Falling back to sdpa.
+2026-05-07 05:35:32 INFO     accelerate.utils.modeling — We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+2026-05-07 05:35:49 INFO     models —   attn_implementation='sdpa'
+2026-05-07 05:35:49 INFO     models — GPU [after loading Llama-3.1-8B]: allocated=24.38 GB  reserved=24.91 GB
+2026-05-07 05:35:49 INFO     models — GPU [after loading all local models]: allocated=24.38 GB  reserved=24.91 GB
+2026-05-07 05:35:49 INFO     __main__ — Phase 1: 3 local models loaded in 33s
+2026-05-07 05:35:49 INFO     __main__ — Phase 2A: Study 4 expanded — API models (parallel) …
+2026-05-07 05:35:49 INFO     Re_Run.study4_expanded — Study4-exp [deepseek]: 300 items, checkpoint has 2 done
+2026-05-07 05:35:49 INFO     Re_Run.study4_expanded — Study4-exp [gpt4o_mini]: 300 items, checkpoint has 2 done
+2026-05-07 05:35:49 INFO     Re_Run.study4_expanded — Study4-exp [grok]: 300 items, checkpoint has 2 done
+2026-05-07 05:37:59 INFO     Re_Run.study4_expanded — Study4-exp [gpt4o_mini]: 25/300 items  running_drift=-0.0027
+2026-05-07 05:38:42 INFO     Re_Run.study4_expanded — Study4-exp [deepseek]: 25/300 items  running_drift=0.0109
+2026-05-07 05:39:58 INFO     Re_Run.study4_expanded — Study4-exp [gpt4o_mini]: 50/300 items  running_drift=-0.0050
+2026-05-07 05:41:34 INFO     Re_Run.study4_expanded — Study4-exp [deepseek]: 50/300 items  running_drift=-0.0022
+2026-05-07 05:41:59 INFO     Re_Run.study4_expanded — Study4-exp [gpt4o_mini]: 75/300 items  running_drift=-0.0049
+2026-05-07 05:44:10 INFO     Re_Run.study4_expanded — Study4-exp [gpt4o_mini]: 100/300 items  running_drift=-0.0023
+2026-05-07 05:44:28 INFO     Re_Run.study4_expanded — Study4-exp [deepseek]: 75/300 items  running_drift=-0.0095
+2026-05-07 05:46:32 INFO     Re_Run.study4_expanded — Study4-exp [gpt4o_mini]: 125/300 items  running_drift=-0.0002
+2026-05-07 05:47:24 INFO     Re_Run.study4_expanded — Study4-exp [deepseek]: 100/300 items  running_drift=-0.0088
+2026-05-07 05:48:52 INFO     Re_Run.study4_expanded — Study4-exp [gpt4o_mini]: 150/300 items  running_drift=-0.0027
+2026-05-07 05:50:19 INFO     Re_Run.study4_expanded — Study4-exp [deepseek]: 125/300 items  running_drift=-0.0063
+2026-05-07 05:51:00 INFO     Re_Run.study4_expanded — Study4-exp [gpt4o_mini]: 175/300 items  running_drift=-0.0017
+2026-05-07 05:53:12 INFO     Re_Run.study4_expanded — Study4-exp [deepseek]: 150/300 items  running_drift=-0.0061
+2026-05-07 05:53:26 INFO     Re_Run.study4_expanded — Study4-exp [gpt4o_mini]: 200/300 items  running_drift=-0.0005
+2026-05-07 05:55:35 INFO     Re_Run.study4_expanded — Study4-exp [gpt4o_mini]: 225/300 items  running_drift=-0.0014
+2026-05-07 05:56:07 INFO     Re_Run.study4_expanded — Study4-exp [deepseek]: 175/300 items  running_drift=-0.0064
+2026-05-07 05:57:43 INFO     Re_Run.study4_expanded — Study4-exp [gpt4o_mini]: 250/300 items  running_drift=-0.0030
+2026-05-07 05:58:51 INFO     Re_Run.study4_expanded — Study4-exp [deepseek]: 200/300 items  running_drift=-0.0052
+2026-05-07 05:59:46 INFO     Re_Run.study4_expanded — Study4-exp [gpt4o_mini]: 275/300 items  running_drift=-0.0046
+2026-05-07 06:01:37 INFO     Re_Run.study4_expanded — Study4-exp [deepseek]: 225/300 items  running_drift=-0.0055
+2026-05-07 06:01:53 INFO     Re_Run.study4_expanded — Study4-exp [gpt4o_mini]: 300/300 items  running_drift=-0.0058
+2026-05-07 06:01:53 INFO     Re_Run.study4_expanded — Study4-exp [gpt4o_mini]: mean_drift=-0.0056  n=300  → ./results/study4_multiturn_gpt4o_mini.csv
+2026-05-07 06:01:53 INFO     __main__ — Phase 2A [gpt4o_mini]: Study4 complete  n=300
+2026-05-07 06:04:23 INFO     Re_Run.study4_expanded — Study4-exp [deepseek]: 250/300 items  running_drift=-0.0061
+2026-05-07 06:05:01 INFO     Re_Run.study4_expanded — Study4-exp [grok]: 25/300 items  running_drift=-0.0165
+2026-05-07 06:07:07 INFO     Re_Run.study4_expanded — Study4-exp [deepseek]: 275/300 items  running_drift=-0.0078
+2026-05-07 06:09:53 INFO     Re_Run.study4_expanded — Study4-exp [deepseek]: 300/300 items  running_drift=-0.0095
+2026-05-07 06:09:53 INFO     Re_Run.study4_expanded — Study4-exp [deepseek]: mean_drift=-0.0094  n=300  → ./results/study4_multiturn_deepseek.csv
+2026-05-07 06:09:53 INFO     __main__ — Phase 2A [deepseek]: Study4 complete  n=300
+2026-05-07 06:32:01 INFO     Re_Run.study4_expanded — Study4-exp [grok]: 50/300 items  running_drift=-0.0135
+2026-05-07 06:57:36 INFO     Re_Run.study4_expanded — Study4-exp [grok]: 75/300 items  running_drift=-0.0105
+2026-05-07 07:29:10 INFO     Re_Run.study4_expanded — Study4-exp [grok]: 100/300 items  running_drift=-0.0107
+2026-05-07 07:57:14 INFO     Re_Run.study4_expanded — Study4-exp [grok]: 125/300 items  running_drift=-0.0100
+2026-05-07 08:22:19 INFO     Re_Run.study4_expanded — Study4-exp [grok]: 150/300 items  running_drift=-0.0111
+2026-05-07 08:48:57 INFO     Re_Run.study4_expanded — Study4-exp [grok]: 175/300 items  running_drift=-0.0110
+2026-05-07 09:17:51 INFO     Re_Run.study4_expanded — Study4-exp [grok]: 200/300 items  running_drift=-0.0105
+2026-05-07 09:43:41 INFO     Re_Run.study4_expanded — Study4-exp [grok]: 225/300 items  running_drift=-0.0101
+2026-05-07 10:11:51 INFO     Re_Run.study4_expanded — Study4-exp [grok]: 250/300 items  running_drift=-0.0101
+2026-05-07 10:37:35 INFO     Re_Run.study4_expanded — Study4-exp [grok]: 275/300 items  running_drift=-0.0100
+2026-05-07 11:03:20 INFO     Re_Run.study4_expanded — Study4-exp [grok]: 300/300 items  running_drift=-0.0091
+2026-05-07 11:03:20 INFO     Re_Run.study4_expanded — Study4-exp [grok]: mean_drift=-0.0092  n=300  → ./results/study4_multiturn_grok.csv
+2026-05-07 11:03:20 INFO     __main__ — Phase 2A [grok]: Study4 complete  n=300
+2026-05-07 11:03:20 INFO     __main__ — Phase 2B: Study 4 expanded — local models (sequential) …
+2026-05-07 11:03:20 INFO     Re_Run.study4_expanded — Study4-exp [qwen]: 300 items, checkpoint has 2 done
+2026-05-07 11:05:10 INFO     Re_Run.study4_expanded — Study4-exp [qwen]: 25/300 items  running_drift=-0.0137
+2026-05-07 11:06:51 INFO     Re_Run.study4_expanded — Study4-exp [qwen]: 50/300 items  running_drift=-0.0135
+2026-05-07 11:08:29 INFO     Re_Run.study4_expanded — Study4-exp [qwen]: 75/300 items  running_drift=-0.0142
+2026-05-07 11:10:15 INFO     Re_Run.study4_expanded — Study4-exp [qwen]: 100/300 items  running_drift=-0.0132
+2026-05-07 11:12:00 INFO     Re_Run.study4_expanded — Study4-exp [qwen]: 125/300 items  running_drift=-0.0122
+2026-05-07 11:13:43 INFO     Re_Run.study4_expanded — Study4-exp [qwen]: 150/300 items  running_drift=-0.0133
+2026-05-07 11:15:23 INFO     Re_Run.study4_expanded — Study4-exp [qwen]: 175/300 items  running_drift=-0.0147
+2026-05-07 11:17:07 INFO     Re_Run.study4_expanded — Study4-exp [qwen]: 200/300 items  running_drift=-0.0134
+2026-05-07 11:18:22 INFO     Re_Run.study4_expanded — Study4-exp [qwen]: 225/300 items  running_drift=-0.0222
+2026-05-07 11:19:37 INFO     Re_Run.study4_expanded — Study4-exp [qwen]: 250/300 items  running_drift=-0.0271
+2026-05-07 11:20:49 INFO     Re_Run.study4_expanded — Study4-exp [qwen]: 275/300 items  running_drift=-0.0337
+2026-05-07 11:21:53 INFO     Re_Run.study4_expanded — Study4-exp [qwen]: 300/300 items  running_drift=-0.0352
+2026-05-07 11:21:53 INFO     Re_Run.study4_expanded — Study4-exp [qwen]: mean_drift=-0.0351  n=300  → ./results/study4_multiturn_qwen.csv
+2026-05-07 11:21:53 INFO     __main__ — Phase 2B [qwen]: Study4 complete  n=300
+2026-05-07 11:21:53 INFO     Re_Run.study4_expanded — Study4-exp [gemma3]: 300 items, checkpoint has 2 done
+2026-05-07 11:26:58 INFO     Re_Run.study4_expanded — Study4-exp [gemma3]: 25/300 items  running_drift=-0.0180
+2026-05-07 11:32:32 INFO     Re_Run.study4_expanded — Study4-exp [gemma3]: 50/300 items  running_drift=-0.0109
+2026-05-07 11:37:37 INFO     Re_Run.study4_expanded — Study4-exp [gemma3]: 75/300 items  running_drift=-0.0096
+2026-05-07 11:43:09 INFO     Re_Run.study4_expanded — Study4-exp [gemma3]: 100/300 items  running_drift=-0.0110
+2026-05-07 11:48:46 INFO     Re_Run.study4_expanded — Study4-exp [gemma3]: 125/300 items  running_drift=-0.0109
+2026-05-07 11:53:49 INFO     Re_Run.study4_expanded — Study4-exp [gemma3]: 150/300 items  running_drift=-0.0110
+2026-05-07 11:59:20 INFO     Re_Run.study4_expanded — Study4-exp [gemma3]: 175/300 items  running_drift=-0.0111
+2026-05-07 12:04:07 INFO     Re_Run.study4_expanded — Study4-exp [gemma3]: 200/300 items  running_drift=-0.0110
+2026-05-07 12:08:16 INFO     Re_Run.study4_expanded — Study4-exp [gemma3]: 225/300 items  running_drift=-0.0115
+2026-05-07 12:12:07 INFO     Re_Run.study4_expanded — Study4-exp [gemma3]: 250/300 items  running_drift=-0.0125
+2026-05-07 12:16:28 INFO     Re_Run.study4_expanded — Study4-exp [gemma3]: 275/300 items  running_drift=-0.0125
+2026-05-07 12:20:35 INFO     Re_Run.study4_expanded — Study4-exp [gemma3]: 300/300 items  running_drift=-0.0123
+2026-05-07 12:20:35 INFO     Re_Run.study4_expanded — Study4-exp [gemma3]: mean_drift=-0.0122  n=300  → ./results/study4_multiturn_gemma3.csv
+2026-05-07 12:20:35 INFO     __main__ — Phase 2B [gemma3]: Study4 complete  n=300
+2026-05-07 12:20:35 INFO     Re_Run.study4_expanded — Study4-exp [llama]: 300 items, checkpoint has 2 done
+2026-05-07 12:24:56 INFO     Re_Run.study4_expanded — Study4-exp [llama]: 25/300 items  running_drift=0.0029
+2026-05-07 12:28:11 INFO     Re_Run.study4_expanded — Study4-exp [llama]: 50/300 items  running_drift=-0.0032
+2026-05-07 12:31:46 INFO     Re_Run.study4_expanded — Study4-exp [llama]: 75/300 items  running_drift=-0.0026
+2026-05-07 12:35:38 INFO     Re_Run.study4_expanded — Study4-exp [llama]: 100/300 items  running_drift=-0.0032
+2026-05-07 12:40:11 INFO     Re_Run.study4_expanded — Study4-exp [llama]: 125/300 items  running_drift=-0.0029
+2026-05-07 12:43:13 INFO     Re_Run.study4_expanded — Study4-exp [llama]: 150/300 items  running_drift=-0.0032
+2026-05-07 12:46:12 INFO     Re_Run.study4_expanded — Study4-exp [llama]: 175/300 items  running_drift=-0.0048
+2026-05-07 12:50:36 INFO     Re_Run.study4_expanded — Study4-exp [llama]: 200/300 items  running_drift=-0.0032
+2026-05-07 12:52:27 INFO     Re_Run.study4_expanded — Study4-exp [llama]: 225/300 items  running_drift=-0.0050
+2026-05-07 12:54:19 INFO     Re_Run.study4_expanded — Study4-exp [llama]: 250/300 items  running_drift=-0.0032
+2026-05-07 12:56:08 INFO     Re_Run.study4_expanded — Study4-exp [llama]: 275/300 items  running_drift=-0.0024
+2026-05-07 12:58:01 INFO     Re_Run.study4_expanded — Study4-exp [llama]: 300/300 items  running_drift=-0.0042
+2026-05-07 12:58:01 INFO     Re_Run.study4_expanded — Study4-exp [llama]: mean_drift=-0.0041  n=300  → ./results/study4_multiturn_llama.csv
+2026-05-07 12:58:01 INFO     __main__ — Phase 2B [llama]: Study4 complete  n=300
+2026-05-07 12:58:01 INFO     __main__ — Phase 3: GenSAR/GenSS (3 API models) + Qwen72B Study3 …
+2026-05-07 12:58:01 INFO     __main__ — Phase 3: GenSAR [deepseek] …
+2026-05-07 12:58:01 INFO     __main__ — Phase 3: Study3 [qwen72b] …
+2026-05-07 12:58:01 INFO     Re_Run.study_qwen72b — Study3 [qwen72b]: 198 prompts to process (checkpoint: 202 done)
+2026-05-07 12:58:01 INFO     Re_Run.study1_2_gensar — GenSAR [deepseek]: 1508/1508 rows need processing
+2026-05-07 12:58:32 INFO     Re_Run.study1_2_gensar — GenSAR [deepseek]: 200/1508 rows done
+2026-05-07 12:59:01 INFO     Re_Run.study1_2_gensar — GenSAR [deepseek]: 400/1508 rows done
+2026-05-07 12:59:31 INFO     Re_Run.study1_2_gensar — GenSAR [deepseek]: 600/1508 rows done
+2026-05-07 13:00:00 INFO     Re_Run.study1_2_gensar — GenSAR [deepseek]: 800/1508 rows done
+2026-05-07 13:00:30 INFO     Re_Run.study_qwen72b — Study3 [qwen72b]: 50/198 done
+2026-05-07 13:00:31 INFO     Re_Run.study1_2_gensar — GenSAR [deepseek]: 1000/1508 rows done
+2026-05-07 13:01:02 INFO     Re_Run.study1_2_gensar — GenSAR [deepseek]: 1200/1508 rows done
+2026-05-07 13:01:32 INFO     Re_Run.study1_2_gensar — GenSAR [deepseek]: 1400/1508 rows done
+2026-05-07 13:01:48 INFO     Re_Run.study1_2_gensar — GenSAR [deepseek]: GenSAR=0.769  n_valid=1508  → ./results/study1_sar_deepseek.csv
+2026-05-07 13:01:48 INFO     __main__ — Phase 3: GenSS [deepseek] …
+2026-05-07 13:01:48 INFO     data_pipeline — StereoSet: 2106 rows loaded
+2026-05-07 13:01:48 INFO     Re_Run.study1_2_gensar — GenSS [deepseek]: merged stereotype/anti_stereotype from cache (2106/2106 rows matched)
+2026-05-07 13:01:48 INFO     Re_Run.study1_2_gensar — GenSS [deepseek]: 2106/2106 rows need processing
+2026-05-07 13:02:18 INFO     Re_Run.study1_2_gensar — GenSS [deepseek]: 200/2106 rows done
+2026-05-07 13:02:30 INFO     Re_Run.study_qwen72b — Study3 [qwen72b]: 100/198 done
+2026-05-07 13:02:47 INFO     Re_Run.study1_2_gensar — GenSS [deepseek]: 400/2106 rows done
+2026-05-07 13:03:17 INFO     Re_Run.study1_2_gensar — GenSS [deepseek]: 600/2106 rows done
+2026-05-07 13:03:48 INFO     Re_Run.study1_2_gensar — GenSS [deepseek]: 800/2106 rows done
+2026-05-07 13:04:18 INFO     Re_Run.study1_2_gensar — GenSS [deepseek]: 1000/2106 rows done
+2026-05-07 13:04:48 INFO     Re_Run.study1_2_gensar — GenSS [deepseek]: 1200/2106 rows done
+2026-05-07 13:05:19 INFO     Re_Run.study1_2_gensar — GenSS [deepseek]: 1400/2106 rows done
+2026-05-07 13:05:38 INFO     Re_Run.study_qwen72b — Study3 [qwen72b]: 150/198 done
+2026-05-07 13:05:49 INFO     Re_Run.study1_2_gensar — GenSS [deepseek]: 1600/2106 rows done
+2026-05-07 13:06:19 INFO     Re_Run.study1_2_gensar — GenSS [deepseek]: 1800/2106 rows done
+2026-05-07 13:06:48 INFO     Re_Run.study1_2_gensar — GenSS [deepseek]: 2000/2106 rows done
+2026-05-07 13:07:04 INFO     Re_Run.study1_2_gensar — GenSS [deepseek]: GenSS=0.759  n_valid=2106  → ./results/study2_ss_deepseek.csv
+2026-05-07 13:07:04 INFO     __main__ — Phase 3: GenSAR [gpt4o_mini] …
+2026-05-07 13:07:04 INFO     Re_Run.study1_2_gensar — GenSAR [gpt4o_mini]: 1508/1508 rows need processing
+2026-05-07 13:07:30 INFO     Re_Run.study1_2_gensar — GenSAR [gpt4o_mini]: 200/1508 rows done
+2026-05-07 13:07:55 INFO     Re_Run.study1_2_gensar — GenSAR [gpt4o_mini]: 400/1508 rows done
+2026-05-07 13:08:21 INFO     Re_Run.study1_2_gensar — GenSAR [gpt4o_mini]: 600/1508 rows done
+2026-05-07 13:08:45 INFO     Re_Run.study1_2_gensar — GenSAR [gpt4o_mini]: 800/1508 rows done
+2026-05-07 13:09:02 INFO     Re_Run.study_qwen72b — Study3 [qwen72b]: mean_gss=0.0263  → ./results/study3_gss_qwen72b.csv
+2026-05-07 13:09:10 INFO     Re_Run.study1_2_gensar — GenSAR [gpt4o_mini]: 1000/1508 rows done
+2026-05-07 13:09:37 INFO     Re_Run.study1_2_gensar — GenSAR [gpt4o_mini]: 1200/1508 rows done
+2026-05-07 13:10:02 INFO     Re_Run.study1_2_gensar — GenSAR [gpt4o_mini]: 1400/1508 rows done
+2026-05-07 13:10:18 INFO     Re_Run.study1_2_gensar — GenSAR [gpt4o_mini]: GenSAR=0.763  n_valid=1508  → ./results/study1_sar_gpt4o_mini.csv
+2026-05-07 13:10:18 INFO     __main__ — Phase 3: GenSS [gpt4o_mini] …
+2026-05-07 13:10:18 INFO     data_pipeline — StereoSet: 2106 rows loaded
+2026-05-07 13:10:18 INFO     Re_Run.study1_2_gensar — GenSS [gpt4o_mini]: merged stereotype/anti_stereotype from cache (2106/2106 rows matched)
+2026-05-07 13:10:18 INFO     Re_Run.study1_2_gensar — GenSS [gpt4o_mini]: 2106/2106 rows need processing
+2026-05-07 13:10:45 INFO     Re_Run.study1_2_gensar — GenSS [gpt4o_mini]: 200/2106 rows done
+2026-05-07 13:11:09 INFO     Re_Run.study1_2_gensar — GenSS [gpt4o_mini]: 400/2106 rows done
+2026-05-07 13:11:34 INFO     Re_Run.study1_2_gensar — GenSS [gpt4o_mini]: 600/2106 rows done
+2026-05-07 13:12:00 INFO     Re_Run.study1_2_gensar — GenSS [gpt4o_mini]: 800/2106 rows done
+2026-05-07 13:12:26 INFO     Re_Run.study1_2_gensar — GenSS [gpt4o_mini]: 1000/2106 rows done
+2026-05-07 13:12:48 INFO     Re_Run.study1_2_gensar — GenSS [gpt4o_mini]: 1200/2106 rows done
+2026-05-07 13:13:12 INFO     Re_Run.study1_2_gensar — GenSS [gpt4o_mini]: 1400/2106 rows done
+2026-05-07 13:13:36 INFO     Re_Run.study1_2_gensar — GenSS [gpt4o_mini]: 1600/2106 rows done
+2026-05-07 13:14:01 INFO     Re_Run.study1_2_gensar — GenSS [gpt4o_mini]: 1800/2106 rows done
+2026-05-07 13:14:26 INFO     Re_Run.study1_2_gensar — GenSS [gpt4o_mini]: 2000/2106 rows done
+2026-05-07 13:14:38 INFO     Re_Run.study1_2_gensar — GenSS [gpt4o_mini]: GenSS=0.685  n_valid=2106  → ./results/study2_ss_gpt4o_mini.csv
+2026-05-07 13:14:38 INFO     __main__ — Phase 3: GenSAR [grok] …
+2026-05-07 13:14:38 INFO     Re_Run.study1_2_gensar — GenSAR [grok]: 1508/1508 rows need processing
+2026-05-07 13:20:31 INFO     Re_Run.study1_2_gensar — GenSAR [grok]: 200/1508 rows done
+2026-05-07 13:26:36 INFO     Re_Run.study1_2_gensar — GenSAR [grok]: 400/1508 rows done
+2026-05-07 13:33:34 INFO     Re_Run.study1_2_gensar — GenSAR [grok]: 600/1508 rows done
+2026-05-07 13:42:42 INFO     Re_Run.study1_2_gensar — GenSAR [grok]: 800/1508 rows done
+2026-05-07 13:49:19 INFO     Re_Run.study1_2_gensar — GenSAR [grok]: 1000/1508 rows done
+2026-05-07 13:55:23 INFO     Re_Run.study1_2_gensar — GenSAR [grok]: 1200/1508 rows done
+2026-05-07 14:01:50 INFO     Re_Run.study1_2_gensar — GenSAR [grok]: 1400/1508 rows done
+2026-05-07 14:05:12 INFO     Re_Run.study1_2_gensar — GenSAR [grok]: GenSAR=0.652  n_valid=1506  → ./results/study1_sar_grok.csv
+2026-05-07 14:05:12 INFO     __main__ — Phase 3: GenSS [grok] …
+2026-05-07 14:05:12 INFO     data_pipeline — StereoSet: 2106 rows loaded
+2026-05-07 14:05:12 INFO     Re_Run.study1_2_gensar — GenSS [grok]: merged stereotype/anti_stereotype from cache (2106/2106 rows matched)
+2026-05-07 14:05:12 INFO     Re_Run.study1_2_gensar — GenSS [grok]: 2106/2106 rows need processing
+2026-05-07 14:10:16 INFO     Re_Run.study1_2_gensar — GenSS [grok]: 200/2106 rows done
+2026-05-07 14:15:35 INFO     Re_Run.study1_2_gensar — GenSS [grok]: 400/2106 rows done
+2026-05-07 14:20:47 INFO     Re_Run.study1_2_gensar — GenSS [grok]: 600/2106 rows done
+2026-05-07 14:26:13 INFO     Re_Run.study1_2_gensar — GenSS [grok]: 800/2106 rows done
+2026-05-07 14:31:09 INFO     Re_Run.study1_2_gensar — GenSS [grok]: 1000/2106 rows done
+2026-05-07 14:36:11 INFO     Re_Run.study1_2_gensar — GenSS [grok]: 1200/2106 rows done
+2026-05-07 14:41:12 INFO     Re_Run.study1_2_gensar — GenSS [grok]: 1400/2106 rows done
+2026-05-07 14:46:10 INFO     Re_Run.study1_2_gensar — GenSS [grok]: 1600/2106 rows done
+2026-05-07 14:50:54 INFO     Re_Run.study1_2_gensar — GenSS [grok]: 1800/2106 rows done
+2026-05-07 14:55:58 INFO     Re_Run.study1_2_gensar — GenSS [grok]: 2000/2106 rows done
+2026-05-07 14:58:47 INFO     Re_Run.study1_2_gensar — GenSS [grok]: GenSS=0.764  n_valid=2106  → ./results/study2_ss_grok.csv
+2026-05-07 14:58:47 INFO     __main__ — Phase 4: Qwen72B Study4 + GenSAR/GenSS concurrent …
+2026-05-07 14:58:47 INFO     __main__ — Phase 4: Study4-exp [qwen72b] …
+2026-05-07 14:58:47 INFO     __main__ — Phase 4: GenSAR [qwen72b] …
+2026-05-07 14:58:47 INFO     Re_Run.study4_expanded — Study4-exp [qwen72b]: 300 items, checkpoint has 0 done
+2026-05-07 14:58:47 INFO     data_pipeline — CrowS-Pairs: 1508 rows loaded
+2026-05-07 14:58:47 INFO     Re_Run.study_qwen72b — GenSAR [qwen72b]: created baseline CSV (1508 rows) → ./results/study1_sar_qwen72b.csv
+2026-05-07 14:58:47 INFO     Re_Run.study1_2_gensar — GenSAR [qwen72b]: 1508/1508 rows need processing
+2026-05-07 14:59:17 INFO     Re_Run.study1_2_gensar — GenSAR [qwen72b]: 200/1508 rows done
+2026-05-07 14:59:43 INFO     Re_Run.study1_2_gensar — GenSAR [qwen72b]: 400/1508 rows done
+2026-05-07 15:00:09 INFO     Re_Run.study1_2_gensar — GenSAR [qwen72b]: 600/1508 rows done
+2026-05-07 15:00:49 INFO     Re_Run.study1_2_gensar — GenSAR [qwen72b]: 800/1508 rows done
+2026-05-07 15:01:32 INFO     Re_Run.study1_2_gensar — GenSAR [qwen72b]: 1000/1508 rows done
+2026-05-07 15:02:02 INFO     Re_Run.study1_2_gensar — GenSAR [qwen72b]: 1200/1508 rows done
+2026-05-07 15:02:30 INFO     Re_Run.study1_2_gensar — GenSAR [qwen72b]: 1400/1508 rows done
+2026-05-07 15:02:50 INFO     Re_Run.study1_2_gensar — GenSAR [qwen72b]: GenSAR=0.546  n_valid=1360  → ./results/study1_sar_qwen72b.csv
+2026-05-07 15:02:50 INFO     __main__ — Phase 4: GenSS [qwen72b] …
+2026-05-07 15:02:50 INFO     data_pipeline — StereoSet: 2106 rows loaded
+2026-05-07 15:02:50 INFO     Re_Run.study_qwen72b — GenSS [qwen72b]: created baseline CSV (2106 rows) → ./results/study2_ss_qwen72b.csv
+2026-05-07 15:02:50 INFO     Re_Run.study1_2_gensar — GenSS [qwen72b]: 2106/2106 rows need processing
+2026-05-07 15:03:16 INFO     Re_Run.study1_2_gensar — GenSS [qwen72b]: 200/2106 rows done
+2026-05-07 15:03:41 INFO     Re_Run.study1_2_gensar — GenSS [qwen72b]: 400/2106 rows done
+2026-05-07 15:04:04 INFO     Re_Run.study1_2_gensar — GenSS [qwen72b]: 600/2106 rows done
+2026-05-07 15:04:42 INFO     Re_Run.study1_2_gensar — GenSS [qwen72b]: 800/2106 rows done
+2026-05-07 15:05:01 INFO     Re_Run.study4_expanded — Study4-exp [qwen72b]: 25/300 items  running_drift=-0.0296
+2026-05-07 15:05:04 INFO     Re_Run.study1_2_gensar — GenSS [qwen72b]: 1000/2106 rows done
+2026-05-07 15:05:42 INFO     Re_Run.study1_2_gensar — GenSS [qwen72b]: 1200/2106 rows done
+2026-05-07 15:06:08 INFO     Re_Run.study1_2_gensar — GenSS [qwen72b]: 1400/2106 rows done
+2026-05-07 15:07:21 INFO     Re_Run.study1_2_gensar — GenSS [qwen72b]: 1600/2106 rows done
+2026-05-07 15:08:50 INFO     Re_Run.study1_2_gensar — GenSS [qwen72b]: 1800/2106 rows done
+2026-05-07 15:09:27 WARNING  config — Key ending '…b6fdd8' removed from openrouter pool. 1 key(s) remaining.
+2026-05-07 15:09:27 WARNING  models — OpenRouter 429 (qwen/qwen-2.5-72b-instruct) attempt 1/4
+2026-05-07 15:09:30 WARNING  config — Key ending '…0c8bd3' removed from openrouter pool. 0 key(s) remaining.
+2026-05-07 15:09:30 WARNING  models — OpenRouter 429 (qwen/qwen-2.5-72b-instruct) attempt 2/4
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_3 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_12 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_12 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_12 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_12 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_21 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_21 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_21 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_21 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_31 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_31 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_31 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_31 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_16 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_16 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_16 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_16 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_29 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_29 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_29 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_29 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_9 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_9 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_9 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_9 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_26 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_26 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_26 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_26 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_45 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_45 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_45 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_45 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_4 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_4 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_4 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_4 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_11 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_11 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_11 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_11 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_19 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_19 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_19 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_19 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_23 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_23 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_23 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_23 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_25 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_25 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_25 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_25 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 INFO     Re_Run.study4_expanded — Study4-exp [qwen72b]: 50/300 items  running_drift=-0.0176
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_74 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_74 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_74 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_74 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_55 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_55 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_55 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_55 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_85 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_85 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_85 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_85 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_68 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_68 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_68 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_68 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_90 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_90 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_90 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_90 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_89 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_89 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_89 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_89 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_73 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_73 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_73 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_73 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_86 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_86 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_86 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_86 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_62 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_62 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_62 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_62 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_54 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_54 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_54 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_54 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_52 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_52 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_52 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_52 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_64 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_64 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_64 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_64 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_96 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_96 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_96 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_96 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_98 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_98 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_98 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_98 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_88 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_88 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_88 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_88 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_56 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_56 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_56 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_56 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_99 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_99 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_99 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_99 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_67 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_67 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_67 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_67 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_79 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_79 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_79 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_79 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_70 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_70 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_70 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_70 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_76 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_76 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_76 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_76 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_61 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_61 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_61 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_61 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_92 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_92 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_92 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_92 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_78 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_78 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_78 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_78 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_81 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_81 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_81 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_81 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 INFO     Re_Run.study4_expanded — Study4-exp [qwen72b]: 75/300 items  running_drift=-0.0117
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_84 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_84 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_84 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_84 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_71 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_71 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_71 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_71 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_58 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_58 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_58 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_58 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_93 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_93 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_93 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_93 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_80 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_80 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_80 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_80 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_94 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_94 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_94 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_94 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_77 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_77 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_77 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_77 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_82 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_82 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_82 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_82 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_57 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_57 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_57 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_57 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_87 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_87 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_87 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_87 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_66 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_66 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_66 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_66 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_83 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_83 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_83 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_83 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_95 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_95 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_95 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_95 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_60 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_60 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_60 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_60 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_72 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_72 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_72 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_72 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_53 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_53 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_53 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_53 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_65 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_65 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_65 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_65 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_50 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_50 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_50 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_50 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_51 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_51 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_51 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_51 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_97 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_97 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_97 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_97 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_69 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_69 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_69 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_69 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_59 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_59 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_59 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_59 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_63 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_63 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_63 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_63 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_75 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_75 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_75 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_75 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_91 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_91 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_91 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_91 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 INFO     Re_Run.study4_expanded — Study4-exp [qwen72b]: 100/300 items  running_drift=-0.0088
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_136 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_136 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_136 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_136 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_145 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_145 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_145 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_145 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_120 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_120 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_120 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_120 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_113 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_113 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_113 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_113 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_141 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_141 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_141 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_141 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_131 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_131 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_131 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_131 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_125 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_125 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_125 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_125 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_148 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_148 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_148 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_148 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_129 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_129 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_129 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_129 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_109 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_109 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_109 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_109 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_116 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_116 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_116 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_116 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_108 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_108 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_108 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_108 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_115 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_115 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_115 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_115 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_135 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_135 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_135 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_135 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_134 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_134 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_134 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_134 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_139 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_139 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_139 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_139 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_127 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_127 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_127 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_127 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_143 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_143 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_143 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_143 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_123 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_123 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_123 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_123 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_107 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_107 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_107 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_107 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_104 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_104 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_104 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_104 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_149 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_149 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_149 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_149 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_137 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_137 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_137 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_137 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_102 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_102 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_102 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_102 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_124 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_124 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_124 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_124 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 INFO     Re_Run.study4_expanded — Study4-exp [qwen72b]: 125/300 items  running_drift=-0.0070
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_101 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_101 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_101 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_101 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_103 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_103 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_103 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_103 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_142 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_142 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_142 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_142 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_147 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_147 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_147 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_147 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_105 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_105 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_105 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_105 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_146 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_146 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_146 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_146 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_126 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_126 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_126 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_126 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_112 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_112 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_112 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_112 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_117 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_117 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_117 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_117 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_114 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_114 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_114 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_114 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_138 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_138 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_138 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_138 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_122 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_122 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_122 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_122 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_133 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_133 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_133 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_133 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_100 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_100 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_100 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_100 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_110 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_110 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_110 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_110 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_132 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_132 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_132 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_132 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_128 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_128 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_128 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_128 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_119 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_119 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_119 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_119 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_106 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_106 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_106 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_106 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_121 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_121 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_121 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_121 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_118 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_118 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_118 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_118 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_111 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_111 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_111 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_111 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_140 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_140 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_140 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_140 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_130 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_130 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_130 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_130 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_144 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_144 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_144 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_144 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 INFO     Re_Run.study4_expanded — Study4-exp [qwen72b]: 150/300 items  running_drift=-0.0059
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_179 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_179 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_179 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_179 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_150 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_150 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_150 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_150 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_196 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_196 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_196 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_196 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_197 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_197 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_197 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_197 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_166 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_166 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_166 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_166 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_182 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_182 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_182 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_182 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_161 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_161 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_161 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_161 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_194 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_194 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_194 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_194 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_156 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_156 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_156 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_156 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_190 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_190 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_190 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_190 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_169 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_169 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_169 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_169 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_192 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_192 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_192 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_192 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_162 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_162 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_162 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_162 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_159 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_159 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_159 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_159 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_173 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_173 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_173 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_173 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_160 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_160 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_160 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_160 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_183 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_183 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_183 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_183 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_198 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_198 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_198 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_198 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_170 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_170 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_170 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_170 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_165 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_165 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_165 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_165 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_188 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_188 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_188 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_188 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_153 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_153 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_153 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_153 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_193 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_193 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_193 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_193 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_176 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_176 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_176 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_176 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_175 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_175 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_175 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_175 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 INFO     Re_Run.study4_expanded — Study4-exp [qwen72b]: 175/300 items  running_drift=-0.0050
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_186 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_186 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_186 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_186 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_157 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_157 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_157 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_157 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_151 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_151 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_151 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_151 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_185 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_185 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_185 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_185 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_168 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_168 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_168 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_168 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_152 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_152 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_152 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_152 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_189 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_189 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_189 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_189 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_180 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_180 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_180 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_180 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_181 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_181 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_181 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_181 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_154 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_154 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_154 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_154 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_195 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_195 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_195 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_195 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_184 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_184 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_184 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_184 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_171 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_171 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_171 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_171 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_158 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_158 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_158 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_158 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_164 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_164 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_164 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_164 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_167 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_167 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_167 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_167 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_177 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_177 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_177 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_177 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_191 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_191 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_191 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_191 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_172 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_172 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_172 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_172 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_174 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_174 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_174 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_174 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_187 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_187 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_187 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_187 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_163 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_163 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_163 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_163 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_155 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_155 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_155 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_155 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_178 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_178 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_178 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_178 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_199 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_199 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_199 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_indian_199 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 INFO     Re_Run.study4_expanded — Study4-exp [qwen72b]: 200/300 items  running_drift=-0.0044
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_135 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_135 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_135 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_135 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_14 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_14 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_14 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_14 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_195 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_195 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_195 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_195 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_73 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_73 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_73 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_73 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_151 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_151 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_151 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_151 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_2 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_2 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_2 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_2 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_47 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_47 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_47 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_47 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_11 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_11 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_11 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_11 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_134 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_134 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_134 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_134 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_45 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_45 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_45 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_45 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_186 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_186 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_186 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_186 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_78 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_78 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_78 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_78 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_43 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_43 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_43 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_43 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_188 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_188 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_188 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_188 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_176 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_176 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_176 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_176 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_164 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_164 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_164 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_164 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_52 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_52 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_52 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_52 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_38 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_38 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_38 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_38 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_75 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_75 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_75 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_75 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_190 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_190 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_190 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_190 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_9 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_9 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_9 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_9 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_101 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_101 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_101 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_101 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_142 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_142 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_142 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_142 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_180 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_180 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_180 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_180 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_70 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_70 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_70 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_70 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 INFO     Re_Run.study4_expanded — Study4-exp [qwen72b]: 225/300 items  running_drift=-0.0039
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_88 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_88 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_88 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_88 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_133 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_133 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_133 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_133 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_44 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_44 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_44 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_44 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_158 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_158 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_158 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_158 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_102 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_102 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_102 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_102 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_85 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_85 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_85 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_85 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_170 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_170 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_170 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_170 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_143 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_143 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_143 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_143 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_112 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_112 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_112 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_112 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_111 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_111 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_111 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_111 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_59 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_59 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_59 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_59 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_187 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_187 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_187 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_187 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_28 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_28 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_28 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_28 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_81 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_81 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_81 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_81 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_177 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_177 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_177 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_177 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_83 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_83 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_83 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_83 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_77 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_77 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_77 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_77 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_139 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_139 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_139 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_139 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_22 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_22 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_22 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_22 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_156 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_156 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_156 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_156 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_194 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_194 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_194 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_194 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_32 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_32 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_32 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_32 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_154 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_154 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_154 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_154 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_34 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_34 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_34 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_34 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_55 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_55 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_55 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_55 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 INFO     Re_Run.study4_expanded — Study4-exp [qwen72b]: 250/300 items  running_drift=-0.0035
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_92 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_92 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_92 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_92 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_136 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_136 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_136 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_136 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_39 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_39 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_39 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_39 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_144 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_144 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_144 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_144 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_155 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_155 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_155 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_155 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_4 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_4 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_4 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_4 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_120 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_120 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_120 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_120 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_87 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_87 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_87 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_87 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_29 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_29 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_29 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_29 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_129 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_129 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_129 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_129 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_41 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_41 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_41 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_41 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_130 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_130 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_130 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_130 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_80 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_80 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_80 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_80 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_50 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_50 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_50 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_50 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_68 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_68 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_68 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_68 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_79 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_79 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_79 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_79 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_97 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_97 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_97 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_97 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_26 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_26 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_26 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_26 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_117 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_117 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_117 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_117 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_98 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_98 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_98 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_98 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_66 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_66 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_66 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_66 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_53 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_53 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_53 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_53 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_107 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_107 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_107 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_107 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_192 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_192 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_192 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_192 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_106 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_106 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_106 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_106 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 INFO     Re_Run.study4_expanded — Study4-exp [qwen72b]: 275/300 items  running_drift=-0.0032
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_31 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_31 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_31 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_31 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_72 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_72 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_72 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_72 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_152 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_152 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_152 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_152 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_128 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_128 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_128 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_128 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_197 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_197 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_197 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_197 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_82 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_82 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_82 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_82 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_76 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_76 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_76 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_76 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_179 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_179 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_179 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_179 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_199 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_199 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_199 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_199 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_10 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_10 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_10 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_10 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_65 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_65 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_65 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_65 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_125 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_125 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_125 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_125 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_20 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_20 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_20 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_20 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_67 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_67 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_67 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_67 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_64 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_64 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_64 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_64 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_61 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_61 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_61 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_61 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_99 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_99 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_99 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_99 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_6 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_6 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_6 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_6 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_96 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_96 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_96 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_96 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_40 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_40 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_40 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_40 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_95 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_95 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_95 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_95 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_109 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_109 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_109 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_109 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_69 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_69 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_69 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_69 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_94 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_94 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_94 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_94 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_74 depth=0: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_74 depth=2: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_74 depth=4: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 WARNING  Re_Run.study4_expanded — Study4-exp [qwen72b] mt7_honest_74 depth=6: All keys for 'openrouter' have been exhausted.
+2026-05-07 15:09:34 INFO     Re_Run.study4_expanded — Study4-exp [qwen72b]: 300/300 items  running_drift=-0.0029
+2026-05-07 15:09:34 INFO     Re_Run.study4_expanded — Study4-exp [qwen72b]: mean_drift=-0.0029  n=300  → ./results/study4_multiturn_qwen72b.csv
+2026-05-07 15:12:18 INFO     Re_Run.study1_2_gensar — GenSS [qwen72b]: 2000/2106 rows done
+2026-05-07 15:12:46 INFO     Re_Run.study1_2_gensar — GenSS [qwen72b]: GenSS=0.690  n_valid=2106  → ./results/study2_ss_qwen72b.csv
+2026-05-07 15:12:46 INFO     __main__ — Phase 4: Study5 [qwen72b] (sequential) …
+2026-05-07 15:12:46 INFO     Re_Run.study_qwen72b — Study5 [qwen72b]: 200 prompts to process (checkpoint: 0 done)
+2026-05-07 15:17:30 WARNING  models — OpenRouter 429 (qwen/qwen-2.5-72b-instruct) attempt 1/4
+2026-05-07 15:19:14 INFO     Re_Run.study_qwen72b — Study5 [qwen72b]: mean_gss=0.0024  → ./results/study5_control_qwen72b.csv
+2026-05-07 15:19:14 INFO     __main__ — Phase 5: Running extended statistical analysis …
+2026-05-07 15:19:14 INFO     Re_Run.statistical_rerun — Stats rerun: 2800 Study3 rows, 7 models, 2100 Study4 rows
+2026-05-07 15:19:15 INFO     Re_Run.statistical_rerun — Bootstrap CI: 84 rows
+2026-05-07 15:19:16 INFO     statistical_analysis — tokenizer_fertility_en has no valid data — omitted from regression formula
+2026-05-07 15:19:16 INFO     statistical_analysis — Mixed-effects regression: AIC=-9226.25  Log-likelihood=4657.12
+2026-05-07 15:19:16 INFO     statistical_analysis — ANOVA completed. η² summary:
+C(model_cat)                    0.043405
+C(category_cat)                 0.070887
+C(model_cat):C(category_cat)    0.050633
+Residual                        0.835075
+2026-05-07 15:19:16 INFO     Re_Run.statistical_rerun — Pairwise comparisons: 21 pairs (expected 21 for 7 models)
+2026-05-07 15:19:16 INFO     Re_Run.statistical_rerun — Drift trajectory: 7 models  significant=['deepseek', 'gemma3', 'grok', 'llama', 'qwen']  → ./results/statistics/drift_trajectory.csv
+2026-05-07 15:19:16 INFO     Re_Run.statistical_rerun — Convergent validity → ./results/statistics/convergent_validity.csv
+2026-05-07 15:19:16 INFO     studies — Cross-category analysis → ./results/statistics/cross_category_analysis.csv
+2026-05-07 15:19:16 INFO     Re_Run.statistical_rerun — All statistics (7-model re-run) written to ./results/statistics
+2026-05-07 15:19:16 INFO     __main__ — Phase 5: statistics done
+2026-05-07 15:19:16 INFO     __main__ — Phase 6: Regenerating figures …
+2026-05-07 15:19:16 WARNING  __main__ — Phase 6: regenerate_figures.py not found — figures not regenerated. Run manually if needed.
+2026-05-07 15:19:16 INFO     __main__ — ============================================================
+2026-05-07 15:19:16 INFO     __main__ — Re_Run pipeline COMPLETE  elapsed=9.73h
+2026-05-07 15:19:16 INFO     __main__ — ============================================================
