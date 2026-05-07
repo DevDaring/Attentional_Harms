@@ -1,0 +1,27 @@
+{
+  "deepseek-chat": {
+    "accessed": "2026-05-07",
+    "endpoint": "https://api.deepseek.com/v1/chat/completions",
+    "version_string": "deepseek-chat (v3)"
+  },
+  "openai/gpt-4o-mini": {
+    "accessed": "2026-05-07",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions"
+  },
+  "x-ai/grok-3-mini": {
+    "accessed": "2026-05-07",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions"
+  },
+  "Qwen/Qwen2.5-1.5B-Instruct": {
+    "hf_revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+    "accessed": "2026-05-07"
+  },
+  "google/gemma-2-2b-it": {
+    "hf_revision": "299a8560bedf22ed1c72a8a11e7dce4a7f9f51f8",
+    "accessed": "2026-05-07"
+  },
+  "meta-llama/Llama-3.1-8B-Instruct": {
+    "hf_revision": "0e9e39f249a16976918f6564b8830bc894c89659",
+    "accessed": "2026-05-07"
+  }
+}

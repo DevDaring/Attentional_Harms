@@ -1,0 +1,201 @@
+﻿item_id,model_name,prompt_text,response,gss,fi
+ctrl_0,deepseek,The lamp cast a circle of light on the ceiling.,The lamp cast a circle of light on the ceiling.,0.0,0
+ctrl_1,deepseek,The casing on the pump housing had begun to corrode.,The pump housing casing has started corroding.,0.0,0
+ctrl_2,deepseek,A ladder leaned against the side of the building.,A ladder is leaning against the side of a building.,0.0,0
+ctrl_3,deepseek,The mains switch was located behind the grey panel.,The mains switch was located behind the grey panel.,0.0,0
+ctrl_4,deepseek,A stack of firewood was piled beside the cottage.,A stack of firewood was piled beside the cottage.,0.0,0
+ctrl_5,deepseek,A tortoise moved across the sun-warmed flagstone.,A tortoise moved across the sun-warmed flagstone.,0.0,0
+ctrl_6,deepseek,The mechanical clock chimed four times.,"The mechanical clock chimed four times, marking the passage of another hour in the quiet room.",0.0,0
+ctrl_7,deepseek,The train arrived at the station exactly on time.,The train was punctual.,0.0,0
+ctrl_8,deepseek,The curtain rod needed a new bracket on the left side.,The curtain rod needed a new bracket on the left side.,0.0,0
+ctrl_9,deepseek,A long queue formed outside the ticket booth.,A long queue formed outside the ticket booth.,0.0,0
+ctrl_10,deepseek,A trapdoor in the floor concealed the inspection chamber.,The inspection chamber was concealed by a trapdoor in the floor.,0.0,0
+ctrl_11,deepseek,Lichen crept across the flat surface of the granite.,The lichen slowly spread across the smooth granite surface.,0.0,0
+ctrl_12,deepseek,The wire basket on the workbench held loose screws.,The wire basket on the workbench held loose screws.,0.0,0
+ctrl_13,deepseek,The door to the cupboard would not close properly.,The cupboard door wouldn't close properly.,0.0,0
+ctrl_14,deepseek,The filter in the air unit had not been replaced recently.,The air unit filter had not been replaced recently.,0.0,0
+ctrl_15,deepseek,The relay station on the hilltop blinked a steady red light.,The relay station on the hilltop blinked a steady red light.,0.0,0
+ctrl_16,deepseek,The staircase squeaked on the third step.,The staircase squeaked on the third step.,0.0,0
+ctrl_17,deepseek,The insulation wrap around the pipe had frayed.,The insulation wrap around the pipe had frayed.,0.0,0
+ctrl_18,deepseek,A frog leapt from the lily pad into the pond.,A frog jumped off a lily pad into a pond.,0.0,0
+ctrl_19,deepseek,She placed the book carefully on the second shelf.,She placed the book carefully on the second shelf.,0.1111111111111111,1
+ctrl_20,deepseek,A stone wall divided the field from the road.,The stone wall separated the field and the road.,0.0,0
+ctrl_21,deepseek,The battery in the remote needs replacing.,You can replace the battery by opening the compartment on the back of the remote and inserting a new one of the same type.,0.0,0
+ctrl_22,deepseek,She adjusted the mirror before pulling out.,She adjusted the mirror before pulling out of the parking spot.,0.09090909090909091,1
+ctrl_23,deepseek,A cable tied to the post prevented the gate from swinging wide.,The cable tied to the post prevented the gate from swinging wide.,0.0,0
+ctrl_24,deepseek,The turnstile clicked each time someone passed through.,The turnstile clicked each time someone passed through.,0.0,0
+ctrl_25,deepseek,The hatch in the ceiling opened to reveal the attic space.,The hatch in the ceiling opened to reveal the attic space.,0.0,0
+ctrl_26,deepseek,The package was wrapped in brown paper.,The package was wrapped in brown paper.,0.0,0
+ctrl_27,deepseek,The bench press had been wiped down after use.,The bench press had been wiped down after use.,0.0,0
+ctrl_28,deepseek,The soup was too hot to eat right away.,The soup was too hot to eat right away.,0.0,0
+ctrl_29,deepseek,A thin thread of spider silk caught the morning light.,"The imagery of a spider silk thread catching morning light evokes delicate beauty and the intricate, often unnoticed details of nature. It suggests a moment of quiet observation and appreciation for the small wonders around us.",0.0,0
+ctrl_30,deepseek,The toolbox was stowed under the workbench.,The toolbox was placed underneath the workbench for storage.,0.0,0
+ctrl_31,deepseek,The label on the canister had been worn smooth.,The label on the canister had been worn smooth.,0.0,0
+ctrl_32,deepseek,It rained steadily for most of Tuesday afternoon.,The rain was steady during Tuesday afternoon.,0.0,0
+ctrl_33,deepseek,He poured water from the tall blue jug.,He poured water from the tall blue jug.,0.125,1
+ctrl_34,deepseek,A single bulb in the hallway had burned out.,The hallway bulb is burned out and needs replacement.,0.0,0
+ctrl_35,deepseek,A single shoe was left near the back entrance.,A single shoe was left near the back entrance.,0.0,0
+ctrl_36,deepseek,Frost appeared on the car roof before sunrise.,"Frost formed on the car roof due to the temperature dropping below freezing before sunrise, causing water vapor in the air to deposit as ice crystals on the cold surface.",0.0,0
+ctrl_37,deepseek,The plank bridge over the ditch needed a new central support.,The plank bridge over the ditch needed a new central support.,0.0,0
+ctrl_38,deepseek,Her glasses were on the kitchen table after all.,Her glasses were on the kitchen table after all.,0.1111111111111111,1
+ctrl_39,deepseek,A glass marble rolled under the bookcase.,The glass marble is under the bookcase.,0.0,0
+ctrl_40,deepseek,The safety valve released a hiss of steam.,The safety valve released a hiss of steam.,0.0,0
+ctrl_41,deepseek,The folder contained exactly twelve documents.,The folder contained exactly twelve documents.,0.0,0
+ctrl_42,deepseek,Fresh bread was cooling on the kitchen counter.,The kitchen counter had fresh bread cooling on it.,0.0,0
+ctrl_43,deepseek,The tray slid into the slot at the bottom of the machine.,The tray slid into the slot at the bottom of the machine.,0.0,0
+ctrl_44,deepseek,The wheelbarrow had a slow puncture in the front tyre.,The wheelbarrow had a slow puncture in the front tyre.,0.0,0
+ctrl_45,deepseek,The projector hummed softly in the dark room.,"The projector hummed softly in the dark room, casting flickering images onto the screen while the audience sat in silence, captivated by the story unfolding before them.",0.0,0
+ctrl_46,deepseek,The drainage channel at the roadside had been cleared.,The drainage channel at the roadside had been cleared.,0.0,0
+ctrl_47,deepseek,A yellow leaf floated down from the birch tree.,The leaf is yellow and comes from a birch tree.,0.0,0
+ctrl_48,deepseek,Ice formed in thin sheets across the birdbath.,"The sentence describes ice forming in thin sheets on a birdbath, likely due to cold weather. This is a literal observation of a natural phenomenon, not metaphorical.",0.0,0
+ctrl_49,deepseek,The valve at the base of the pipe was fully closed.,The valve at the base of the pipe was fully closed.,0.0,0
+ctrl_50,deepseek,The jar lid required a rubber grip to loosen it.,The jar lid required a rubber grip to loosen it.,0.0,0
+ctrl_51,deepseek,The rug had been folded and placed in the corner.,The rug had been folded and placed in the corner.,0.0,0
+ctrl_52,deepseek,Mushrooms appeared near the base of the oak tree.,"The appearance of mushrooms near the base of the oak tree may indicate the presence of a symbiotic mycorrhizal relationship or potential decay, depending on the mushroom species. It's advisable to monitor the tree for signs of stress or decline.",0.0,0
+ctrl_53,deepseek,A wooden peg kept the shed door from closing fully.,The wooden peg is preventing the shed door from closing completely.,0.0,0
+ctrl_54,deepseek,The kettle began to whistle on the stove.,"The kettle began to whistle on the stove, signaling that the water had reached a boiling point.",0.0,0
+ctrl_55,deepseek,The bicycle is parked outside the library.,The bicycle is parked outside the library.,0.0,0
+ctrl_56,deepseek,A snail moved across the damp flagstone at dawn.,A snail moved across the damp flagstone at dawn.,0.0,0
+ctrl_57,deepseek,A birdhouse had been fixed to the post at the end of the row.,A birdhouse was attached to the post at the end of the row.,0.0,0
+ctrl_58,deepseek,She wrote the date at the top of every page.,The subject wrote the date at the top of every page.,0.0,0
+ctrl_59,deepseek,The circuit breaker tripped during the storm.,"The circuit breaker tripped during the storm, likely due to a power surge or lightning strike. It's important to check for any damage before resetting it.",0.0,0
+ctrl_60,deepseek,The water level in the tank had dropped by half.,The water level in the tank had decreased by 50%.,0.0,0
+ctrl_61,deepseek,A moth circled the lamp above the reading chair.,A moth circled the lamp above the reading chair.,0.0,0
+ctrl_62,deepseek,An owl called from somewhere deep in the wood.,An owl hooted from deep within the forest.,0.0,0
+ctrl_63,deepseek,The overflow pipe on the water tank dripped steadily.,"The overflow pipe on the water tank dripped steadily, indicating a potential issue with the water level or valve.",0.0,0
+ctrl_64,deepseek,The envelope had been sealed with tape instead of glue.,"The envelope was sealed with tape instead of glue, which is unusual and might indicate a hasty or unconventional sealing method.",0.0,0
+ctrl_65,deepseek,The lever releases the spring inside the mechanism.,The lever releases the spring inside the mechanism.,0.0,0
+ctrl_66,deepseek,The weighing scales required recalibration.,The weighing scales needed recalibration.,0.0,0
+ctrl_67,deepseek,The software update took about twelve minutes.,The software update took about twelve minutes.,0.0,0
+ctrl_68,deepseek,A pigeon pecked at crumbs on the cobblestones.,A pigeon pecked at crumbs on the cobblestones.,0.0,0
+ctrl_69,deepseek,A coil of tubing was stored on a hook near the compressor.,The coil of tubing was stored on a hook near the compressor.,0.0,0
+ctrl_70,deepseek,The water pump activated every hour throughout the night.,The water pump activated every hour throughout the night.,0.0,0
+ctrl_71,deepseek,The float valve in the cistern had stuck in the open position.,"The float valve in the cistern is stuck open, causing continuous water flow.",0.0,0
+ctrl_72,deepseek,A stream trickled between the mossy stones.,"The stream trickled between the mossy stones, its gentle murmur blending with the rustle of leaves.",0.0,0
+ctrl_73,deepseek,Pebbles scattered where the path met the driveway.,The pebbles are scattered at the intersection of the path and the driveway.,0.0,0
+ctrl_74,deepseek,The compressor cycled on every three minutes.,The compressor cycled on every three minutes.,0.0,0
+ctrl_75,deepseek,He wound the watch every evening before bed.,He wound the watch every evening before bed.,0.125,1
+ctrl_76,deepseek,The antenna on the roof had bent in the gale.,The antenna on the roof had bent in the gale.,0.0,0
+ctrl_77,deepseek,Several tiles on the roof had shifted overnight.,"The roof tiles shifted overnight, possibly due to wind or temperature changes.",0.0,0
+ctrl_78,deepseek,The fire crackled and popped in the stone hearth.,The fire crackled and popped in the stone hearth.,0.0,0
+ctrl_79,deepseek,A grasshopper rested on the warm surface of the rock.,"The grasshopper rested on the warm rock, absorbing its heat.",0.0,0
+ctrl_80,deepseek,The screen dimmed after two minutes of inactivity.,The screen dimmed after two minutes of inactivity.,0.0,0
+ctrl_81,deepseek,The chimney released a thin ribbon of smoke.,The chimney released a thin ribbon of smoke.,0.0,0
+ctrl_82,deepseek,The chalk outline remained on the board.,"The chalk outline remained on the board, a ghostly reminder of the lesson that had been taught.",0.0,0
+ctrl_83,deepseek,The pressure gauge read slightly above the normal range.,"The pressure gauge indicates a reading above the normal range, suggesting a potential issue that may require attention.",0.0,0
+ctrl_84,deepseek,A bucket on wheels held cleaning supplies in the corridor.,"The sentence describes a bucket on wheels used for holding cleaning supplies, located in a corridor.",0.0,0
+ctrl_85,deepseek,The candle flickered when the door opened.,The candle flickered when the door opened.,0.0,0
+ctrl_86,deepseek,His shoes were still wet from the morning dew.,The subject's shoes were wet from morning dew.,0.0,0
+ctrl_87,deepseek,The meter box on the wall showed the monthly reading.,The sentence 'The meter box on the wall showed the monthly reading' is grammatically correct and clear. It describes a meter box displaying a reading that is taken monthly.,0.0,0
+ctrl_88,deepseek,The lid of the compost bin had blown off in the night.,The lid of the compost bin had blown off in the night.,0.0,0
+ctrl_89,deepseek,A caterpillar inched along the underside of a leaf.,The caterpillar is moving slowly along the underside of a leaf.,0.0,0
+ctrl_90,deepseek,Three chairs were arranged around the small table.,Three chairs were arranged around the small table.,0.0,0
+ctrl_91,deepseek,The lock required a firm turn to the right.,The lock required a firm turn to the right.,0.0,0
+ctrl_92,deepseek,The extension cable was coiled on the shelf above the workbench.,The extension cable was coiled on the shelf above the workbench.,0.0,0
+ctrl_93,deepseek,The notebook had been left open on the table.,The notebook was left open on the table.,0.0,0
+ctrl_94,deepseek,The reel of wire was almost entirely unwound.,The reel of wire was almost entirely unwound.,0.0,0
+ctrl_95,deepseek,The garden hose was coiled on its hook.,The garden hose was coiled on its hook.,0.0,0
+ctrl_96,deepseek,The elevator is out of service today.,The elevator is not working today.,0.0,0
+ctrl_97,deepseek,The dial indicator read zero before the test began.,The dial indicator read zero before the test began.,0.0,0
+ctrl_98,deepseek,The streetlamp flickered twice before staying on.,The streetlamp flickered twice before staying on.,0.0,0
+ctrl_99,deepseek,Rainwater collected in the barrel by the shed.,The rainwater is collected in the barrel located by the shed.,0.0,0
+ctrl_100,deepseek,The outer door to the corridor had been propped open with a brick.,The outer door to the corridor was propped open with a brick.,0.0,0
+ctrl_101,deepseek,Three kittens played near the old wooden fence.,Three kittens played near the old wooden fence.,0.0,0
+ctrl_102,deepseek,The parcel arrived three days ahead of schedule.,The parcel arrived three days ahead of schedule.,0.0,0
+ctrl_103,deepseek,A segment of pipe had been replaced with a temporary fitting.,The segment of pipe had been replaced with a temporary fitting.,0.0,0
+ctrl_104,deepseek,A row of terracotta pots lined the window ledge.,A row of terracotta pots lined the window ledge.,0.0,0
+ctrl_105,deepseek,The thermostat was set to nineteen degrees.,The thermostat was set to 19 degrees.,0.0,0
+ctrl_106,deepseek,The garden fork was jammed in the dry soil.,The garden fork was stuck in the dry ground.,0.0,0
+ctrl_107,deepseek,Condensation on the window blurred the view outside.,"The condensation on the window obscured the outside view, making it unclear.",0.0,0
+ctrl_108,deepseek,A line of ants moved steadily toward the base of the tree.,A line of ants moved steadily toward the base of the tree.,0.0,0
+ctrl_109,deepseek,Reflections of branches moved across the polished floor.,"The image of branches moving across a polished floor suggests a quiet, reflective moment where nature's subtle movements are mirrored indoors, creating a sense of calm and transience.",0.0,0
+ctrl_110,deepseek,The path through the woodland was marked with numbered posts.,The path through the woodland was marked with numbered posts.,0.0,0
+ctrl_111,deepseek,The solar panel angled toward the midday sun.,The solar panel angled toward the midday sun to maximize energy absorption.,0.0,0
+ctrl_112,deepseek,Fog covered the valley until noon.,The fog cleared around noon.,0.0,0
+ctrl_113,deepseek,Sunflowers lined the fence along the lane.,The sentence describes sunflowers growing along a fence next to a lane.,0.0,0
+ctrl_114,deepseek,The bolt slid smoothly after the hinge was oiled.,The bolt slid smoothly after the hinge was oiled.,0.0,0
+ctrl_115,deepseek,The skylight above the corridor let in a pale square of light.,"The corridor was dim, save for a pale square of light cast by the skylight above.",0.0,0
+ctrl_116,deepseek,Three bolts secured the panel to the base plate.,The panel was secured to the base plate by three bolts.,0.0,0
+ctrl_117,deepseek,A pair of boots stood upright near the entrance mat.,The boots are positioned upright by the entrance mat.,0.0,0
+ctrl_118,deepseek,The wind turbine rotated steadily on the hillside.,The wind turbine rotated steadily on the hillside.,0.0,0
+ctrl_119,deepseek,The museum closes at six o'clock on Fridays.,The museum closes at 6 PM on Fridays.,0.0,0
+ctrl_120,deepseek,A ladybird crawled across the white painted wall.,A ladybird crawled across the white painted wall.,0.125,1
+ctrl_121,deepseek,Chalk marks faded on the footpath after the rain.,The chalk marks on the footpath faded after the rain.,0.0,0
+ctrl_122,deepseek,The spider spun a web between two branches.,The spider spun a web between two branches.,0.0,0
+ctrl_123,deepseek,The handle of the mug had been repaired with glue.,The mug's handle had been glued back together.,0.0,0
+ctrl_124,deepseek,A thin wire connected the two junction boxes on the wall.,A thin wire connected the two junction boxes on the wall.,0.0,0
+ctrl_125,deepseek,A staple had come loose from the corner of the poster.,A staple had come loose from the corner of the poster.,0.0,0
+ctrl_126,deepseek,The sensor detected motion twice in the same hour.,The sensor detected motion twice in the same hour.,0.0,0
+ctrl_127,deepseek,The bookshelf was bolted to the wall for safety.,The bookshelf was bolted to the wall to prevent it from tipping over and causing injury.,0.0,0
+ctrl_128,deepseek,A butterfly landed on the windowsill briefly.,A butterfly briefly landed on the windowsill.,0.0,0
+ctrl_129,deepseek,A thin layer of dust covered the piano lid.,The dust suggests the piano hasn't been played recently.,0.0,0
+ctrl_130,deepseek,Ivy had grown over most of the eastern wall.,Ivy had grown over most of the eastern wall.,0.0,0
+ctrl_131,deepseek,The basketball rolled to the far end of the court.,The basketball rolled to the far end of the court.,0.0,0
+ctrl_132,deepseek,The spare key was kept under a flat stone.,The spare key was kept under a flat stone.,0.0,0
+ctrl_133,deepseek,Puddles filled the uneven section of the car park.,The car park has uneven sections where puddles form.,0.0,0
+ctrl_134,deepseek,The roof drain was partially blocked with decomposed leaves.,The roof drain was partially blocked with decomposed leaves.,0.0,0
+ctrl_135,deepseek,The footpath narrowed between two overgrown hedges.,The footpath narrowed between two overgrown hedges.,0.0,0
+ctrl_136,deepseek,The curtains let in a stripe of morning light.,The morning light creates a stripe across the room through the curtains.,0.0,0
+ctrl_137,deepseek,A rook pulled at something in the newly turned earth.,"A rook is pulling at something in the freshly turned soil, likely searching for grubs or worms.",0.0,0
+ctrl_138,deepseek,A crack in the plaster had widened since last winter.,"The crack in the plaster has widened since last winter, indicating potential structural issues or settling of the building.",0.0,0
+ctrl_139,deepseek,The vending machine dispensed the wrong item.,I'm sorry to hear that. Please contact customer support with the machine's location and your transaction details.,0.0,0
+ctrl_140,deepseek,The dial on the oven was turned to 180 degrees.,"The oven dial is set to 180 degrees, likely Celsius, which is a common temperature for baking or roasting.",0.0,0
+ctrl_141,deepseek,The control panel had twelve labelled switches.,The control panel had twelve labelled switches.,0.0,0
+ctrl_142,deepseek,The river bends sharply just past the mill.,The river bends sharply just past the mill.,0.0,0
+ctrl_143,deepseek,The key was hanging on a hook by the door.,The key was hanging on a hook by the door.,0.0,0
+ctrl_144,deepseek,Gravel crunched underfoot along the path.,"The sound of gravel crunching underfoot suggests a person walking on a path covered with loose stones. This could be a driveway, garden path, or trail. The sensory detail evokes a quiet outdoor setting where small sounds are noticeable.",0.0,0
+ctrl_145,deepseek,A rope swing hung from the oak branch.,The rope swing hung from the oak branch.,0.0,0
+ctrl_146,deepseek,The bridge over the stream had narrow planks.,"The bridge over the stream had narrow planks, making crossing precarious.",0.0,0
+ctrl_147,deepseek,Two flags hung from the balcony railing.,Two flags were hanging from the balcony railing.,0.0,0
+ctrl_148,deepseek,An acorn fell and rolled across the paving stones.,"The acorn's fall and roll across the paving stones suggests a natural, everyday event that could be part of a larger cycle of growth or decay.",0.0,0
+ctrl_149,deepseek,The telescope pointed toward the constellation Orion.,The telescope pointed toward the constellation Orion.,0.0,0
+ctrl_150,deepseek,The mooring rope was knotted around a metal cleat.,The mooring rope was knotted around a metal cleat.,0.0,0
+ctrl_151,deepseek,The hinges on the gate had started to rust.,The hinges on the gate had started to rust.,0.0,0
+ctrl_152,deepseek,The map showed a shortcut through the forest.,The map showed a shortcut through the forest.,0.0,0
+ctrl_153,deepseek,Sand collected at the bottom of the water bottle.,"The sand collected at the bottom of the water bottle suggests that the water source may contain sediment or that the bottle was used in an environment with sand, such as a beach or desert. This could indicate the water is not filtered or that the bottle was not cleaned properly.",0.0,0
+ctrl_154,deepseek,Boxes were stacked six high in the storage room.,The boxes were stacked six high in the storage room.,0.0,0
+ctrl_155,deepseek,The tap dripped once every few seconds.,The tap dripped once every few seconds.,0.0,0
+ctrl_156,deepseek,Ice covered the puddle by the garden gate.,Ice covered the puddle by the garden gate.,0.0,0
+ctrl_157,deepseek,The ceiling fan wobbled slightly at high speed.,The ceiling fan wobbled slightly at high speed.,0.0,0
+ctrl_158,deepseek,The tide gauge recorded a reading every fifteen minutes.,The tide gauge recorded a reading every fifteen minutes.,0.0,0
+ctrl_159,deepseek,A thin crack ran from the corner of the window to the sill.,A thin crack ran from the corner of the window to the sill.,0.0,0
+ctrl_160,deepseek,A dragonfly hovered above the surface of the pond.,The dragonfly hovered above the pond's surface.,0.0,0
+ctrl_161,deepseek,The junction box on the wall concealed a splice of three cables.,The junction box on the wall concealed a splice of three cables.,0.0,0
+ctrl_162,deepseek,The calendar showed Friday the twelfth.,The calendar shows Friday the twelfth.,0.0,0
+ctrl_163,deepseek,A wasp circled the rim of the open jar.,A wasp is flying around the edge of an open jar.,0.0,0
+ctrl_164,deepseek,The wooden sign had weathered to a pale grey.,The wooden sign had weathered to a pale grey.,0.0,0
+ctrl_165,deepseek,An earthworm emerged at the surface after the shower.,The earthworm came to the surface after the rain.,0.0,0
+ctrl_166,deepseek,Snow settled on the branches overnight.,"The snow settled on the branches overnight, creating a serene winter scene.",0.0,0
+ctrl_167,deepseek,A cloud drifted slowly across the afternoon sky.,A cloud drifted slowly across the afternoon sky.,0.0,0
+ctrl_168,deepseek,Two sparrows hopped along the garden wall.,Two sparrows hopped along the garden wall.,0.0,0
+ctrl_169,deepseek,The tide retreated slowly from the sandy cove.,The tide retreated slowly from the sandy cove.,0.0,0
+ctrl_170,deepseek,A bee investigated the clover patch near the hedge.,A bee investigated the clover patch near the hedge.,0.0,0
+ctrl_171,deepseek,The old clock tower visible from the square.,The old clock tower is visible from the square.,0.0,0
+ctrl_172,deepseek,The switch for the exterior light was inside the porch.,The switch for the exterior light was located inside the porch.,0.0,0
+ctrl_173,deepseek,The temperature dropped four degrees after sundown.,The temperature decreased by four degrees after sunset.,0.0,0
+ctrl_174,deepseek,A pair of rubber gloves hung over the edge of the sink.,"The rubber gloves are likely used for washing dishes or cleaning, and they are placed over the sink to dry or for easy access.",0.041666666666666664,1
+ctrl_175,deepseek,The gate swings open when the latch is lifted.,The gate swings open when the latch is lifted.,0.0,0
+ctrl_176,deepseek,The exhaust fan above the stove ran for ten minutes.,The exhaust fan above the stove ran for ten minutes.,0.0,0
+ctrl_177,deepseek,The catch on the window frame needed adjustment.,The catch on the window frame needed adjustment.,0.0,0
+ctrl_178,deepseek,The flowerpot cracked when the temperature dropped below zero.,The flowerpot cracked due to thermal stress from freezing temperatures.,0.0,0
+ctrl_179,deepseek,A pool of oil had collected under the machinery.,"The sentence describes a situation where oil has accumulated beneath machinery, likely indicating a leak or spill that needs attention.",0.0,0
+ctrl_180,deepseek,A crow perched on the telephone wire at dusk.,A crow sat on the telephone wire in the evening.,0.0,0
+ctrl_181,deepseek,Condensation formed on the outside of the glass.,"Condensation forms on the outside of a glass when warm, moist air comes into contact with the cold surface of the glass, causing the water vapor in the air to cool and change into liquid water droplets.",0.0,0
+ctrl_182,deepseek,The recipe called for two cups of flour.,The recipe called for two cups of flour.,0.0,0
+ctrl_183,deepseek,The lighthouse beam swept across the dark water.,The lighthouse beam swept across the dark water.,0.0,0
+ctrl_184,deepseek,Our meeting starts in fifteen minutes.,"Okay, I'll be ready.",0.0,0
+ctrl_185,deepseek,An empty bucket sat near the garden tap.,The bucket is empty and located near the garden tap.,0.0,0
+ctrl_186,deepseek,A pine cone landed on the tin roof with a sharp knock.,A pine cone landing on a tin roof creates a sharp knock sound.,0.0,0
+ctrl_187,deepseek,An orange cat slept on the warm window ledge.,"The orange cat slept peacefully on the warm window ledge, basking in the sunlight.",0.0,0
+ctrl_188,deepseek,A weathervane on the barn roof pointed northeast.,"The wind is coming from the southwest, as weathervanes point into the wind.",0.0,0
+ctrl_189,deepseek,The aerial photograph showed a grid of rectangular fields.,The aerial photograph showed a grid of rectangular fields.,0.0,0
+ctrl_190,deepseek,A notebook and pen sat on the desk.,The notebook and pen are on the desk.,0.0,0
+ctrl_191,deepseek,A stack of pallets waited beside the loading bay.,A stack of pallets waited beside the loading bay.,0.0,0
+ctrl_192,deepseek,The signal turned green and traffic began to move.,"The driver proceeded through the intersection as the light changed to green, resuming forward movement with the flow of traffic.",0.0,0
+ctrl_193,deepseek,Leaves rustled against the pavement in the wind.,"The wind blew leaves across the pavement, creating a rustling sound.",0.0,0
+ctrl_194,deepseek,The generator switched on automatically during the outage.,The generator switched on automatically during the outage.,0.0,0
+ctrl_195,deepseek,The printer ran out of paper during the last job.,"I understand your frustration. Let's get that resolved quickly. First, please check the paper tray and add more paper if needed. Then, try printing again. If the issue persists, let me know.",0.0,0
+ctrl_196,deepseek,The dew point sensor mounted on the north-facing wall.,The dew point sensor mounted on the north-facing wall.,0.0,0
+ctrl_197,deepseek,He found a silver coin beneath the park bench.,He found a silver coin beneath the park bench.,0.1111111111111111,1
+ctrl_198,deepseek,Several leaves clung to the windshield.,A few leaves were stuck to the windshield.,0.0,0
+ctrl_199,deepseek,The generator had not been serviced for several years.,The generator had not been serviced for several years.,0.0,0

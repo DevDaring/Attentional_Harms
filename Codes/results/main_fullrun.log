@@ -1,0 +1,129 @@
+2026-05-06 13:06:58,516 INFO     main — ========================================================================
+2026-05-06 13:06:58,516 INFO     main — Pipeline started: 2026-05-06T13:06:58.516382
+2026-05-06 13:06:58,516 INFO     main — Models: ['deepseek', 'gpt4o_mini', 'grok', 'qwen', 'gemma3', 'llama']
+2026-05-06 13:06:58,516 INFO     main — Language: English
+2026-05-06 13:06:58,516 INFO     main — ========================================================================
+2026-05-06 13:06:59,821 INFO     datasets — PyTorch version 2.4.0+cu124 available.
+2026-05-06 13:07:00,942 INFO     main — GPU: NVIDIA H100 80GB HBM3  85 GB VRAM
+2026-05-06 13:07:00,948 INFO     main — === Phase 1: Dataset cache ===
+2026-05-06 13:07:00,957 INFO     data_pipeline —   CACHE OK  en_crows_pairs.csv  (1508 rows)
+2026-05-06 13:07:00,965 INFO     data_pipeline —   CACHE OK  en_stereoset.csv  (2106 rows)
+2026-05-06 13:07:00,966 INFO     data_pipeline —   CACHE OK  en_honest.csv  (810 rows)
+2026-05-06 13:07:00,972 INFO     data_pipeline —   CACHE OK  en_indian_caste.csv  (2283 rows)
+2026-05-06 13:07:00,979 INFO     data_pipeline —   CACHE OK  en_indian_gender.csv  (2283 rows)
+2026-05-06 13:07:00,985 INFO     data_pipeline —   CACHE OK  en_indian_religion.csv  (2283 rows)
+2026-05-06 13:07:00,991 INFO     data_pipeline —   CACHE OK  en_indian_race.csv  (2283 rows)
+2026-05-06 13:07:00,991 INFO     main — All dataset CSVs present.
+2026-05-06 13:07:00,991 INFO     main — === Phase 2: Load datasets ===
+2026-05-06 13:07:00,998 INFO     data_pipeline — CrowS-Pairs: 1508 rows loaded
+2026-05-06 13:07:01,006 INFO     data_pipeline — StereoSet: 2106 rows loaded
+2026-05-06 13:07:01,010 INFO     data_pipeline — HONEST: 200 rows loaded
+2026-05-06 13:07:01,037 INFO     data_pipeline — Indian-BhED: 200 rows loaded (4 categories × 50)
+2026-05-06 13:07:01,037 INFO     main — CrowS-Pairs: 1508  StereoSet: 2106  HONEST: 200  Indian-BhED: 200
+2026-05-06 13:07:01,037 INFO     main — === Phase 3: Neutralize prompts ===
+2026-05-06 13:07:02,302 INFO     main —   Neutralized 3016 CrowS-Pairs sentences
+2026-05-06 13:07:02,308 INFO     main —   Built 200 Indian-BhED prompts
+2026-05-06 13:07:02,309 INFO     main — === Phase 4: Build control prompts ===
+2026-05-06 13:07:02,309 INFO     main —   200 control prompts ready
+2026-05-06 13:07:02,309 INFO     main — === Phase 5: Load local models (qwen, gemma3, llama) ===
+2026-05-06 13:07:02,426 INFO     models — Loading Qwen2.5-1.5B (Qwen/Qwen2.5-1.5B-Instruct) dtype=float16 …
+2026-05-06 13:07:03,938 INFO     accelerate.utils.modeling — We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+2026-05-06 13:07:13,212 INFO     models —   attn_implementation='flash_attention_2'
+2026-05-06 13:07:13,572 INFO     models — GPU [after loading Qwen2.5-1.5B]: allocated=3.09 GB  reserved=3.29 GB
+2026-05-06 13:07:13,572 INFO     models — Loading Gemma-2-2B (google/gemma-2-2b-it) dtype=bfloat16 …
+2026-05-06 13:07:13,720 INFO     accelerate.utils.modeling — We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:00<00:00,  1.16it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  2.27it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.98it/s]
+2026-05-06 13:07:14,875 INFO     models —   attn_implementation='flash_attention_2'
+2026-05-06 13:07:15,723 INFO     models — GPU [after loading Gemma-2-2B]: allocated=8.32 GB  reserved=8.72 GB
+2026-05-06 13:07:15,724 INFO     models — Loading Llama-3.1-8B (meta-llama/Llama-3.1-8B-Instruct) dtype=float16 …
+2026-05-06 13:07:15,887 INFO     accelerate.utils.modeling — We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:04<00:14,  4.91s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:10<00:10,  5.42s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:16<00:05,  5.47s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:16<00:00,  3.57s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:16<00:00,  4.22s/it]
+2026-05-06 13:07:32,918 INFO     models —   attn_implementation='flash_attention_2'
+2026-05-06 13:07:33,401 INFO     models — GPU [after loading Llama-3.1-8B]: allocated=24.38 GB  reserved=24.91 GB
+2026-05-06 13:07:33,402 INFO     models — GPU [after loading all local models]: allocated=24.38 GB  reserved=24.91 GB
+2026-05-06 13:07:33,402 INFO     main —   Loaded: ['qwen', 'gemma3', 'llama']
+2026-05-06 13:07:33,409 INFO     main — --- Processing model: deepseek ---
+2026-05-06 13:07:33,419 INFO     data_pipeline — CrowS-Pairs: 1508 rows loaded
+2026-05-06 13:07:33,529 INFO     studies — Study 1 [deepseek]: SAR=nan  → ./results/study1_sar_deepseek.csv
+2026-05-06 13:07:33,537 INFO     data_pipeline — StereoSet: 2106 rows loaded
+2026-05-06 13:07:33,681 INFO     studies — Study 2 [deepseek]: SS=nan  → ./results/study2_ss_deepseek.csv
+2026-05-06 13:45:02,886 INFO     studies — Study 3 [deepseek]: mean GSS=0.0310  → ./results/study3_gss_deepseek.csv
+2026-05-06 13:48:18,303 INFO     studies — Study 4 [deepseek]: mean drift=0.0299  → ./results/study4_multiturn_deepseek.csv
+2026-05-06 13:53:32,702 INFO     studies — Study 5 control [deepseek]: mean GSS=0.0042  → ./results/study5_control_deepseek.csv
+2026-05-06 13:53:32,702 INFO     main — --- Processing model: gpt4o_mini ---
+2026-05-06 13:53:32,744 INFO     data_pipeline — CrowS-Pairs: 1508 rows loaded
+2026-05-06 13:53:32,871 INFO     studies — Study 1 [gpt4o_mini]: SAR=nan  → ./results/study1_sar_gpt4o_mini.csv
+2026-05-06 13:53:32,879 INFO     data_pipeline — StereoSet: 2106 rows loaded
+2026-05-06 13:53:33,025 INFO     studies — Study 2 [gpt4o_mini]: SS=nan  → ./results/study2_ss_gpt4o_mini.csv
+2026-05-06 14:27:47,024 INFO     studies — Study 3 [gpt4o_mini]: mean GSS=0.0264  → ./results/study3_gss_gpt4o_mini.csv
+2026-05-06 14:31:27,902 INFO     studies — Study 4 [gpt4o_mini]: mean drift=0.0124  → ./results/study4_multiturn_gpt4o_mini.csv
+2026-05-06 14:37:10,590 INFO     studies — Study 5 control [gpt4o_mini]: mean GSS=0.0026  → ./results/study5_control_gpt4o_mini.csv
+2026-05-06 14:37:10,591 INFO     main — --- Processing model: grok ---
+2026-05-06 14:37:10,636 INFO     data_pipeline — CrowS-Pairs: 1508 rows loaded
+2026-05-06 14:37:10,760 INFO     studies — Study 1 [grok]: SAR=nan  → ./results/study1_sar_grok.csv
+2026-05-06 14:37:10,768 INFO     data_pipeline — StereoSet: 2106 rows loaded
+2026-05-06 14:37:10,912 INFO     studies — Study 2 [grok]: SS=nan  → ./results/study2_ss_grok.csv
+2026-05-06 19:17:57,635 INFO     studies — Study 3 [grok]: mean GSS=0.0234  → ./results/study3_gss_grok.csv
+2026-05-06 19:43:37,530 INFO     studies — Study 4 [grok]: mean drift=0.0094  → ./results/study4_multiturn_grok.csv
+2026-05-06 20:19:33,450 INFO     studies — Study 5 control [grok]: mean GSS=0.0018  → ./results/study5_control_grok.csv
+2026-05-06 20:19:33,450 INFO     main — --- Processing model: qwen ---
+2026-05-06 20:19:33,491 INFO     data_pipeline — CrowS-Pairs: 1508 rows loaded
+2026-05-06 20:20:31,376 INFO     studies — Study 1 [qwen]: SAR=0.629  → ./results/study1_sar_qwen.csv
+2026-05-06 20:20:31,387 INFO     data_pipeline — StereoSet: 2106 rows loaded
+2026-05-06 20:21:50,610 INFO     studies — Study 2 [qwen]: SS=0.646  → ./results/study2_ss_qwen.csv
+The attention mask is not set and cannot be inferred from input because pad token is same as eos token. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+2026-05-06 20:46:41,911 INFO     studies — Study 3 [qwen]: mean GSS=0.0514  → ./results/study3_gss_qwen.csv
+2026-05-06 20:48:36,678 INFO     studies — Study 4 [qwen]: mean drift=0.0515  → ./results/study4_multiturn_qwen.csv
+2026-05-06 20:51:28,428 INFO     studies — Study 5 control [qwen]: mean GSS=0.0019  → ./results/study5_control_qwen.csv
+2026-05-06 20:51:28,428 INFO     main — --- Processing model: gemma3 ---
+2026-05-06 20:51:28,438 INFO     data_pipeline — CrowS-Pairs: 1508 rows loaded
+2026-05-06 20:53:22,744 INFO     studies — Study 1 [gemma3]: SAR=0.616  → ./results/study1_sar_gemma3.csv
+2026-05-06 20:53:22,756 INFO     data_pipeline — StereoSet: 2106 rows loaded
+2026-05-06 20:56:00,801 INFO     studies — Study 2 [gemma3]: SS=0.661  → ./results/study2_ss_gemma3.csv
+2026-05-06 21:51:27,780 INFO     studies — Study 3 [gemma3]: mean GSS=0.0152  → ./results/study3_gss_gemma3.csv
+2026-05-06 22:03:35,459 INFO     studies — Study 4 [gemma3]: mean drift=0.0121  → ./results/study4_multiturn_gemma3.csv
+2026-05-06 22:11:32,943 INFO     studies — Study 5 control [gemma3]: mean GSS=0.0028  → ./results/study5_control_gemma3.csv
+2026-05-06 22:11:32,943 INFO     main — --- Processing model: llama ---
+2026-05-06 22:11:32,954 INFO     data_pipeline — CrowS-Pairs: 1508 rows loaded
+2026-05-06 22:12:33,157 INFO     studies — Study 1 [llama]: SAR=0.659  → ./results/study1_sar_llama.csv
+2026-05-06 22:12:33,169 INFO     data_pipeline — StereoSet: 2106 rows loaded
+2026-05-06 22:13:56,366 INFO     studies — Study 2 [llama]: SS=0.667  → ./results/study2_ss_llama.csv
+2026-05-06 22:54:43,858 INFO     studies — Study 3 [llama]: mean GSS=0.0250  → ./results/study3_gss_llama.csv
+2026-05-06 22:57:53,108 INFO     studies — Study 4 [llama]: mean drift=0.0196  → ./results/study4_multiturn_llama.csv
+2026-05-06 23:01:14,619 INFO     studies — Study 5 control [llama]: mean GSS=0.0020  → ./results/study5_control_llama.csv
+2026-05-06 23:01:14,624 INFO     main — === Phase 11: LLM judge ensemble ===
+2026-05-07 01:27:29,799 WARNING  llm_judge — Judge alpha=0.229 < 0.6 for dimension 'female'. Low inter-judge agreement — note in paper limitations.
+2026-05-07 01:27:29,802 WARNING  llm_judge — Judge alpha=0.180 < 0.6 for dimension 'male'. Low inter-judge agreement — note in paper limitations.
+2026-05-07 01:27:29,803 INFO     llm_judge — Judge alpha=0.617 for dimension 'caste'
+2026-05-07 01:27:29,804 WARNING  llm_judge — Judge alpha=0.551 < 0.6 for dimension 'gender'. Low inter-judge agreement — note in paper limitations.
+2026-05-07 01:27:29,805 INFO     llm_judge — Judge alpha=0.607 for dimension 'religion'
+2026-05-07 01:27:29,806 INFO     llm_judge — Judge alpha=0.616 for dimension 'race'
+2026-05-07 01:27:29,873 INFO     llm_judge — Judge agreement report → ./results/statistics/judge_agreement.csv  (2400 rows)
+2026-05-07 01:27:29,877 INFO     main — === Phase 12: Statistical analysis ===
+2026-05-07 01:27:31,411 INFO     statistical_analysis — Bootstrap CI saved (72 rows)
+2026-05-07 01:27:31,464 ERROR    statistical_analysis — Mixed-effects regression failed: zero-size array to reduction operation maximum which has no identity
+2026-05-07 01:27:31,490 INFO     statistical_analysis — ANOVA completed. η² summary:
+C(model_cat)                    0.047080
+C(category_cat)                 0.085471
+C(model_cat):C(category_cat)    0.046563
+Residual                        0.820887
+2026-05-07 01:27:31,525 INFO     statistical_analysis — All statistics written to ./results/statistics
+2026-05-07 01:27:31,525 INFO     main — === Phase 13: Figures ===
+2026-05-07 01:27:31,530 INFO     figures — Generating all figures …
+2026-05-07 01:27:31,531 WARNING  figures — Figure 1: no language column â€” cross-lingual heatmap not available.
+2026-05-07 01:27:31,702 INFO     figures — Saved ./results/figures/figure2_var_bars.pdf
+2026-05-07 01:27:31,915 INFO     figures — Saved ./results/figures/figure2_var_bars.png
+2026-05-07 01:27:32,052 INFO     figures — Saved ./results/figures/figure3_accumulation.pdf
+2026-05-07 01:27:32,250 INFO     figures — Saved ./results/figures/figure3_accumulation.png
+2026-05-07 01:27:32,250 WARNING  figures — Figure 4: no cross-lingual or prompt_id data â€” scatter not available.
+2026-05-07 01:27:32,540 INFO     figures — Saved ./results/figures/figure5_rad.pdf
+2026-05-07 01:27:32,870 INFO     figures — Saved ./results/figures/figure5_rad.png
+2026-05-07 01:27:32,870 INFO     figures — All figures generated.
+2026-05-07 01:27:32,870 INFO     main — === Phase 14: Cross-category analysis ===
+2026-05-07 01:27:32,873 INFO     studies — Cross-category analysis → ./results/statistics/cross_category_analysis.csv
+2026-05-07 01:27:32,873 INFO     main — === Phase 15: Model snapshots ===
+2026-05-07 01:27:33,620 INFO     main —   model_snapshots.json → ./results/model_snapshots.json
+2026-05-07 01:27:33,620 INFO     main — ========================================================================
+2026-05-07 01:27:33,620 INFO     main — Pipeline complete in 12.34 hours
+2026-05-07 01:27:33,620 INFO     main — Completed: 2026-05-07T01:27:33.620837
+2026-05-07 01:27:33,620 INFO     main — ========================================================================

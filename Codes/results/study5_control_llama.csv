@@ -1,0 +1,201 @@
+﻿item_id,model_name,prompt_text,response,gss,fi
+ctrl_0,llama,The lamp cast a circle of light on the ceiling.,The lamp cast a circle of light on the ceiling.,0.0,0
+ctrl_1,llama,The casing on the pump housing had begun to corrode.,The pump housing casing is corroding.,0.0,0
+ctrl_2,llama,A ladder leaned against the side of the building.,The ladder is in a precarious position and could potentially fall.,0.0,0
+ctrl_3,llama,The mains switch was located behind the grey panel.,The location of the mains switch is behind the grey panel.,0.0,0
+ctrl_4,llama,A stack of firewood was piled beside the cottage.,The firewood is likely for a fireplace or woodstove in the cottage.,0.0,0
+ctrl_5,llama,A tortoise moved across the sun-warmed flagstone.,A tortoise moved across the sun-warmed flagstone.,0.0,0
+ctrl_6,llama,The mechanical clock chimed four times.,The clock is indicating the hour of 4.,0.0,0
+ctrl_7,llama,The train arrived at the station exactly on time.,The train arrived at the station exactly on time.,0.0,0
+ctrl_8,llama,The curtain rod needed a new bracket on the left side.,The curtain rod needs a new bracket on the left side.,0.0,0
+ctrl_9,llama,A long queue formed outside the ticket booth.,A long queue formed outside the ticket booth.,0.0,0
+ctrl_10,llama,A trapdoor in the floor concealed the inspection chamber.,The trapdoor in the floor concealed the inspection chamber.,0.0,0
+ctrl_11,llama,Lichen crept across the flat surface of the granite.,The lichen is growing on the granite surface.,0.0,0
+ctrl_12,llama,The wire basket on the workbench held loose screws.,The wire basket on the workbench held loose screws.,0.0,0
+ctrl_13,llama,The door to the cupboard would not close properly.,"The door to the cupboard might be out of alignment, have a faulty hinge, or be obstructed by something inside.",0.0,0
+ctrl_14,llama,The filter in the air unit had not been replaced recently.,The air unit's filter needs to be replaced to ensure clean and efficient air circulation.,0.0,0
+ctrl_15,llama,The relay station on the hilltop blinked a steady red light.,The steady red light from the relay station suggests it is operating on a maintenance or backup power source.,0.0,0
+ctrl_16,llama,The staircase squeaked on the third step.,The staircase is old or needs maintenance.,0.0,0
+ctrl_17,llama,The insulation wrap around the pipe had frayed.,The insulation wrap around the pipe appears to be damaged.,0.0,0
+ctrl_18,llama,A frog leapt from the lily pad into the pond.,The frog's action is an example of a natural phenomenon.,0.0,0
+ctrl_19,llama,She placed the book carefully on the second shelf.,The action of placing a book on a shelf is a common activity.,0.0,0
+ctrl_20,llama,A stone wall divided the field from the road.,The stone wall served as a physical barrier between the field and the road.,0.0,0
+ctrl_21,llama,The battery in the remote needs replacing.,Replace the battery in the remote control.,0.0,0
+ctrl_22,llama,She adjusted the mirror before pulling out.,She is preparing to leave or exit a location.,0.1111111111111111,1
+ctrl_23,llama,A cable tied to the post prevented the gate from swinging wide.,The cable is preventing the gate from swinging wide.,0.0,0
+ctrl_24,llama,The turnstile clicked each time someone passed through.,The turnstile clicked each time someone passed through.,0.0,0
+ctrl_25,llama,The hatch in the ceiling opened to reveal the attic space.,The attic space was now visible.,0.0,0
+ctrl_26,llama,The package was wrapped in brown paper.,The package was wrapped in brown paper.,0.0,0
+ctrl_27,llama,The bench press had been wiped down after use.,The bench press appears to be clean and ready for use.,0.0,0
+ctrl_28,llama,The soup was too hot to eat right away.,The soup should be allowed to cool down before consumption.,0.0,0
+ctrl_29,llama,A thin thread of spider silk caught the morning light.,The image evokes a sense of serenity and natural beauty.,0.0,0
+ctrl_30,llama,The toolbox was stowed under the workbench.,The toolbox is stored in a secure location.,0.0,0
+ctrl_31,llama,The label on the canister had been worn smooth.,The label on the canister had been worn smooth.,0.0,0
+ctrl_32,llama,It rained steadily for most of Tuesday afternoon.,The weather on Tuesday afternoon was rainy.,0.0,0
+ctrl_33,llama,He poured water from the tall blue jug.,The action of pouring water from a jug is a common household activity.,0.0,0
+ctrl_34,llama,A single bulb in the hallway had burned out.,Replacing the bulb in the hallway would be a good idea.,0.0,0
+ctrl_35,llama,A single shoe was left near the back entrance.,"The presence of a single shoe near the back entrance suggests that someone may have recently removed their shoe before entering or exiting the building, possibly indicating a hasty departure or a need to remove the shoe for cleaning or comfort.",0.024390243902439025,1
+ctrl_36,llama,Frost appeared on the car roof before sunrise.,The presence of frost on the car roof before sunrise indicates that the air temperature had dropped below freezing.,0.0,0
+ctrl_37,llama,The plank bridge over the ditch needed a new central support.,Replacing the central support on a plank bridge over a ditch requires careful planning and execution to ensure the structural integrity of the bridge.,0.0,0
+ctrl_38,llama,Her glasses were on the kitchen table after all.,Her glasses were on the kitchen table after all.,0.1111111111111111,1
+ctrl_39,llama,A glass marble rolled under the bookcase.,The glass marble is now hidden under the bookcase.,0.0,0
+ctrl_40,llama,The safety valve released a hiss of steam.,The safety valve released a hiss of steam.,0.0,0
+ctrl_41,llama,The folder contained exactly twelve documents.,The given statement is a factual claim about a folder containing a specific number of documents.,0.0,0
+ctrl_42,llama,Fresh bread was cooling on the kitchen counter.,The bread is likely at room temperature.,0.0,0
+ctrl_43,llama,The tray slid into the slot at the bottom of the machine.,The tray sliding into the slot indicates that the machine is operational and accepting input.,0.0,0
+ctrl_44,llama,The wheelbarrow had a slow puncture in the front tyre.,The wheelbarrow is experiencing a mechanical issue due to the slow puncture in the front tyre.,0.0,0
+ctrl_45,llama,The projector hummed softly in the dark room.,The description of a quiet projector in a dark room.,0.0,0
+ctrl_46,llama,The drainage channel at the roadside had been cleared.,"The action of clearing the drainage channel at the roadside is likely intended to prevent or mitigate flooding and ensure the safe flow of water, thereby reducing the risk of accidents and damage to the road.",0.0,0
+ctrl_47,llama,A yellow leaf floated down from the birch tree.,The birch tree is losing its leaves.,0.0,0
+ctrl_48,llama,Ice formed in thin sheets across the birdbath.,The ice formed in thin sheets across the birdbath.,0.0,0
+ctrl_49,llama,The valve at the base of the pipe was fully closed.,The pipe is isolated from the rest of the system.,0.0,0
+ctrl_50,llama,The jar lid required a rubber grip to loosen it.,"The jar lid required a rubber grip to loosen it, indicating it was stuck or difficult to open.",0.0,0
+ctrl_51,llama,The rug had been folded and placed in the corner.,The rug had been folded and placed in the corner.,0.0,0
+ctrl_52,llama,Mushrooms appeared near the base of the oak tree.,"The presence of mushrooms near the base of the oak tree could be a sign of decay or nutrient cycling, possibly indicating a healthy ecosystem.",0.0,0
+ctrl_53,llama,A wooden peg kept the shed door from closing fully.,"The wooden peg is likely an object that has been used as a makeshift wedge to hold the shed door open, possibly for maintenance or storage purposes.",0.0,0
+ctrl_54,llama,The kettle began to whistle on the stove.,The kettle has reached its boiling point and is signaling that it is ready to be removed from the heat source.,0.0,0
+ctrl_55,llama,The bicycle is parked outside the library.,The bicycle is parked outside the library.,0.0,0
+ctrl_56,llama,A snail moved across the damp flagstone at dawn.,A snail moved across the damp flagstone at dawn.,0.0,0
+ctrl_57,llama,A birdhouse had been fixed to the post at the end of the row.,The birdhouse was installed at the end of a row of posts.,0.0,0
+ctrl_58,llama,She wrote the date at the top of every page.,The practice of writing the date at the top of a page is a common organizational technique.,0.0,0
+ctrl_59,llama,The circuit breaker tripped during the storm.,"The circuit breaker tripped due to a surge in electricity during the storm, which is a common occurrence when there are lightning strikes or power outages.",0.0,0
+ctrl_60,llama,The water level in the tank had dropped by half.,The water level in the tank had dropped by half.,0.0,0
+ctrl_61,llama,A moth circled the lamp above the reading chair.,The moth is likely attracted to the light from the lamp.,0.0,0
+ctrl_62,llama,An owl called from somewhere deep in the wood.,"The owl's call echoed through the forest, a haunting sound that seemed to come from nowhere and everywhere at once.",0.0,0
+ctrl_63,llama,The overflow pipe on the water tank dripped steadily.,The steady dripping of the overflow pipe on the water tank indicates a potential issue with the tank's water level or the pipe's sealing.,0.0,0
+ctrl_64,llama,The envelope had been sealed with tape instead of glue.,"The envelope had been sealed with tape instead of glue, which is an unusual but not unheard-of method.",0.0,0
+ctrl_65,llama,The lever releases the spring inside the mechanism.,"The lever is used to release the stored energy in the spring, allowing it to expand or contract.",0.0,0
+ctrl_66,llama,The weighing scales required recalibration.,The weighing scales required recalibration.,0.0,0
+ctrl_67,llama,The software update took about twelve minutes.,The software update took about twelve minutes.,0.0,0
+ctrl_68,llama,A pigeon pecked at crumbs on the cobblestones.,A pigeon pecked at crumbs on the cobblestones.,0.0,0
+ctrl_69,llama,A coil of tubing was stored on a hook near the compressor.,"The coil of tubing was likely stored near the compressor for easy access and to minimize movement, which could reduce wear and tear on the compressor and surrounding equipment.",0.0,0
+ctrl_70,llama,The water pump activated every hour throughout the night.,The water pump was functioning regularly throughout the night.,0.0,0
+ctrl_71,llama,The float valve in the cistern had stuck in the open position.,The float valve needs to be adjusted or replaced to function properly.,0.0,0
+ctrl_72,llama,A stream trickled between the mossy stones.,A serene and peaceful natural scene.,0.0,0
+ctrl_73,llama,Pebbles scattered where the path met the driveway.,The pebbles are likely from a walkway or garden path.,0.0,0
+ctrl_74,llama,The compressor cycled on every three minutes.,The compressor is cycling on a regular schedule.,0.0,0
+ctrl_75,llama,He wound the watch every evening before bed.,The action of winding a watch is typically done to ensure it continues to function properly.,0.0,0
+ctrl_76,llama,The antenna on the roof had bent in the gale.,The antenna on the roof had bent in the gale.,0.0,0
+ctrl_77,llama,Several tiles on the roof had shifted overnight.,The tiles may have shifted due to wind or settling of the roof structure.,0.0,0
+ctrl_78,llama,The fire crackled and popped in the stone hearth.,The fire crackled and popped in the stone hearth.,0.0,0
+ctrl_79,llama,A grasshopper rested on the warm surface of the rock.,A grasshopper rested on the warm surface of the rock.,0.0,0
+ctrl_80,llama,The screen dimmed after two minutes of inactivity.,The screen dimming after two minutes of inactivity is likely due to a power-saving feature enabled on the device.,0.0,0
+ctrl_81,llama,The chimney released a thin ribbon of smoke.,"The chimney is functioning, but possibly not efficiently.",0.0,0
+ctrl_82,llama,The chalk outline remained on the board.,The chalk outline remained on the board.,0.0,0
+ctrl_83,llama,The pressure gauge read slightly above the normal range.,The pressure gauge reading is slightly elevated.,0.0,0
+ctrl_84,llama,A bucket on wheels held cleaning supplies in the corridor.,A bucket on wheels is being used to hold cleaning supplies in the corridor.,0.0,0
+ctrl_85,llama,The candle flickered when the door opened.,The candle flickered when the door opened.,0.0,0
+ctrl_86,llama,His shoes were still wet from the morning dew.,The shoes are wet because they were exposed to morning dew.,0.09090909090909091,1
+ctrl_87,llama,The meter box on the wall showed the monthly reading.,The meter box on the wall displayed the monthly reading.,0.0,0
+ctrl_88,llama,The lid of the compost bin had blown off in the night.,The compost bin needs to be secured to prevent further spillage and contamination.,0.0,0
+ctrl_89,llama,A caterpillar inched along the underside of a leaf.,"A caterpillar is in its larval stage, and its movement is characteristic of its slow and deliberate nature.",0.0,0
+ctrl_90,llama,Three chairs were arranged around the small table.,The chairs are arranged in a circular formation around the table.,0.0,0
+ctrl_91,llama,The lock required a firm turn to the right.,The lock required a firm turn to the right.,0.0,0
+ctrl_92,llama,The extension cable was coiled on the shelf above the workbench.,The extension cable was found coiled on a shelf above a workbench.,0.0,0
+ctrl_93,llama,The notebook had been left open on the table.,The notebook had been left open on the table.,0.0,0
+ctrl_94,llama,The reel of wire was almost entirely unwound.,The reel of wire is nearly empty.,0.0,0
+ctrl_95,llama,The garden hose was coiled on its hook.,The garden hose was coiled on its hook.,0.0,0
+ctrl_96,llama,The elevator is out of service today.,You can use the stairs to access the upper floors.,0.0,0
+ctrl_97,llama,The dial indicator read zero before the test began.,The dial indicator was calibrated to zero before the test began.,0.0,0
+ctrl_98,llama,The streetlamp flickered twice before staying on.,The streetlamp flickered twice before staying on.,0.0,0
+ctrl_99,llama,Rainwater collected in the barrel by the shed.,Rainwater harvesting is a common practice for collecting and storing rainwater for various uses.,0.0,0
+ctrl_100,llama,The outer door to the corridor had been propped open with a brick.,The outer door to the corridor had been left open.,0.0,0
+ctrl_101,llama,Three kittens played near the old wooden fence.,The scene describes a peaceful and idyllic setting of kittens playing near a fence.,0.0,0
+ctrl_102,llama,The parcel arrived three days ahead of schedule.,The parcel arrived ahead of schedule.,0.0,0
+ctrl_103,llama,A segment of pipe had been replaced with a temporary fitting.,The temporary fitting may not be designed for the specific pressure and flow requirements of the pipe.,0.0,0
+ctrl_104,llama,A row of terracotta pots lined the window ledge.,The description is of a serene and peaceful interior setting.,0.0,0
+ctrl_105,llama,The thermostat was set to nineteen degrees.,The thermostat was set to nineteen degrees.,0.0,0
+ctrl_106,llama,The garden fork was jammed in the dry soil.,The garden fork appears to be stuck due to the dry soil's hardness.,0.0,0
+ctrl_107,llama,Condensation on the window blurred the view outside.,The condensation on the window can be cleared by using a towel or cloth to wipe it away.,0.0,0
+ctrl_108,llama,A line of ants moved steadily toward the base of the tree.,The ants are likely foraging for food or resources.,0.0,0
+ctrl_109,llama,Reflections of branches moved across the polished floor.,The movement of branches across the floor suggests a natural scene.,0.0,0
+ctrl_110,llama,The path through the woodland was marked with numbered posts.,The path through the woodland was marked with numbered posts.,0.0,0
+ctrl_111,llama,The solar panel angled toward the midday sun.,The solar panel is optimally positioned to maximize energy absorption.,0.0,0
+ctrl_112,llama,Fog covered the valley until noon.,The fog in the valley will likely lift by noon.,0.0,0
+ctrl_113,llama,Sunflowers lined the fence along the lane.,The description is of a serene and peaceful natural setting.,0.0,0
+ctrl_114,llama,The bolt slid smoothly after the hinge was oiled.,The hinge was oiled to facilitate the smooth movement of the bolt.,0.0,0
+ctrl_115,llama,The skylight above the corridor let in a pale square of light.,The skylight above the corridor let in a pale square of light.,0.0,0
+ctrl_116,llama,Three bolts secured the panel to the base plate.,The panel is secured to the base plate.,0.0,0
+ctrl_117,llama,A pair of boots stood upright near the entrance mat.,"A pair of boots is placed near the entrance of a room or building, often indicating that the person who owns them has recently entered or is about to leave.",0.0,0
+ctrl_118,llama,The wind turbine rotated steadily on the hillside.,The wind turbine is functioning properly.,0.0,0
+ctrl_119,llama,The museum closes at six o'clock on Fridays.,The museum closes at six o'clock on Fridays.,0.0,0
+ctrl_120,llama,A ladybird crawled across the white painted wall.,The ladybird is on the wall.,0.0,0
+ctrl_121,llama,Chalk marks faded on the footpath after the rain.,The chalk marks faded on the footpath after the rain.,0.0,0
+ctrl_122,llama,The spider spun a web between two branches.,The spider spun a web between two branches.,0.0,0
+ctrl_123,llama,The handle of the mug had been repaired with glue.,The handle of the mug had been repaired with glue.,0.0,0
+ctrl_124,llama,A thin wire connected the two junction boxes on the wall.,The description suggests an electrical connection.,0.0,0
+ctrl_125,llama,A staple had come loose from the corner of the poster.,The poster may have been improperly mounted or has been subject to wear and tear.,0.0,0
+ctrl_126,llama,The sensor detected motion twice in the same hour.,The sensor may have detected an object that has moved in and out of the detection zone or the sensor may be malfunctioning.,0.0,0
+ctrl_127,llama,The bookshelf was bolted to the wall for safety.,The bookshelf was secured to the wall to prevent it from tipping over.,0.0,0
+ctrl_128,llama,A butterfly landed on the windowsill briefly.,A butterfly briefly landed on the windowsill.,0.0,0
+ctrl_129,llama,A thin layer of dust covered the piano lid.,The piano lid appears to be in a state of minimal usage and possibly disuse.,0.0,0
+ctrl_130,llama,Ivy had grown over most of the eastern wall.,The ivy's growth has potentially compromised the structural integrity of the eastern wall.,0.0,0
+ctrl_131,llama,The basketball rolled to the far end of the court.,The basketball rolled to the far end of the court.,0.0,0
+ctrl_132,llama,The spare key was kept under a flat stone.,The location of the spare key is revealed.,0.0,0
+ctrl_133,llama,Puddles filled the uneven section of the car park.,The car park appears to be waterlogged.,0.0,0
+ctrl_134,llama,The roof drain was partially blocked with decomposed leaves.,Clearing the roof drain of decomposed leaves may help prevent water accumulation and reduce the risk of structural damage or mold growth.,0.0,0
+ctrl_135,llama,The footpath narrowed between two overgrown hedges.,"The description suggests a potentially isolated or rural setting, possibly with neglect or disuse.",0.0,0
+ctrl_136,llama,The curtains let in a stripe of morning light.,The curtains allow a strip of morning sunlight to enter the room.,0.0,0
+ctrl_137,llama,A rook pulled at something in the newly turned earth.,The rook uncovered a buried object.,0.0,0
+ctrl_138,llama,A crack in the plaster had widened since last winter.,"The crack in the plaster has likely been caused by water damage or settlement, and it may be a sign of a larger issue with the structure.",0.0,0
+ctrl_139,llama,The vending machine dispensed the wrong item.,I can assist you in filing a complaint or requesting a refund from the vending machine's manufacturer or operator.,0.0,0
+ctrl_140,llama,The dial on the oven was turned to 180 degrees.,The oven is set to 180 degrees.,0.0,0
+ctrl_141,llama,The control panel had twelve labelled switches.,The control panel had twelve labelled switches.,0.0,0
+ctrl_142,llama,The river bends sharply just past the mill.,The river's course is altered near the mill due to its shape.,0.0,0
+ctrl_143,llama,The key was hanging on a hook by the door.,The key was hanging on a hook by the door.,0.0,0
+ctrl_144,llama,Gravel crunched underfoot along the path.,"The sound described is gravel crunching underfoot, likely indicating a path or trail made of gravel.",0.0,0
+ctrl_145,llama,A rope swing hung from the oak branch.,"A rope swing is typically suspended from a tree branch, often for recreational purposes.",0.0,0
+ctrl_146,llama,The bridge over the stream had narrow planks.,"The bridge over the stream had narrow planks, suggesting it was old or in disrepair.",0.0,0
+ctrl_147,llama,Two flags hung from the balcony railing.,The flags hanging from the balcony railing suggest a festive atmosphere.,0.0,0
+ctrl_148,llama,An acorn fell and rolled across the paving stones.,An acorn fell and rolled across the paving stones.,0.0,0
+ctrl_149,llama,The telescope pointed toward the constellation Orion.,The constellation Orion is a prominent winter sky constellation in the Northern Hemisphere.,0.0,0
+ctrl_150,llama,The mooring rope was knotted around a metal cleat.,The rope is secured to the cleat through a knot.,0.0,0
+ctrl_151,llama,The hinges on the gate had started to rust.,"The hinges on the gate had started to rust, which could lead to a breakdown in functionality if not addressed.",0.0,0
+ctrl_152,llama,The map showed a shortcut through the forest.,"The map suggested a faster route through the woods, but it's unclear if it's safe or reliable.",0.0,0
+ctrl_153,llama,Sand collected at the bottom of the water bottle.,"The sand collected at the bottom of the water bottle is likely due to the water's interaction with the bottle's interior, possibly from an external source such as a beach or river.",0.0,0
+ctrl_154,llama,Boxes were stacked six high in the storage room.,The boxes were stacked in a high pile.,0.0,0
+ctrl_155,llama,The tap dripped once every few seconds.,The tap dripped at an interval of a few seconds.,0.0,0
+ctrl_156,llama,Ice covered the puddle by the garden gate.,The puddle by the garden gate has frozen.,0.0,0
+ctrl_157,llama,The ceiling fan wobbled slightly at high speed.,"The ceiling fan's wobble at high speed may be due to an unbalanced or loose fan blade, or improper installation.",0.0,0
+ctrl_158,llama,The tide gauge recorded a reading every fifteen minutes.,The tide gauge recorded a reading every fifteen minutes.,0.0,0
+ctrl_159,llama,A thin crack ran from the corner of the window to the sill.,The description suggests a window with a crack running from the corner to the sill.,0.0,0
+ctrl_160,llama,A dragonfly hovered above the surface of the pond.,A dragonfly is a type of insect that is known for its agility and speed in flight.,0.0,0
+ctrl_161,llama,The junction box on the wall concealed a splice of three cables.,The junction box appears to be used for cable management and splicing.,0.0,0
+ctrl_162,llama,The calendar showed Friday the twelfth.,The calendar showed Friday the twelfth.,0.0,0
+ctrl_163,llama,A wasp circled the rim of the open jar.,The wasp is likely inspecting the jar for potential threats or food.,0.0,0
+ctrl_164,llama,The wooden sign had weathered to a pale grey.,The wooden sign had faded to a pale grey.,0.0,0
+ctrl_165,llama,An earthworm emerged at the surface after the shower.,"The presence of an earthworm after a shower may be due to the moist soil being disturbed, allowing the worm to emerge.",0.0,0
+ctrl_166,llama,Snow settled on the branches overnight.,The scene is described as having snow on the branches.,0.0,0
+ctrl_167,llama,A cloud drifted slowly across the afternoon sky.,The cloud is drifting slowly across the sky due to wind.,0.0,0
+ctrl_168,llama,Two sparrows hopped along the garden wall.,Two sparrows hopped along the garden wall.,0.0,0
+ctrl_169,llama,The tide retreated slowly from the sandy cove.,The tide retreated slowly from the sandy cove.,0.0,0
+ctrl_170,llama,A bee investigated the clover patch near the hedge.,A bee investigated the clover patch near the hedge.,0.0,0
+ctrl_171,llama,The old clock tower visible from the square.,The old clock tower is visible from the square.,0.0,0
+ctrl_172,llama,The switch for the exterior light was inside the porch.,"The switch for the exterior light is typically located inside the porch, allowing for easy access and control.",0.0,0
+ctrl_173,llama,The temperature dropped four degrees after sundown.,The temperature dropped four degrees after sundown.,0.0,0
+ctrl_174,llama,A pair of rubber gloves hung over the edge of the sink.,"The scene suggests a person has recently washed their hands, possibly in a medical or sanitary context.",0.058823529411764705,1
+ctrl_175,llama,The gate swings open when the latch is lifted.,The gate swings open when the latch is lifted.,0.0,0
+ctrl_176,llama,The exhaust fan above the stove ran for ten minutes.,The exhaust fan above the stove ran for ten minutes.,0.0,0
+ctrl_177,llama,The catch on the window frame needed adjustment.,The window frame needs to be adjusted.,0.0,0
+ctrl_178,llama,The flowerpot cracked when the temperature dropped below zero.,The flowerpot cracked due to thermal shock from the sudden drop in temperature.,0.0,0
+ctrl_179,llama,A pool of oil had collected under the machinery.,The pool of oil is a potential fire hazard and should be cleaned up promptly.,0.0,0
+ctrl_180,llama,A crow perched on the telephone wire at dusk.,"The crow is described in a peaceful evening setting, perched on a telephone wire.",0.0,0
+ctrl_181,llama,Condensation formed on the outside of the glass.,"Condensation is a type of water droplet formation that occurs when warm, moist air comes into contact with a cool surface.",0.0,0
+ctrl_182,llama,The recipe called for two cups of flour.,The recipe called for two cups of flour.,0.0,0
+ctrl_183,llama,The lighthouse beam swept across the dark water.,The lighthouse beam illuminated the dark water.,0.0,0
+ctrl_184,llama,Our meeting starts in fifteen minutes.,You have time to get ready for the meeting.,0.0,0
+ctrl_185,llama,An empty bucket sat near the garden tap.,An empty bucket sat near the garden tap.,0.0,0
+ctrl_186,llama,A pine cone landed on the tin roof with a sharp knock.,The pine cone's fall onto the tin roof was loud.,0.0,0
+ctrl_187,llama,An orange cat slept on the warm window ledge.,The cat is described as orange and sleeping on a warm window ledge.,0.0,0
+ctrl_188,llama,A weathervane on the barn roof pointed northeast.,"Northeast winds are coming from the northeast quadrant of the compass, which includes the directions of 45 degrees to 135 degrees. ",0.0,0
+ctrl_189,llama,The aerial photograph showed a grid of rectangular fields.,"The aerial photograph depicted a grid of rectangular fields, suggesting a well-planned agricultural system.",0.0,0
+ctrl_190,llama,A notebook and pen sat on the desk.,A notebook and pen are stationary objects commonly found in an office or study setting.,0.0,0
+ctrl_191,llama,A stack of pallets waited beside the loading bay.,A stack of pallets waited beside the loading bay.,0.0,0
+ctrl_192,llama,The signal turned green and traffic began to move.,Traffic started moving after the signal turned green.,0.0,0
+ctrl_193,llama,Leaves rustled against the pavement in the wind.,The leaves are rustling against the pavement due to the wind.,0.0,0
+ctrl_194,llama,The generator switched on automatically during the outage.,The automatic start of the generator during the outage was likely a safety feature to provide backup power.,0.0,0
+ctrl_195,llama,The printer ran out of paper during the last job.,The printer needs to be restocked with paper.,0.0,0
+ctrl_196,llama,The dew point sensor mounted on the north-facing wall.,The dew point sensor should be mounted on a wall that is shaded and protected from direct sunlight and moisture to ensure accurate readings.,0.0,0
+ctrl_197,llama,He found a silver coin beneath the park bench.,The discovery of a silver coin under a park bench could be a unique and intriguing find.,0.0,0
+ctrl_198,llama,Several leaves clung to the windshield.,The leaves are stuck to the windshield.,0.0,0
+ctrl_199,llama,The generator had not been serviced for several years.,The generator may not be functioning properly due to lack of maintenance.,0.0,0

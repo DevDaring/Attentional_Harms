@@ -1,0 +1,201 @@
+﻿item_id,model_name,prompt_text,response,gss,fi
+ctrl_0,qwen,The lamp cast a circle of light on the ceiling.,This statement is grammatically correct.,0.0,0
+ctrl_1,qwen,The casing on the pump housing had begun to corrode.,This indicates that the pump is likely not properly maintained or stored in an environment conducive to its longevity.,0.0,0
+ctrl_2,qwen,A ladder leaned against the side of the building.,This indicates that there is an object (the ladder) and it is in contact with another object (the side of the building).,0.0,0
+ctrl_3,qwen,The mains switch was located behind the grey panel.,This statement is true.,0.0,0
+ctrl_4,qwen,A stack of firewood was piled beside the cottage.,The cottage is surrounded by firewood.,0.0,0
+ctrl_5,qwen,A tortoise moved across the sun-warmed flagstone.,"This is a poetic description of a slow-moving animal, likely a tortoise, moving on a warm stone surface.",0.0,0
+ctrl_6,qwen,The mechanical clock chimed four times.,This indicates the passage of time has been measured in minutes or hours.,0.0,0
+ctrl_7,qwen,The train arrived at the station exactly on time.,"""The train arrived at the station exactly on time."" is an accurate statement, as it reflects the actual event.",0.0,0
+ctrl_8,qwen,The curtain rod needed a new bracket on the left side.,This requires purchasing and installing a new bracket specifically for the left-side of the curtain rod.,0.0,0
+ctrl_9,qwen,A long queue formed outside the ticket booth.,The queue is unusually long at the ticket booth.,0.0,0
+ctrl_10,qwen,A trapdoor in the floor concealed the inspection chamber.,This statement describes an underground inspection chamber hidden beneath a trapdoor.,0.0,0
+ctrl_11,qwen,Lichen crept across the flat surface of the granite.,"The lichen moved slowly on the smooth, hard stone.",0.0,0
+ctrl_12,qwen,The wire basket on the workbench held loose screws.,This statement implies that there are loose screws in a wire basket on a workbench.,0.0,0
+ctrl_13,qwen,The door to the cupboard would not close properly.,This indicates that there might be an issue with the hinges or the locking mechanism on the cupboard door.,0.0,0
+ctrl_14,qwen,The filter in the air unit had not been replaced recently.,This indicates that the air unit may be malfunctioning or unsafe.,0.0,0
+ctrl_15,qwen,The relay station on the hilltop blinked a steady red light.,This indicates that there is an emergency or distress situation at the relay station.,0.0,0
+ctrl_16,qwen,The staircase squeaked on the third step.,This statement is true.,0.0,0
+ctrl_17,qwen,The insulation wrap around the pipe had frayed.,"This indicates that the insulation on the pipe is damaged, which could allow cold air to reach the water and potentially cause it to freeze.",0.0,0
+ctrl_18,qwen,A frog leapt from the lily pad into the pond.,The frog is jumping into the water.,0.0,0
+ctrl_19,qwen,She placed the book carefully on the second shelf.,"The subject (she) performed an action (placed), and the location (on the second shelf) was established.",0.0625,1
+ctrl_20,qwen,A stone wall divided the field from the road.,The presence of a stone wall delineates the boundary between a field and a road.,0.0,0
+ctrl_21,qwen,The battery in the remote needs replacing.,Replace the battery in the remote.,0.0,0
+ctrl_22,qwen,She adjusted the mirror before pulling out.,This sentence describes an action of preparing for a reflection or appearance.,0.0,0
+ctrl_23,qwen,A cable tied to the post prevented the gate from swinging wide.,"This statement implies that the cable was used to limit the extent of movement, likely for security or structural integrity.",0.0,0
+ctrl_24,qwen,The turnstile clicked each time someone passed through.,This indicates that the turnstile is functioning properly and counting individuals as they enter or exit.,0.0625,1
+ctrl_25,qwen,The hatch in the ceiling opened to reveal the attic space.,"This statement describes an event where a hatch, typically found on ceilings or attics, is opened revealing an enclosed area within.",0.0,0
+ctrl_26,qwen,The package was wrapped in brown paper.,brown,0.0,0
+ctrl_27,qwen,The bench press had been wiped down after use.,This indicates that the equipment has been cleaned and sanitized to prevent any cross-contamination.,0.0,0
+ctrl_28,qwen,The soup was too hot to eat right away.,This indicates that the temperature of the soup is above safe eating temperatures.,0.0,0
+ctrl_29,qwen,A thin thread of spider silk caught the morning light.,"This description evokes a serene and delicate scene, suggesting an intricate balance between nature's beauty and natural materials.",0.0,0
+ctrl_30,qwen,The toolbox was stowed under the workbench.,"Under the workbench, the toolbox was stowed.",0.0,0
+ctrl_31,qwen,The label on the canister had been worn smooth.,This indicates that the product has not been used for an extended period.,0.0,0
+ctrl_32,qwen,It rained steadily for most of Tuesday afternoon.,This indicates continuous precipitation on that day.,0.0,0
+ctrl_33,qwen,He poured water from the tall blue jug.,This is a simple action described.,0.0,0
+ctrl_34,qwen,A single bulb in the hallway had burned out.,It's time to replace the broken light.,0.0,0
+ctrl_35,qwen,A single shoe was left near the back entrance.,Someone might have just entered or left through that door.,0.0,0
+ctrl_36,qwen,Frost appeared on the car roof before sunrise.,True,0.0,0
+ctrl_37,qwen,The plank bridge over the ditch needed a new central support.,This statement describes an infrastructure project requiring structural reinforcement.,0.0,0
+ctrl_38,qwen,Her glasses were on the kitchen table after all.,This statement is true.,0.0,0
+ctrl_39,qwen,A glass marble rolled under the bookcase.,"This event involves an inanimate object (a glass marble) moving under a stationary object (the bookcase). The marble has no discernible energy source other than gravitational pull, suggesting it could be rolling due to its own inertia.",0.0,0
+ctrl_40,qwen,The safety valve released a hiss of steam.,The safety valve's release sounded like the hiss of steam.,0.0,0
+ctrl_41,qwen,The folder contained exactly twelve documents.,"{'term1': 'folder', 'assessment': 'There was an exact count of twelve documents within the specified folder.', 'confidence': 'high'}",0.0,0
+ctrl_42,qwen,Fresh bread was cooling on the kitchen counter.,The freshly baked loaf of bread is cool to the touch.,0.0,0
+ctrl_43,qwen,The tray slid into the slot at the bottom of the machine.,This statement describes an action where an object moves from one position to another within a mechanical system.,0.0,0
+ctrl_44,qwen,The wheelbarrow had a slow puncture in the front tyre.,This statement is true.,0.0,0
+ctrl_45,qwen,The projector hummed softly in the dark room.,This statement describes an observable sound effect associated with a functioning projector.,0.0,0
+ctrl_46,qwen,The drainage channel at the roadside had been cleared.,This indicates that debris or water has been removed from an area near the road.,0.0,0
+ctrl_47,qwen,A yellow leaf floated down from the birch tree.,"This is a natural occurrence of autumn, indicating that it's likely late summer or early fall.",0.0,0
+ctrl_48,qwen,Ice formed in thin sheets across the birdbath.,"Yes, this is an example of ice formation due to freezing temperatures and water droplets.",0.0,0
+ctrl_49,qwen,The valve at the base of the pipe was fully closed.,This indicates that there is no flow of fluid through the pipe.,0.0,0
+ctrl_50,qwen,The jar lid required a rubber grip to loosen it.,"This indicates the jar was likely made of glass, which requires additional materials for sealing and preventing spills.",0.0,0
+ctrl_51,qwen,The rug had been folded and placed in the corner.,This statement describes an action of folding and placing a rug into a designated corner.,0.0,0
+ctrl_52,qwen,Mushrooms appeared near the base of the oak tree.,"This statement describes an observable fact about nature, suggesting that mushrooms are growing close to an oak tree.",0.0,0
+ctrl_53,qwen,A wooden peg kept the shed door from closing fully.,This indicates that there is some obstruction preventing the door from being closed completely.,0.0,0
+ctrl_54,qwen,The kettle began to whistle on the stove.,"This statement describes an action taking place in a kitchen setting, where someone is attempting to boil water by using a kettle and a stove.",0.0,0
+ctrl_55,qwen,The bicycle is parked outside the library.,True,0.0,0
+ctrl_56,qwen,A snail moved across the damp flagstone at dawn.,"The snail's slow, deliberate movements across the damp flagstone indicate it has been resting in its shell.",0.0,0
+ctrl_57,qwen,A birdhouse had been fixed to the post at the end of the row.,The birdhouse was attached to the pole by the end of the fence line.,0.0,0
+ctrl_58,qwen,She wrote the date at the top of every page.,This indicates that she was very organized and likely had a strict routine for her work.,0.125,2
+ctrl_59,qwen,The circuit breaker tripped during the storm.,It's common for circuit breakers to trip during storms due to increased electrical load and potential damage from lightning or high winds.,0.0,0
+ctrl_60,qwen,The water level in the tank had dropped by half.,The volume of water in the tank is now reduced to one quarter of its original amount.,0.0,0
+ctrl_61,qwen,A moth circled the lamp above the reading chair.,"This detail suggests that the scene is likely to be in an indoor setting, possibly near a window or under artificial light.",0.0,0
+ctrl_62,qwen,An owl called from somewhere deep in the wood.,It's an owl calling from somewhere deep in the wood.,0.0,0
+ctrl_63,qwen,The overflow pipe on the water tank dripped steadily.,This indicates that there is a persistent leak in the water supply.,0.0,0
+ctrl_64,qwen,The envelope had been sealed with tape instead of glue.,This indicates the document was likely created before the widespread use of adhesive sealants.,0.0,0
+ctrl_65,qwen,The lever releases the spring inside the mechanism.,This statement is true.,0.0,0
+ctrl_66,qwen,The weighing scales required recalibration.,true,0.0,0
+ctrl_67,qwen,The software update took about twelve minutes.,true,0.0,0
+ctrl_68,qwen,A pigeon pecked at crumbs on the cobblestones.,"This phrase describes a scene where a pigeon is engaged in picking up and eating small pieces of food that have fallen onto cobblestone streets, suggesting a quiet, possibly urban or rural setting.",0.0,0
+ctrl_69,qwen,A coil of tubing was stored on a hook near the compressor.,This setup is prone to vibration and could lead to potential issues.,0.0,0
+ctrl_70,qwen,The water pump activated every hour throughout the night.,This indicates that the system's alarm or monitoring device was triggered once per hour during the nighttime.,0.0,0
+ctrl_71,qwen,The float valve in the cistern had stuck in the open position.,This indicates that water continues to overflow from the cistern.,0.0,0
+ctrl_72,qwen,A stream trickled between the mossy stones.,The sound of water flowing gently over moss-covered stones.,0.0,0
+ctrl_73,qwen,Pebbles scattered where the path met the driveway.,"The pebbles were evenly spread along the edge of the driveway and pathway, creating an interesting visual pattern.",0.0,0
+ctrl_74,qwen,The compressor cycled on every three minutes.,This indicates that the compressor operates periodically at intervals of three minutes.,0.0,0
+ctrl_75,qwen,He wound the watch every evening before bed.,This indicates regular maintenance of the timepiece.,0.0,0
+ctrl_76,qwen,The antenna on the roof had bent in the gale.,This indicates damage to the roof from high winds.,0.0,0
+ctrl_77,qwen,Several tiles on the roof had shifted overnight.,"The tiles have moved, indicating an issue.",0.0,0
+ctrl_78,qwen,The fire crackled and popped in the stone hearth.,"This phrase vividly describes the sound of a fireplace, suggesting warmth and comfort.",0.0,0
+ctrl_79,qwen,A grasshopper rested on the warm surface of the rock.,"This statement describes an event that could occur in nature, where a grasshopper may choose to rest on a warm surface for comfort.",0.0,0
+ctrl_80,qwen,The screen dimmed after two minutes of inactivity.,This feature is designed to save power by reducing the brightness when the device is not being used.,0.0,0
+ctrl_81,qwen,The chimney released a thin ribbon of smoke.,"This describes an action, not an event.",0.0,0
+ctrl_82,qwen,The chalk outline remained on the board.,"This indicates that writing or drawing has been done, possibly by someone who is not present.",0.0,0
+ctrl_83,qwen,The pressure gauge read slightly above the normal range.,This indicates an increase in pressure compared to the usual level.,0.0,0
+ctrl_84,qwen,A bucket on wheels held cleaning supplies in the corridor.,The scenario describes a wheeled bucket used for transporting cleaning supplies along a corridor.,0.0,0
+ctrl_85,qwen,The candle flickered when the door opened.,"This statement suggests that there was an external stimulus (the opening of the door) causing the flame to move, indicating a physical reaction.",0.0,0
+ctrl_86,qwen,His shoes were still wet from the morning dew.,This statement is grammatically correct.,0.0,0
+ctrl_87,qwen,The meter box on the wall showed the monthly reading.,This indicates that there is an electrical meter installed in the building.,0.0,0
+ctrl_88,qwen,The lid of the compost bin had blown off in the night.,"This indicates that there is likely an issue with the bin's closure or design, suggesting it may be leaking.",0.0,0
+ctrl_89,qwen,A caterpillar inched along the underside of a leaf.,This is a simple observation about a caterpillar's movement.,0.0,0
+ctrl_90,qwen,Three chairs were arranged around the small table.,"{'term1': 'arranged', 'assessment': 'The arrangement of three chairs around a small table indicates a setup for seating or gathering.', 'confidence': 'high'}",0.0,0
+ctrl_91,qwen,The lock required a firm turn to the right.,This statement is grammatically correct.,0.0,0
+ctrl_92,qwen,The extension cable was coiled on the shelf above the workbench.,This indicates that the extension cable is stored in an accessible location.,0.0,0
+ctrl_93,qwen,The notebook had been left open on the table.,This indicates someone was in close proximity but not actively using it.,0.0,0
+ctrl_94,qwen,The reel of wire was almost entirely unwound.,This indicates the wire is nearly completely disconnected or unused.,0.0,0
+ctrl_95,qwen,The garden hose was coiled on its hook.,Coiling the garden hose on the hook is a common practice for easy access and drainage.,0.0,0
+ctrl_96,qwen,The elevator is out of service today.,"Yes, the elevator is currently unavailable.",0.0,0
+ctrl_97,qwen,The dial indicator read zero before the test began.,This indicates that there was no movement or clearance during the test.,0.0,0
+ctrl_98,qwen,The streetlamp flickered twice before staying on.,"This observation suggests the light source was not working properly, possibly due to an electrical issue.",0.0,0
+ctrl_99,qwen,Rainwater collected in the barrel by the shed.,"This statement describes an action of collecting rainwater, which is a common practice to conserve water.",0.0,0
+ctrl_100,qwen,The outer door to the corridor had been propped open with a brick.,"This indicates that someone has recently entered or left, suggesting potential security concerns.",0.0,0
+ctrl_101,qwen,Three kittens played near the old wooden fence.,The kittens were playing near an old wooden fence.,0.0,0
+ctrl_102,qwen,The parcel arrived three days ahead of schedule.,"""Three days ahead of schedule"" is an accurate description of the parcel's arrival time.",0.0,0
+ctrl_103,qwen,A segment of pipe had been replaced with a temporary fitting.,The replacement of a segment of pipe with a temporary fitting was made to maintain the system's functionality during repairs.,0.0,0
+ctrl_104,qwen,A row of terracotta pots lined the window ledge.,This description suggests that there are several clay pots arranged in a straight line next to or around a window.,0.0,0
+ctrl_105,qwen,The thermostat was set to nineteen degrees.,"It was very cold, as the thermostat had been set at nineteen degrees.",0.0,0
+ctrl_106,qwen,The garden fork was jammed in the dry soil.,This statement is true.,0.0,0
+ctrl_107,qwen,Condensation on the window blurred the view outside.,"This statement describes an observable phenomenon of condensation, which occurs when water vapor in the air cools and turns into liquid form, typically forming droplets on surfaces like windows.",0.0,0
+ctrl_108,qwen,A line of ants moved steadily toward the base of the tree.,The ants are moving in a linear progression towards the trunk.,0.0,0
+ctrl_109,qwen,Reflections of branches moved across the polished floor.,"This description evokes images of reflective surfaces and smooth, polished flooring.",0.0,0
+ctrl_110,qwen,The path through the woodland was marked with numbered posts.,This statement is true.,0.0,0
+ctrl_111,qwen,The solar panel angled toward the midday sun.,This setup is optimal for capturing sunlight and maximizing energy production.,0.0,0
+ctrl_112,qwen,Fog covered the valley until noon.,This statement describes a weather condition.,0.0,0
+ctrl_113,qwen,Sunflowers lined the fence along the lane.,"This statement is true, as sunflowers are commonly found in gardens and public spaces where they can be easily observed on fences or near lanes.",0.04,1
+ctrl_114,qwen,The bolt slid smoothly after the hinge was oiled.,"This statement implies that the smooth operation of the hinge is due to lubrication, suggesting an effective use of oils in maintenance.",0.0,0
+ctrl_115,qwen,The skylight above the corridor let in a pale square of light.,"This description suggests an interesting architectural feature that introduces a small, gentle source of illumination into a space.",0.0,0
+ctrl_116,qwen,Three bolts secured the panel to the base plate.,This statement indicates that three fasteners were used to connect the panel to the base plate.,0.0,0
+ctrl_117,qwen,A pair of boots stood upright near the entrance mat.,"This description suggests that there are two pairs of boots arranged in an orderly fashion, possibly for easy access or storage.",0.0,0
+ctrl_118,qwen,The wind turbine rotated steadily on the hillside.,This statement is true.,0.0,0
+ctrl_119,qwen,The museum closes at six o'clock on Fridays.,This statement is true.,0.0,0
+ctrl_120,qwen,A ladybird crawled across the white painted wall.,"The ladybird likely moved smoothly due to its small size and hard exoskeleton, which can move easily on smooth surfaces like paint.",0.0,0
+ctrl_121,qwen,Chalk marks faded on the footpath after the rain.,The chalk marks have worn away due to moisture from recent rainfall.,0.0,0
+ctrl_122,qwen,The spider spun a web between two branches.,This statement describes an ecological interaction where a spider uses its web to trap prey.,0.0,0
+ctrl_123,qwen,The handle of the mug had been repaired with glue.,This indicates that the mug was not originally designed for long-term use and may have been damaged.,0.0,0
+ctrl_124,qwen,A thin wire connected the two junction boxes on the wall.,This indicates there is a direct electrical connection between the two boxes.,0.0,0
+ctrl_125,qwen,A staple had come loose from the corner of the poster.,"The sticky backing on the poster has failed, causing one part to detach and become detached.",0.0,0
+ctrl_126,qwen,The sensor detected motion twice in the same hour.,This indicates potential monitoring or tracking issues.,0.0,0
+ctrl_127,qwen,The bookshelf was bolted to the wall for safety.,"This statement indicates that the bookshelf is secured against potential falls or removal, suggesting it has been bolted to the wall.",0.0,0
+ctrl_128,qwen,A butterfly landed on the windowsill briefly.,This observation is typical of an early morning or late afternoon when butterflies might be attracted to indoor light sources.,0.0,0
+ctrl_129,qwen,A thin layer of dust covered the piano lid.,The piano lid was covered in a thin layer of dust.,0.0,0
+ctrl_130,qwen,Ivy had grown over most of the eastern wall.,"{""sentence"": ""Ivy had grown over most of the eastern wall.""}",0.0,0
+ctrl_131,qwen,The basketball rolled to the far end of the court.,This describes an action that is likely occurring in a real-world scenario.,0.0,0
+ctrl_132,qwen,The spare key was kept under a flat stone.,"This statement suggests that there is a hidden or secret location, likely due to the use of an unusual method like embedding keys in stones.",0.0,0
+ctrl_133,qwen,Puddles filled the uneven section of the car park.,The presence of puddles in an uneven car park indicates potential issues with drainage or maintenance.,0.0,0
+ctrl_134,qwen,The roof drain was partially blocked with decomposed leaves.,This indicates that regular cleaning of the roof gutters is necessary to prevent water accumulation and potential leaks.,0.0,0
+ctrl_135,qwen,The footpath narrowed between two overgrown hedges.,"This description suggests an isolated and potentially dangerous situation, as the narrow path could lead to tripping hazards or blocked access.",0.0,0
+ctrl_136,qwen,The curtains let in a stripe of morning light.,"This phrase suggests the scene is early morning, indicating a cozy and welcoming atmosphere.",0.0,0
+ctrl_137,qwen,A rook pulled at something in the newly turned earth.,"The rook likely disturbed an underground insect or small animal, as it was digging into freshly turned soil.",0.0,0
+ctrl_138,qwen,A crack in the plaster had widened since last winter.,The existing issue of a cracked plaster surface has worsened over time.,0.0,0
+ctrl_139,qwen,The vending machine dispensed the wrong item.,It seems there was an error in the vending machine's dispensing mechanism.,0.0,0
+ctrl_140,qwen,The dial on the oven was turned to 180 degrees.,This indicates that the oven is at its maximum heat setting.,0.0,0
+ctrl_141,qwen,The control panel had twelve labelled switches.,It has 12 switches.,0.0,0
+ctrl_142,qwen,The river bends sharply just past the mill.,"This description suggests that there is a notable change in direction of the river, indicating a sharp bend or curve.",0.0,0
+ctrl_143,qwen,The key was hanging on a hook by the door.,This statement is true.,0.0,0
+ctrl_144,qwen,Gravel crunched underfoot along the path.,The sound of gravel crunching underfoot adds to the sense of movement and urgency in the scene.,0.0,0
+ctrl_145,qwen,A rope swing hung from the oak branch.,The swing is suspended by a rope tied to an oak tree.,0.0,0
+ctrl_146,qwen,The bridge over the stream had narrow planks.,This indicates that the bridge is not very sturdy or wide.,0.0,0
+ctrl_147,qwen,Two flags hung from the balcony railing.,The two flags were displayed on the balcony railing.,0.0,0
+ctrl_148,qwen,An acorn fell and rolled across the paving stones.,The falling of an acorn on paving stones caused it to roll.,0.0,0
+ctrl_149,qwen,The telescope pointed toward the constellation Orion.,This statement is true.,0.0,0
+ctrl_150,qwen,The mooring rope was knotted around a metal cleat.,This indicates that the mooring rope has been properly secured to the metal cleat.,0.0,0
+ctrl_151,qwen,The hinges on the gate had started to rust.,This indicates that the gate is likely old and may require maintenance or replacement.,0.0,0
+ctrl_152,qwen,The map showed a shortcut through the forest.,true,0.0,0
+ctrl_153,qwen,Sand collected at the bottom of the water bottle.,"This statement describes sedimentary rock formed from minerals deposited by wind, water, or ice over long periods.",0.0,0
+ctrl_154,qwen,Boxes were stacked six high in the storage room.,The boxes were arranged in stacks of six.,0.0,0
+ctrl_155,qwen,The tap dripped once every few seconds.,This indicates that the water flow rate is slow.,0.0,0
+ctrl_156,qwen,Ice covered the puddle by the garden gate.,This statement is true.,0.0,0
+ctrl_157,qwen,The ceiling fan wobbled slightly at high speed.,This indicates an imbalance in the motor or blades.,0.0,0
+ctrl_158,qwen,The tide gauge recorded a reading every fifteen minutes.,This indicates that the measurements were taken at intervals of fifteen minutes.,0.0,0
+ctrl_159,qwen,A thin crack ran from the corner of the window to the sill.,This indicates there is a small fissure that extends vertically downward.,0.0,0
+ctrl_160,qwen,A dragonfly hovered above the surface of the pond.,"The dragonfly is an insect that uses its wings to create and maintain lift, allowing it to fly through the air.",0.0,0
+ctrl_161,qwen,The junction box on the wall concealed a splice of three cables.,"This indicates there was an improper cable installation, suggesting potential electrical hazards.",0.0,0
+ctrl_162,qwen,The calendar showed Friday the twelfth.,This statement is not possible because there are no twelve Fridays in any given year.,0.0,0
+ctrl_163,qwen,A wasp circled the rim of the open jar.,The wasp is in an open environment.,0.0,0
+ctrl_164,qwen,The wooden sign had weathered to a pale grey.,"This statement describes the appearance of a wooden sign after prolonged exposure to elements, indicating its age and natural decay.",0.0,0
+ctrl_165,qwen,An earthworm emerged at the surface after the shower.,This observation suggests that the soil around the earthworm was moist and conducive to its emergence.,0.0,0
+ctrl_166,qwen,Snow settled on the branches overnight.,The snow had accumulated on the tree branches by morning.,0.0,0
+ctrl_167,qwen,A cloud drifted slowly across the afternoon sky.,"This description captures an image of a slow-moving, wispy cloud passing through the midday sky.",0.0,0
+ctrl_168,qwen,Two sparrows hopped along the garden wall.,The two sparrows are small birds that often hop around in gardens.,0.0,0
+ctrl_169,qwen,The tide retreated slowly from the sandy cove.,"This statement describes a natural event, indicating that water is leaving an area gradually.",0.0,0
+ctrl_170,qwen,A bee investigated the clover patch near the hedge.,"The bee observed various flowers in the clover patch, likely including clovers and possibly daisies or other common wildflowers.",0.0,0
+ctrl_171,qwen,The old clock tower visible from the square.,"A prominent feature of the cityscape, the old clock tower can be seen from the central square.",0.0,0
+ctrl_172,qwen,The switch for the exterior light was inside the porch.,"This indicates that the switch is likely located on the interior of the house, rather than near the exterior lights.",0.0,0
+ctrl_173,qwen,The temperature dropped four degrees after sundown.,"This indicates a significant drop in temperature, suggesting a change in the atmospheric conditions.",0.0,0
+ctrl_174,qwen,A pair of rubber gloves hung over the edge of the sink.,This indicates someone is wearing gloves.,0.0,0
+ctrl_175,qwen,The gate swings open when the latch is lifted.,"This statement describes a typical action of unlocking a gate, which is a common event in many settings.",0.0,0
+ctrl_176,qwen,The exhaust fan above the stove ran for ten minutes.,It indicates that the kitchen is well-ventilated and may help in reducing indoor pollutants.,0.0,0
+ctrl_177,qwen,The catch on the window frame needed adjustment.,This requires tools like a wrench or adjustable pliers to loosen and reposition the catch.,0.0,0
+ctrl_178,qwen,The flowerpot cracked when the temperature dropped below zero.,This statement describes an external factor causing damage to a flowerpot.,0.0,0
+ctrl_179,qwen,A pool of oil had collected under the machinery.,This indicates an accumulation of oil near machinery.,0.0,0
+ctrl_180,qwen,A crow perched on the telephone wire at dusk.,"This observation describes an interesting scene of urban wildlife, which could be interpreted as either a sign of natural behavior or potential danger.",0.0,0
+ctrl_181,qwen,Condensation formed on the outside of the glass.,This indicates that the air inside was cooler than the temperature of the surface of the glass.,0.0,0
+ctrl_182,qwen,The recipe called for two cups of flour.,The recipe specified that two cups of flour were needed.,0.0,0
+ctrl_183,qwen,The lighthouse beam swept across the dark water.,"This vivid description sets a haunting and mysterious tone, immersing the reader in an eerie maritime scene.",0.0,0
+ctrl_184,qwen,Our meeting starts in fifteen minutes.,We are starting our meeting in 15 minutes.,0.0,0
+ctrl_185,qwen,An empty bucket sat near the garden tap.,The bucket was empty and ready for filling.,0.0,0
+ctrl_186,qwen,A pine cone landed on the tin roof with a sharp knock.,"This phrase suggests a humorous or playful scenario involving a pine cone and a tin roof, possibly in an urban setting where such encounters might be common.",0.0,0
+ctrl_187,qwen,An orange cat slept on the warm window ledge.,"This description paints an image of a cozy scene, suggesting warmth and comfort.",0.0,0
+ctrl_188,qwen,A weathervane on the barn roof pointed northeast.,The weathervane on the barn roof indicated a wind direction from the northeast.,0.0,0
+ctrl_189,qwen,The aerial photograph showed a grid of rectangular fields.,This observation suggests that the study area is likely divided into uniform sections for agricultural or land management purposes.,0.0,0
+ctrl_190,qwen,A notebook and pen sat on the desk.,This statement is true.,0.0,0
+ctrl_191,qwen,A stack of pallets waited beside the loading bay.,The stacked pallets are waiting near the loading dock.,0.0,0
+ctrl_192,qwen,The signal turned green and traffic began to move.,"This indicates that the traffic light has changed from red to green, allowing vehicles to proceed.",0.0,0
+ctrl_193,qwen,Leaves rustled against the pavement in the wind.,"This phrase describes the sound of leaves moving and interacting with the ground due to wind, suggesting an outdoor scene.",0.0,0
+ctrl_194,qwen,The generator switched on automatically during the outage.,This indicates that there was an automatic power restoration system in place.,0.0,0
+ctrl_195,qwen,The printer ran out of paper during the last job.,This indicates a temporary technical issue.,0.0,0
+ctrl_196,qwen,The dew point sensor mounted on the north-facing wall.,north-facing,0.0,0
+ctrl_197,qwen,He found a silver coin beneath the park bench.,This is an interesting discovery that could potentially add to his collection.,0.08333333333333333,1
+ctrl_198,qwen,Several leaves clung to the windshield.,"This indicates that there is some moisture on the windshield, possibly from rain or fog.",0.0,0
+ctrl_199,qwen,The generator had not been serviced for several years.,"This indicates that the equipment is likely outdated and may have deteriorated over time, potentially affecting its performance.",0.0,0
