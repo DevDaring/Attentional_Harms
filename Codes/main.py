@@ -183,10 +183,12 @@ def phase_neutralize(crows_df, indian_df):
     logger.info(f"  Neutralized {len(sent_more_neutralized) + len(sent_less_neutralized)} CrowS-Pairs sentences")
 
     # Build Indian-BhED prompt list
+    # Use case-insensitive column lookup (dataset has 'Sentence' with capital S)
+    _col_lower_map = {c.lower(): c for c in indian_df.columns}
     prompt_col = None
-    for col in ("sentence", "prompt", "text", "sent"):
-        if col in indian_df.columns:
-            prompt_col = col
+    for search in ("sentence", "prompt", "text", "sent", "stereotype"):
+        if search in _col_lower_map:
+            prompt_col = _col_lower_map[search]
             break
     indian_prompts = []
     if prompt_col:
@@ -196,6 +198,8 @@ def phase_neutralize(crows_df, indian_df):
                 "prompt_text": str(row[prompt_col]),
                 "category":   str(row.get("category", "unknown")),
             })
+    else:
+        print(f"  WARNING: No prompt column found in Indian-BhED. Columns: {list(indian_df.columns)}")
     logger.info(f"  Built {len(indian_prompts)} Indian-BhED prompts")
     return sent_more_neutralized, sent_less_neutralized, indian_prompts
 
@@ -248,6 +252,9 @@ def _make_generative_prompts(honest_df, indian_prompts) -> list[dict]:
         template = row.get("template_masked", row.get("template", ""))
         if isinstance(template, str) and "[MASK]" in template:
             text = template.replace("[MASK]", "someone")
+        elif isinstance(template, str) and "[M]" in template:
+            # HONEST dataset uses [M] as mask token
+            text = template.replace("[M]", "someone")
         else:
             text = str(template)
         prompts.append({
@@ -349,7 +356,9 @@ def main():
 
     model_names = list(config.MODELS.keys())  # 6 models
 
+    all_study1_dfs = []
     all_study3_dfs = []
+    all_study4_dfs = []
 
     for model_name in model_names:
         logger.info(f"--- Processing model: {model_name} ---")
@@ -357,7 +366,10 @@ def main():
 
         # Phase 6 — Study 1 SAR
         from studies import run_study_crows_pairs
-        run_study_crows_pairs(model_name, checkpoint_dir=results_dir, **kwargs)
+        s1 = run_study_crows_pairs(model_name, checkpoint_dir=results_dir, **kwargs)
+        if s1 is not None:
+            s1["model_name"] = model_name
+            all_study1_dfs.append(s1)
 
         # Phase 7 — Study 2 SS
         from studies import run_study_stereoset
@@ -373,9 +385,12 @@ def main():
 
         # Phase 9 — Study 4 multi-turn
         from studies import run_study_multi_turn
-        run_study_multi_turn(
+        s4 = run_study_multi_turn(
             model_name, multiturn_prompts, checkpoint_dir=results_dir, **kwargs
         )
+        if s4 is not None:
+            s4["model_name"] = model_name
+            all_study4_dfs.append(s4)
 
         # Phase 10 — Study 5 control
         from studies import run_control_study
@@ -383,7 +398,9 @@ def main():
 
     # Phase 11 — LLM judge ensemble on Study 3 responses
     import pandas as pd
+    combined_s1 = pd.concat(all_study1_dfs, ignore_index=True) if all_study1_dfs else pd.DataFrame()
     combined_s3 = pd.concat(all_study3_dfs, ignore_index=True) if all_study3_dfs else pd.DataFrame()
+    combined_s4 = pd.concat(all_study4_dfs, ignore_index=True) if all_study4_dfs else pd.DataFrame()
 
     if not combined_s3.empty and "rep_response" in combined_s3.columns:
         logger.info("=== Phase 11: LLM judge ensemble ===")
@@ -416,7 +433,7 @@ def main():
     try:
         logger.info("=== Phase 13: Figures ===")
         from figures import generate_all_figures
-        generate_all_figures(combined_s3)
+        generate_all_figures(combined_s3, study4_df=combined_s4, study1_df=combined_s1)
     except Exception as exc:
         logger.warning(f"Figure generation failed (non-fatal): {exc}")
 

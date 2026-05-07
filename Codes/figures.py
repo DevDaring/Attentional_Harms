@@ -35,12 +35,7 @@ PALETTE = "colorblind"
 
 # Full language display names (§4.4)
 LANG_ORDER = ["English", "Hindi", "Bengali"]
-MODEL_ORDER = [
-    "Gemini 2.5 Flash",
-    "DeepSeek V3",
-    "LLaMA 3.3 70B Instruct",
-    "Gemma 2 27B IT",
-]
+MODEL_ORDER = ["deepseek", "gpt4o_mini", "grok", "qwen", "gemma3", "llama"]
 CATEGORIES = ["caste", "gender", "religion", "race"]
 
 
@@ -71,6 +66,10 @@ def figure1_gss_heatmap(study3_df: pd.DataFrame) -> None:
     """
     if study3_df.empty or "gss" not in study3_df.columns:
         logger.warning("Figure 1: no data available.")
+        return
+
+    if "language" not in study3_df.columns:
+        logger.warning("Figure 1: no language column â€” cross-lingual heatmap not available.")
         return
 
     df = study3_df.copy()
@@ -124,48 +123,52 @@ def figure1_gss_heatmap(study3_df: pd.DataFrame) -> None:
 
 def figure2_var_bars(study3_df: pd.DataFrame) -> None:
     """VAR rate grouped bar chart: x=model, hue=language."""
-    if study3_df.empty or "var" not in study3_df.columns:
-        logger.warning("Figure 2: no data available.")
+    # Main.py writes judge output as 'hurtful_label' (VAR = Volunteered Attribute Reference)
+    var_col = "hurtful_label" if "hurtful_label" in study3_df.columns else "var"
+    if study3_df.empty or var_col not in study3_df.columns:
+        logger.warning("Figure 2: no VAR/hurtful_label data available.")
         return
 
     df = study3_df.copy()
-    agg = df.groupby(["model_name", "language"])["var"].mean().reset_index()
-    agg["var_pct"] = agg["var"] * 100
+    # English-only study — group by model only, no language dimension
+    agg = df.groupby("model_name")[var_col].mean().reset_index()
+    agg["var_pct"] = agg[var_col] * 100
 
     model_order = _filter_order(agg["model_name"], MODEL_ORDER)
-    lang_order = _filter_order(agg["language"], LANG_ORDER)
+    if not model_order:
+        model_order = sorted(agg["model_name"].dropna().unique().tolist())
+    if not model_order:
+        logger.warning("Figure 2: no model data after filtering.")
+        return
 
     fig, ax = plt.subplots(figsize=(10, 5))
     x = np.arange(len(model_order))
-    width = 0.25
-    colors = sns.color_palette(PALETTE, len(lang_order))
+    colors = sns.color_palette(PALETTE, len(model_order))
 
-    for i, (lang, color) in enumerate(zip(lang_order, colors)):
-        lang_vals = [
-            agg[(agg["model_name"] == m) & (agg["language"] == lang)]["var_pct"].values
-            for m in model_order
-        ]
-        vals = [v[0] if len(v) > 0 else 0.0 for v in lang_vals]
-        bars = ax.bar(x + i * width, vals, width, label=lang, color=color, edgecolor="white")
-        for bar, val in zip(bars, vals):
-            if val > 1:
-                ax.text(
-                    bar.get_x() + bar.get_width() / 2,
-                    bar.get_height() + 0.5,
-                    f"{val:.1f}",
-                    ha="center", va="bottom", fontsize=7,
-                )
+    vals = [
+        float(agg[agg["model_name"] == m]["var_pct"].values[0])
+        if len(agg[agg["model_name"] == m]) > 0 else 0.0
+        for m in model_order
+    ]
+    bars = ax.bar(x, vals, 0.6, color=colors, edgecolor="white")
+    for bar, val in zip(bars, vals):
+        if val > 1:
+            ax.text(
+                bar.get_x() + bar.get_width() / 2,
+                bar.get_height() + 0.5,
+                f"{val:.1f}",
+                ha="center", va="bottom", fontsize=8,
+            )
 
     ax.set_xlabel("Model", fontsize=11)
     ax.set_ylabel("Volunteered Attribute Rate (%)", fontsize=11)
     ax.set_title(
-        "Figure 2: Volunteered Attribute Rate (VAR) by Model and Language\n"
-        "(TACL — Attentional Salience Study)",
+        "Figure 2: Volunteered Attribute Rate (VAR) by Model\n"
+        "(TACL — Attentional Salience Study — English)",
         fontsize=11,
     )
-    ax.set_xticks(x + width * (len(lang_order) - 1) / 2)
+    ax.set_xticks(x)
     ax.set_xticklabels(model_order, rotation=20, ha="right", fontsize=9)
-    ax.legend(title="Language", fontsize=9)
     ax.yaxis.set_major_formatter(ticker.FormatStrFormatter("%.1f%%"))
     plt.tight_layout()
     _save_figure(fig, "figure2_var_bars")
@@ -177,54 +180,62 @@ def figure2_var_bars(study3_df: pd.DataFrame) -> None:
 
 def figure3_accumulation(study4_df: pd.DataFrame) -> None:
     """
-    Line plot: GSS over turns (1→3) per model, with 95% CI shading.
-    One line per model, x-axis = turn number, y-axis = mean GSS.
+    Line plot: GSS over turns (Turn 1 → Turn 2) per model, with 95% CI shading.
+    Reshapes study4 wide format (gss_turn1, gss_last) into long format internally.
     """
-    if study4_df.empty or "gss" not in study4_df.columns:
+    if study4_df.empty or "gss_turn1" not in study4_df.columns:
         logger.warning("Figure 3: no multi-turn data available.")
         return
 
+    # Reshape wide → long: gss_turn1=turn 1, gss_last=turn 2
     df = study4_df.copy()
+    long_rows = []
+    for _, row in df.iterrows():
+        for turn_num, col in [(1, "gss_turn1"), (2, "gss_last")]:
+            val = row.get(col, float("nan"))
+            if pd.notna(val):
+                long_rows.append({
+                    "model_name":  row["model_name"],
+                    "item_id":     row.get("item_id", ""),
+                    "category":    row.get("category", "unknown"),
+                    "turn_number": turn_num,
+                    "gss":         float(val),
+                })
+    if not long_rows:
+        logger.warning("Figure 3: all turn GSS values are NaN.")
+        return
+    df = pd.DataFrame(long_rows)
+
     model_order = _filter_order(df["model_name"], MODEL_ORDER)
-    lang_order = _filter_order(df["language"], LANG_ORDER)
+    if not model_order:
+        logger.warning("Figure 3: no recognised models in study4 data.")
+        return
 
-    n_langs = len(lang_order)
-    fig, axes = plt.subplots(1, n_langs, figsize=(5 * n_langs, 4), sharey=True)
-    if n_langs == 1:
-        axes = [axes]
-
+    fig, ax = plt.subplots(figsize=(7, 5))
     colors = sns.color_palette(PALETTE, len(model_order))
 
-    for ax, lang in zip(axes, lang_order):
-        lang_df = df[df["language"] == lang]
-        for model_name, color in zip(model_order, colors):
-            model_df = lang_df[lang_df["model_name"] == model_name]
-            turn_stats = (
-                model_df.groupby("turn_number")["gss"]
-                .agg(["mean", "std", "count"])
-                .reset_index()
-            )
-            if turn_stats.empty:
-                continue
-            turns = turn_stats["turn_number"].values
-            means = turn_stats["mean"].values
-            sems = turn_stats["std"].values / np.sqrt(np.maximum(turn_stats["count"].values, 1))
-            # 95% CI ≈ 1.96 × SEM
-            ci = 1.96 * sems
-            ax.plot(turns, means, marker="o", label=model_name, color=color, linewidth=2)
-            ax.fill_between(turns, means - ci, means + ci, alpha=0.15, color=color)
+    for model_name, color in zip(model_order, colors):
+        model_df = df[df["model_name"] == model_name]
+        turn_stats = (
+            model_df.groupby("turn_number")["gss"]
+            .agg(["mean", "std", "count"])
+            .reset_index()
+        )
+        if turn_stats.empty:
+            continue
+        turns = turn_stats["turn_number"].values
+        means = turn_stats["mean"].values
+        sems = turn_stats["std"].values / np.sqrt(np.maximum(turn_stats["count"].values, 1))
+        ci = 1.96 * sems
+        ax.plot(turns, means, marker="o", label=model_name, color=color, linewidth=2)
+        ax.fill_between(turns, means - ci, means + ci, alpha=0.15, color=color)
 
-        ax.set_title(f"{lang}", fontsize=11, fontweight="bold")
-        ax.set_xlabel("Conversation Turn", fontsize=10)
-        ax.set_ylabel("Mean GSS (%)" if ax == axes[0] else "", fontsize=10)
-        ax.set_xticks([1, 2, 3])
-        ax.set_xticklabels(["Turn 1", "Turn 2", "Turn 3"])
-        ax.grid(True, alpha=0.3)
-
-    handles, labels = axes[0].get_legend_handles_labels()
-    if handles:
-        fig.legend(handles, labels, title="Model", loc="upper right",
-                   bbox_to_anchor=(1.02, 0.95), fontsize=8)
+    ax.set_xlabel("Conversation Turn", fontsize=10)
+    ax.set_ylabel("Mean GSS (%)", fontsize=10)
+    ax.set_xticks([1, 2])
+    ax.set_xticklabels(["Turn 1 (neutral)", "Turn 2 (identity prompt)"])
+    ax.grid(True, alpha=0.3)
+    ax.legend(title="Model", fontsize=8, bbox_to_anchor=(1.01, 1), loc="upper left")
 
     fig.suptitle(
         "Figure 3: GSS Accumulation Across Conversation Turns (±95% CI)\n"
@@ -246,6 +257,10 @@ def figure4_crosslingual_scatter(study3_df: pd.DataFrame) -> None:
     """
     if study3_df.empty or "gss" not in study3_df.columns:
         logger.warning("Figure 4: no data available.")
+        return
+
+    if "language" not in study3_df.columns or "prompt_id" not in study3_df.columns:
+        logger.warning("Figure 4: no cross-lingual or prompt_id data â€” scatter not available.")
         return
 
     df = study3_df.groupby(["prompt_id", "model_name", "language"])["gss"].mean().reset_index()
@@ -316,8 +331,8 @@ def figure5_rad_scatter(
     gss_ranks = {m: i + 1 for i, m in enumerate(gss_means.index)}
 
     # Compute SAR rank if study1 available
-    if study1_df is not None and "is_stereo_preferred" in study1_df.columns:
-        sar_means = study1_df.groupby("model_name")["is_stereo_preferred"].mean().sort_values()
+    if study1_df is not None and "prefers_stereo" in study1_df.columns:
+        sar_means = study1_df.groupby("model_name")["prefers_stereo"].mean().sort_values()
         sar_ranks = {m: i + 1 for i, m in enumerate(sar_means.index)}
     else:
         sar_ranks = gss_ranks  # fallback
@@ -377,6 +392,11 @@ def generate_all_figures(
         study4_df = pd.DataFrame()
     if study1_df is None:
         study1_df = pd.DataFrame()
+
+    # Alias gss_mean -> gss for figure functions (studies.py outputs gss_mean)
+    if "gss" not in study3_df.columns and "gss_mean" in study3_df.columns:
+        study3_df = study3_df.copy()
+        study3_df["gss"] = study3_df["gss_mean"]
 
     figure1_gss_heatmap(study3_df)
     figure2_var_bars(study3_df)

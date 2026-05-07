@@ -20,6 +20,7 @@ On 429 the key is marked exhausted and the rotator advances to the next key befo
 each retry. If all 4 attempts fail the wrapper returns {success: False}.
 """
 
+import ast
 import gc
 import json
 import logging
@@ -35,6 +36,11 @@ import config
 from config import KeyRotator
 
 logger = logging.getLogger(__name__)
+
+# Ensure HuggingFace models are cached on persistent volume (not ephemeral /root/)
+_HF_HOME = os.environ.get("HF_HOME", "/workspace/hf_cache")
+os.environ["HF_HOME"] = _HF_HOME
+os.makedirs(_HF_HOME, exist_ok=True)
 
 # Maximum number of retry attempts after the initial call (total attempts = _MAX_RETRIES + 1)
 _MAX_RETRIES = 3
@@ -71,6 +77,13 @@ def _parse_json_response(text: str) -> dict[str, Any]:
             return json.loads(text[start:end], strict=False)
         except json.JSONDecodeError:
             pass
+    # Step 4: ast.literal_eval for Python-style dicts (e.g. Qwen single-quote output)
+    try:
+        result = ast.literal_eval(text.strip())
+        if isinstance(result, dict):
+            return result
+    except Exception:
+        pass
     return {"error": "JSON_PARSE_FAILED", "raw": text[:500]}
 
 
@@ -499,6 +512,16 @@ def call_local_model(
     # Fall back to raw text so success=True whenever the model produced output.
     if "error" in parsed and raw_text.strip():
         parsed = {"response": raw_text.strip()}
+    elif "response" not in parsed and "error" not in parsed:
+        # Model returned a valid dict without a "response" key (e.g. Qwen job dict).
+        # Concatenate all string/list values into a single prose response.
+        text_values = []
+        for v in parsed.values():
+            if isinstance(v, str):
+                text_values.append(v)
+            elif isinstance(v, list):
+                text_values.extend(str(x) for x in v if x)
+        parsed["response"] = " ".join(text_values) if text_values else raw_text.strip()
     return {
         "success": "error" not in parsed,
         "text": _extract_response_text(parsed),
