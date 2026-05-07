@@ -174,12 +174,14 @@ def run_qwen72b_study4(
     """
     if results_dir is None:
         results_dir = config.RESULTS_DIR
+    from Re_Run.config_rerun import MODELS as RERUN_MODELS
     return run_study4_expanded(
         model_name=QWEN72B_KEY,
         generative_prompts=generative_prompts,
         model_obj=None,
         tokenizer_obj=None,
         results_dir=results_dir,
+        model_cfg=RERUN_MODELS.get(QWEN72B_KEY),
     )
 
 

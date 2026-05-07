@@ -105,8 +105,12 @@ def phase0_validate(results_dir: str) -> None:
 
     # API keys
     try:
-        config.validate_keys()
-        logger.info("Phase 0: API keys OK")
+        key_status = config.validate_keys()
+        failed_keys = [k for k, v in key_status.items() if not v]
+        if failed_keys:
+            errors.append(f"Missing API keys: {', '.join(failed_keys)}")
+        else:
+            logger.info("Phase 0: API keys OK")
     except Exception as exc:
         errors.append(f"API key validation: {exc}")
 
@@ -194,12 +198,14 @@ def phase2_study4_expanded(
 
     # 2A: API models concurrently
     def _run_api_study4(model_name):
+        from Re_Run.config_rerun import MODELS as RERUN_MODELS
         return model_name, run_study4_expanded(
             model_name=model_name,
             generative_prompts=generative_prompts,
             model_obj=None,
             tokenizer_obj=None,
             results_dir=results_dir,
+            model_cfg=RERUN_MODELS.get(model_name),
         )
 
     with ThreadPoolExecutor(max_workers=len(api_to_run)) as executor:
@@ -230,6 +236,7 @@ def phase2_study4_expanded(
                 model_obj=model_obj,
                 tokenizer_obj=tokenizer_obj,
                 results_dir=results_dir,
+                model_cfg=None,  # local models are in config.MODELS
             )
             dfs[model_name] = df
             logger.info(f"Phase 2B [{model_name}]: Study4 complete  n={len(df)}")

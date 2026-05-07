@@ -153,6 +153,7 @@ def run_study4_expanded(
     model_obj=None,
     tokenizer_obj=None,
     results_dir: str = None,
+    model_cfg: dict = None,
 ) -> pd.DataFrame:
     """
     Run expanded Study 4 for one model.
@@ -201,6 +202,7 @@ def run_study4_expanded(
                     seed=config.GENERATION_SEEDS[0],
                     model_obj=model_obj,
                     tokenizer_obj=tokenizer_obj,
+                    model_cfg=model_cfg,
                 )
                 resp = result.get("text", "")
             except Exception as exc:

@@ -595,12 +595,15 @@ def call_model(
     tokenizer_obj=None,
     key_rotator: Optional[KeyRotator] = None,
     temperature: float = 0.7,
+    model_cfg: Optional[dict] = None,
 ) -> dict[str, Any]:
     """
     Route a call to the correct provider based on model config.
     For local models, model_obj and tokenizer_obj must be provided.
+    model_cfg: optional dict to override config.MODELS lookup (use for Re_Run
+               models like qwen72b that are not in the base config.MODELS dict).
     """
-    cfg = config.MODELS.get(model_name, {})
+    cfg = model_cfg if model_cfg is not None else config.MODELS.get(model_name, {})
     provider = cfg.get("provider", "")
     model_type = cfg.get("type", "")
 
