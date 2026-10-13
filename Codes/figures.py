@@ -237,11 +237,7 @@ def figure3_accumulation(study4_df: pd.DataFrame) -> None:
     ax.grid(True, alpha=0.3)
     ax.legend(title="Model", fontsize=8, bbox_to_anchor=(1.01, 1), loc="upper left")
 
-    fig.suptitle(
-        "Figure 3: GSS Accumulation Across Conversation Turns (±95% CI)\n"
-        "(Multi-Turn Attentional Salience — TACL)",
-        fontsize=11,
-    )
+
     plt.tight_layout()
     _save_figure(fig, "figure3_accumulation")
 
@@ -318,60 +314,108 @@ def figure5_rad_scatter(
 ) -> None:
     """
     RAD (Representational-Attentional Divergence) scatter.
-    x-axis: model rank by SAR (traditional bias benchmark)
-    y-axis: model rank by GSS (attentional salience)
+    x-axis: representational rank (SAR for open-weight; gen_sar for API models)
+    y-axis: attentional rank by macro-average GSS (mean of per-category means)
+    rank 1 = least biased/least salient; rank 7 = most biased/most salient.
     Each point is a model; distance from diagonal = RAD.
     """
     if study3_df.empty:
         logger.warning("Figure 5: no data.")
         return
 
-    # Compute mean GSS rank
-    gss_means = study3_df.groupby("model_name")["gss"].mean().sort_values()
-    gss_ranks = {m: i + 1 for i, m in enumerate(gss_means.index)}
+    # Display name mapping: abbreviation → publication-quality label
+    NAME_MAP = {
+        "qwen":      "Qwen2.5-1.5B",
+        "gemma3":    "Gemma-2-2B",
+        "llama":     "Llama-3.1-8B",
+        "deepseek":  "DeepSeek V3",
+        "gpt4o_mini": "GPT-4o Mini",
+        "grok":      "Grok-3 Mini",
+        "qwen72b":   "Qwen2.5-72B",
+    }
+    # Models that use gen_sar (API-only; prefers_stereo=-1 sentinel)
+    API_MODELS = {"deepseek", "gpt4o_mini", "grok", "qwen72b"}
 
-    # Compute SAR rank if study1 available
-    if study1_df is not None and "prefers_stereo" in study1_df.columns:
-        sar_means = study1_df.groupby("model_name")["prefers_stereo"].mean().sort_values()
-        sar_ranks = {m: i + 1 for i, m in enumerate(sar_means.index)}
+    # Attentional rank: macro-average GSS (mean of per-category category means)
+    gss_col = "gss" if "gss" in study3_df.columns else "gss_mean"
+    if "category" in study3_df.columns:
+        macro_gss = (
+            study3_df.groupby(["model_name", "category"])[gss_col]
+            .mean()
+            .reset_index()
+            .groupby("model_name")[gss_col]
+            .mean()
+            .sort_values()
+        )
     else:
-        sar_ranks = gss_ranks  # fallback
+        macro_gss = study3_df.groupby("model_name")[gss_col].mean().sort_values()
+    gss_ranks = {m: i + 1 for i, m in enumerate(macro_gss.index)}
 
-    models = list(set(gss_ranks.keys()) & set(sar_ranks.keys()))
+    # Representational rank: SAR for open-weight, gen_sar for API
+    rep_scores: dict = {}
+    if study1_df is not None and not study1_df.empty:
+        for model, grp in study1_df.groupby("model_name"):
+            if model in API_MODELS:
+                if "gen_sar" in grp.columns:
+                    val = grp["gen_sar"].dropna().mean()
+                    if pd.notna(val):
+                        rep_scores[model] = val
+            else:
+                if "prefers_stereo" in grp.columns:
+                    valid = grp[grp["prefers_stereo"] >= 0]["prefers_stereo"]
+                    val = valid.mean()
+                    if pd.notna(val):
+                        rep_scores[model] = val
+
+    models = sorted(set(gss_ranks.keys()) & set(rep_scores.keys()))
     if not models:
         logger.warning("Figure 5: no overlapping models between Study 1 and Study 3.")
         return
 
-    x_vals = [sar_ranks[m] for m in models]
+    rep_sorted = sorted(models, key=lambda m: rep_scores[m])
+    rep_ranks = {m: i + 1 for i, m in enumerate(rep_sorted)}
+
+    x_vals = [rep_ranks[m] for m in models]
     y_vals = [gss_ranks[m] for m in models]
-    rads = [abs(gss_ranks[m] - sar_ranks[m]) for m in models]
+    rads = [abs(gss_ranks[m] - rep_ranks[m]) for m in models]
+    labels = [NAME_MAP.get(m, m) for m in models]
+    n = max(len(models), 7)
 
-    fig, ax = plt.subplots(figsize=(6, 6))
+    fig, ax = plt.subplots(figsize=(7, 7))
     colors = sns.color_palette(PALETTE, len(models))
-    n = len(models)
-    ax.plot([0.5, n + 0.5], [0.5, n + 0.5], "k--", alpha=0.3, linewidth=1, label="RAD=0 (agreement)")
+    ax.plot([0.5, n + 0.5], [0.5, n + 0.5], "k--", alpha=0.4, linewidth=1.2,
+            label="RAD = 0 (perfect agreement)")
 
-    for x, y, rad, model_name, color in zip(x_vals, y_vals, rads, models, colors):
-        ax.scatter(x, y, s=200, color=color, zorder=5)
+    # Annotation offsets to reduce overlap
+    OFFSETS = {
+        "Qwen2.5-1.5B":  (0.15,  0.15),
+        "Gemma-2-2B":    (0.15, -0.3),
+        "Llama-3.1-8B":  (0.15,  0.15),
+        "DeepSeek V3":   (0.15,  0.15),
+        "GPT-4o Mini":   (-1.0,  0.15),
+        "Grok-3 Mini":   (0.15, -0.3),
+        "Qwen2.5-72B":   (-1.1,  0.15),
+    }
+    for x, y, rad, label, color in zip(x_vals, y_vals, rads, labels, colors):
+        ax.scatter(x, y, s=220, color=color, zorder=5, edgecolors="white", linewidths=0.5)
+        dx, dy = OFFSETS.get(label, (0.15, 0.15))
         ax.annotate(
-            f"{model_name}\n(RAD={rad:.1f})",
+            f"{label}\n(RAD={rad})",
             xy=(x, y),
-            xytext=(x + 0.1, y + 0.1),
-            fontsize=8,
+            xytext=(x + dx, y + dy),
+            fontsize=8.5,
             arrowprops=dict(arrowstyle="-", alpha=0.5),
         )
 
-    ax.set_xlabel("Representational Rank (by SAR — CrowS-Pairs)", fontsize=11)
-    ax.set_ylabel("Attentional Rank (by GSS — Generative Salience)", fontsize=11)
-    ax.set_title(
-        "Figure 5: Representational-Attentional Divergence (RAD)\n"
-        "(Model ranking disagreement between traditional and novel metrics — TACL)",
-        fontsize=10,
-    )
-    ax.set_xlim(0.3, n + 0.7)
-    ax.set_ylim(0.3, n + 0.7)
+    ax.set_xlabel("Representational Rank (SAR / gen\\_sar; rank 1 = least stereotyped)",
+                  fontsize=10)
+    ax.set_ylabel("Attentional Rank (macro-avg GSS; rank 1 = least salient)", fontsize=10)
+    ax.set_xlim(0.2, n + 0.8)
+    ax.set_ylim(0.2, n + 0.8)
+    ax.set_xticks(range(1, n + 1))
+    ax.set_yticks(range(1, n + 1))
     ax.grid(True, alpha=0.3)
-    ax.legend(fontsize=8)
+    ax.legend(fontsize=9)
     plt.tight_layout()
     _save_figure(fig, "figure5_rad")
 

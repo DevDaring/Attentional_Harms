@@ -1,0 +1,5 @@
+Hi Koushik,
+
+I have completed Step6_Comparators_R2.xlsx and attached the workbook. The batch took about 6 hours of work today. One repeated difficulty was checking cases where the response dropped identity details needed for the request.
+
+R2

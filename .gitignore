@@ -1,2 +1,19 @@
 Codes/.env
-akash/last_dseq.txt
+.env
+*.env
+__pycache__/
+*.pyc
+Submission/
+vm_audit/
+akash/
+.github/
+
+# Large output files (exceed GitHub 100MB limit)
+Codes/v2/outputs/judgments.jsonl
+Codes/v2/outputs/generations.jsonl
+Codes/v2/manifests/ledger.jsonl
+Codes/v2/outputs/scores.jsonl
+Codes/v2/outputs/scores.csv
+Codes/v2/outputs/archive/
+Codes/v2/outputs/run.log
+Codes/v2/outputs/smoke.jsonl

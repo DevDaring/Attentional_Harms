@@ -1,0 +1,3 @@
+Hi Koushik,
+Please find the completed Step3_Main_2 workbook attached. The batch took about 8.5 hours of work in total, spread over 1 days. The one difficulty that kept coming up was choosing between required and useful_optional for mentions that genuinely helped the answer but were not strictly needed.
+R1

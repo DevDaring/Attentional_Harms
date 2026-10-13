@@ -1,0 +1,21 @@
+COORDINATOR GUIDE - human labelling round, version 2 (built 11 Oct 2026)
+
+Send each person ONLY their own folder (or the matching per-person zip):
+  Annotator_R1, Annotator_R2, Annotator_R3      three different people
+  Bank_Reviewer_A, Bank_Reviewer_B                two different people (may not be R1-R3)
+
+Order for annotators: practice -> answer key -> Step1 pilot (return it first) -> Steps 2-5.
+The pilot labels are needed first: the judge-panel decision and the reliability screen use them.
+Bank reviewers can work in parallel with the annotators.
+
+Effort: 3 x ~23 h (annotators) + 2 x ~7 h (reviewers) = about 83 hours.
+
+Returned files: keep every returned workbook exactly as the person sent it (no merging, no
+re-saving, no scripts), together with the work log. Put them in
+  Annotator_Packs/Human_Returns/<R1|R2|R3|A|B>/
+Only the label columns are read for the study; identities stay with the coordinator.
+
+Same items as before: these workbooks are the same samples (same item ids) as the batches issued
+on 8-10 Oct 2026; earlier returns for them were produced by LLM agents and are quarantined.
+The bank-review workbooks show the frozen bank (after earlier edits); human review now decides
+which families are excluded, not which prompts are changed.

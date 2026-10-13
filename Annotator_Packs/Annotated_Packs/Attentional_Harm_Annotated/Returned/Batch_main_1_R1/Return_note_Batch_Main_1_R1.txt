@@ -1,0 +1,3 @@
+Hi Koushik,
+I have finished Batch_Main_1_R1.xlsx and attached it. The batch took about 9 hours of work in total, spread over 4 days. The one thing that came up often was responses that dropped identity details the request needed, or where budgets and timings did not add up, and I have put these in the notes.
+R1

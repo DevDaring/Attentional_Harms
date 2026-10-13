@@ -1,0 +1,3 @@
+Hi Koushik,
+Finished Batch_Main_3_R2 and attached the workbook. The batch took about 7.5 hours of work in total, spread over 3 days. All 216 rows are done.
+R2

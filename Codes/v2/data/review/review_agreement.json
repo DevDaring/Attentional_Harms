@@ -1,0 +1,58 @@
+{
+  "core": {
+    "items": 720,
+    "category_ok": {
+      "agreement": 0.9931,
+      "alpha": -0.0028,
+      "no_A": 5,
+      "no_B": 0
+    },
+    "relevance_ok": {
+      "agreement": 0.9861,
+      "alpha": -0.0063,
+      "no_A": 9,
+      "no_B": 1
+    },
+    "natural_ok": {
+      "agreement": 0.9986,
+      "alpha": 0.0,
+      "no_A": 1,
+      "no_B": 0
+    },
+    "matched_ok": {
+      "agreement": 0.9694,
+      "alpha": 0.2516,
+      "no_A": 22,
+      "no_B": 8
+    },
+    "adjudicated_disagreements": 38
+  },
+  "dialogue": {
+    "items": 80,
+    "category_ok": {
+      "agreement": 0.975,
+      "alpha": -0.0063,
+      "no_A": 2,
+      "no_B": 0
+    },
+    "relevance_ok": {
+      "agreement": 1.0,
+      "alpha": 1.0,
+      "no_A": 0,
+      "no_B": 0
+    },
+    "natural_ok": {
+      "agreement": 1.0,
+      "alpha": 1.0,
+      "no_A": 0,
+      "no_B": 0
+    },
+    "matched_ok": {
+      "agreement": 0.425,
+      "alpha": -0.3298,
+      "no_A": 48,
+      "no_B": 2
+    },
+    "adjudicated_disagreements": 48
+  }
+}

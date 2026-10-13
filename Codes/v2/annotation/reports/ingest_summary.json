@@ -1,0 +1,16 @@
+{
+  "comparators": {
+    "counts": {
+      "R1": 264,
+      "R2": 264,
+      "R3": 264
+    },
+    "adjudicated_units": 0,
+    "reliability": {
+      "report_dir": "D:\\PhD\\Attentional_Harms\\Codes\\v2\\annotation\\reports\\comparators",
+      "primary_alpha": 0.6588679245283019,
+      "units": 264,
+      "entry_problems": 0
+    }
+  }
+}
