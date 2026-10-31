@@ -1,0 +1,4 @@
+arm,method,required_sets,required_families,arm_label_counts,eligible_pairs_original_rule,eligible_families,losses,gains,both_not_retained,loss_rate_cp95,loss_rate_one_sided_upper95,arm_na_or_unresolved_where_B0_retained,losses_if_all_arm_na_counted_as_loss,B0_retained_pairs,losses_any_rater_no_rule
+GEN_REVISE,Generic revise-for-quality,15,13,"{'yes': 12, 'na': 3}",11,10,0,0,0,"[0.0, 0.28491415291815436]",0.23840419038085256,1,1,12,0
+REGEN,No-op regeneration,15,13,"{'yes': 11, 'na': 4}",11,10,0,0,0,"[0.0, 0.28491415291815436]",0.23840419038085256,1,1,12,0
+CI_REASON,Contextual-integrity reasoning (CI-CoT),15,13,"{'yes': 10, 'na': 3, 'no': 2}",11,10,2,0,0,"[0.02283119829995966, 0.5177558523601726]",0.47008679927917624,1,3,12,2

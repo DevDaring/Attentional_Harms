@@ -222,7 +222,9 @@ def cmd_generate(ctx: Ctx) -> None:
         splits = {"pilot"}
     else:
         splits = {"dev", "locked"} if ctx.args.split == "all" else {ctx.args.split}
-        if "locked" in splits or exp == "dialogue":
+        if exp == "followup_matched":
+            _gate(ctx, G.require_followup_exploratory)
+        elif "locked" in splits or exp == "dialogue":
             _gate(ctx, G.require_protocol_frozen)
         mode = "draft" if ctx.dry else "freeze"
         rep = B.validate_bank(bank, mode, splits) if exp != "dialogue" else B.validate_dialogue(dia, mode)
@@ -598,7 +600,7 @@ def main(argv=None) -> None:
     s = sub.add_parser("reliability"); s.add_argument("--batch", required=True); s.set_defaults(func=cmd_reliability)
     sub.add_parser("judge-calibrate").set_defaults(func=cmd_judge_calibrate)
     sub.add_parser("audit").set_defaults(func=cmd_audit)
-    s = sub.add_parser("gate"); s.add_argument("--set", choices=["protocol_frozen", "evaluator_validated"])
+    s = sub.add_parser("gate"); s.add_argument("--set", choices=["protocol_frozen", "evaluator_validated", "followup_exploratory"])
     s.add_argument("--note"); s.add_argument("--override", action="store_true")
     s.add_argument("--show", action="store_true"); s.set_defaults(func=cmd_gate)
     sub.add_parser("judge").set_defaults(func=cmd_judge)

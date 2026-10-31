@@ -22,7 +22,7 @@ import config_v2 as C
 from bank import account_for_family
 
 EXPERIMENTS = ["pilot", "single", "intervention", "paraphrase", "schema", "dialogue", "comparators",
-               "rgr_ro"]
+               "rgr_ro", "followup_matched"]
 
 
 @dataclass
@@ -109,6 +109,24 @@ def build_units(experiment: str, bank: pd.DataFrame, dialogue: pd.DataFrame | No
                 u.kind = "method"
                 u.system_id = method
                 units.append(u)
+        return units
+    if experiment == "followup_matched":
+        # Follow-up exploratory arms (remedies.FOLLOWUP) on exactly the 44 human-labelled locked
+        # matched sets (same family, condition, model and draw as the labelled B0 outputs).
+        from remedies import FOLLOWUP
+        keys = pd.concat([pd.read_csv(C.ANNOTATION_DIR / "keys" / f"main_{i}_key.csv", dtype=str)
+                          for i in (1, 2, 3)])
+        sets = keys[(keys["sample"] == "intervention") & (keys["arm"] == "B0")]
+        want = {(r.family_id, r.condition, r.model_key, int(float(r.draw))) for r in sets.itertuples()}
+        arms = [a for a in FOLLOWUP if a != "CI_REASON" or __import__("remedies").CI_REASON_SYSTEM]
+        units = []
+        rows = bank[bank["family_id"].isin({w[0] for w in want}) & (bank["split"] == "locked")]
+        for method in arms:
+            for u in _single_units(rows, "comparators", models or C.GENERATORS, [method]):
+                c = u.coords
+                if (c["family_id"], c["condition"], u.model_key, int(c["draw"])) in want:
+                    u.kind, u.system_id = "method", method
+                    units.append(u)
         return units
     if experiment == "rgr_ro":
         # Post-hoc remove-only RGR: development intervention families only (never locked).

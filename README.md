@@ -1,130 +1,125 @@
-# Attentional Harms: Measuring Task-Relevant Identity Use in LLM-Generated Text
+# IRIS: Evaluating Identity Relevance and Information Retention in Generated Documents
 
-This project measures **attentional harms** — unnecessary identity mentions in LLM-generated responses — and evaluates inference-time remedies. Unlike lexical counting approaches, the framework judges each identity mention against the current request: a mention of caste in a scholarship notice is required, but the same detail in a rent receipt is unnecessary.
+Code, prompts, model outputs, de-identified human labels and analysis scripts for the manuscript
+*IRIS: Evaluating Identity Relevance and Information Retention in Generated Documents*
+(Koushik Deb, IIIT Kalyani; Abhinaba Basu, IIIT Allahabad).
+
+Language-model assistants draft notices, e-mails and summaries that other people read. Such a
+document sometimes needs a person's gender, caste, religion or ethnicity, and sometimes exposes it
+without purpose. **IRIS** (Identity Relevance and Information-retention Scoring) evaluates both
+directions: it labels whether each identity mention is supported by the conversation, whether the
+current request needs it, and whether identity that the task requires is kept.
 
 ---
 
-## Overview
+## Main results
 
-The study defines task-relevant identity use for a response in its conversation history and measures it together with retention of required identity and task adequacy. It proposes **Relevance-Gated Revision (RGR)**, a remedy that edits only the identity terms the current request does not need.
+All results use human labels from three annotators over six hosted models.
 
-### Key Findings
+| Result | Value |
+|---|---|
+| Incidental identity detail, matched replication (160 pairs, 80 families) | 10/160 incidental vs 0/160 absent answers with an unnecessary mention; +6.2 points, bootstrap CI [+2.5, +10.0] |
+| First representative sample (240 responses) | 13.2% incidental vs 1.0% absent; difference 12.2 points |
+| Retention losses under remedies (92 required-condition pairs, nine remedies) | 13 losses; 12 coincided with a fall in identity-term count |
+| Implication prompting / critique-and-revise | lost required identity in 6 of 9 and 3 of 10 eligible pairs |
+| Automated judge ensemble (360 responses) | precision 0.55, recall 0.43, against targets 0.80 and 0.70 |
 
-- **Incidental identity in the request raised unnecessary mentions** from 1.0% to 13.2% (difference 12.2 percentage points, 95% CI 5.2-19.8), robust across rater and leave-one-out checks (+9.6 to +16.3 pp).
-- **None of nine inference-time remedies reduced unnecessary mentions** on human-labelled matched sets.
-- **Two published rewriting methods lost required identity** in 3/10 and 6/9 eligible pairs — a failure that term-count evaluation would score as success.
-- **Traces locate the RGR failure** in its relevance gate (17.8% misjudgement rate), not in term detection (98.4% coverage).
-- **An LLM judge ensemble did not meet pre-registered agreement targets** (P=0.55, R=0.43 vs 0.80/0.70), so all reported results use human labels.
+**Annotator agreement on the primary label** (`Codes/v2/revision/results/reliability_depth.json`):
 
-### Key Metrics
-
-| Metric | Description |
-|--------|-------------|
-| **Unnecessary mention** | Binary: least relevant identity mention rated "unnecessary" by human annotators |
-| **Retention** | Whether identity information required by the task survives the remedy |
-| **Task adequacy** | 0-2 rating of response quality for the request |
+| Batch | Responses | Krippendorff's alpha [95% CI] | Gwet's AC1 | Positive agreement | Negative agreement |
+|---|---:|---|---:|---:|---:|
+| Main + development | 876 | 0.85 [0.78, 0.89] | 0.98 | 0.87 | 0.99 |
+| Comparator remedies | 264 | 0.66 [0.46, 0.80] | 0.96 | 0.68 | 0.98 |
+| Matched replication | 452 | 0.31 [0.17, 0.45] | 0.93 | 0.35 | 0.96 |
 
 ---
 
 ## Design
 
-- **240 prompt families** across four identity categories (gender, caste, religion, race/ethnicity) and **80 dialogue families** for multi-turn evaluation.
-- **Three task conditions** per family: absent (no identity), incidental (identity present but irrelevant), required (identity essential to the task).
-- **Six models** on Amazon Bedrock: Claude 3 Haiku, Claude 3.5 Sonnet, Llama 3.1 8B, Mistral Large 2, Nova Pro, Nova Lite.
-- **Nine remedies** tested: two instruction baselines (B1, B2), RGR, and six published methods (SI_NLI, IF_MSC, DAIQ_GUARD, REPROMPT, CAI_REVISE, SYS2_IMPL).
-- **Three human annotators**, 980 responses each, with adjudication. Krippendorff's alpha = 0.85 (pilot), 0.69-0.93 (main batches).
+- **Benchmark:** 240 prompt families of everyday drafting tasks, 60 each for gender, caste, religion and race or ethnicity, plus dialogue families. Each family has an *absent*, an *incidental* and a *required* identity variant. Families were split into 80 development and 160 locked families before any output was examined.
+- **Models:** Nova Lite, Nova Pro, Gemma 3 12B IT, Qwen3 32B, Mistral Large 3 and DeepSeek V3.2 on Amazon Bedrock (October 2026); temperature 0.7, 1,024-token limit, two draws per condition.
+- **Methods:** ordinary generation (B0) against twelve methods: two instruction baselines, six published inference-time remedies, relevance-gated revision (RGR), two controls and a contextual-integrity reasoning prompt.
+- **Labels:** support, relevance, retention, adequacy and secondary harms, labelled blind to model, method and condition. 1,652 unique responses were labelled.
+- **Statistics:** stratified family-cluster bootstrap (2,000 replicates, seed 20261008), Wilson and Newcombe score intervals, exact McNemar tests, Holm correction for the primary contrasts.
 
 ---
 
-## Repository Structure
+## Repository structure
 
 ```
-Codes/
-├── v2/                              # Main experimental pipeline
-│   ├── run_all.py                   # Single entry point
-│   ├── config_v2.py                 # Model and experiment configuration
-│   ├── generation.py                # Response generation (Bedrock)
-│   ├── remedies.py                  # B1, B2, RGR, RGR_RO, comparators
-│   ├── judges.py                    # LLM judge ensemble
-│   ├── protocol.md                  # Pre-registered analysis plan (frozen)
-│   ├── deviations_post_freeze.md    # All deviations logged
-│   ├── data/
-│   │   ├── prompt_bank.csv          # 240 prompt families
-│   │   └── dialogue_bank.csv        # 80 dialogue families
-│   ├── annotation/                  # Annotation pipeline and reports
-│   │   ├── keys/                    # Annotation keys
-│   │   ├── returned/                # Human-annotated workbooks
-│   │   └── reports/                 # Reliability and agreement reports
-│   ├── analysis/
-│   │   ├── effects.py               # Primary analysis (matched pairs, bootstrap)
-│   │   ├── robustness.py            # Sensitivity and ablation analyses
-│   │   └── latex_tables.py          # Table generation
-│   └── outputs/                     # Generated responses and analysis results
-├── main.py                          # Earlier 7-model salience pipeline
-├── figures.py                       # Figure generation
-├── requirements.txt
-└── results/                         # Earlier pipeline results
-    ├── study*_*.csv
-    ├── figures/
-    └── statistics/
-
-Annotator_Packs/                     # Annotation workbook builds and returned packs
+Codes/v2/
+├── run_all.py                 # single entry point (generate, sample, judge, analyze, tables, ...)
+├── config_v2.py               # models, settings and paths
+├── bank.py, lexicon_v2.py     # prompt bank and identity lexicon
+├── remedies.py, judges.py     # remedies (incl. RGR) and automated judges
+├── data/
+│   ├── prompt_bank.csv        # 240 prompt families (720 entries)
+│   └── dialogue_bank.csv      # dialogue families
+├── outputs/
+│   ├── generations.jsonl.gz   # every model request and response (gzip)
+│   └── judgments.jsonl.gz     # every automated-judge call (gzip)
+├── annotation/
+│   ├── reports/               # de-identified raw labels, majority and adjudicated labels, reliability, per batch
+│   └── model_panel/           # preliminary model-generated labels from development; not used in any reported result
+├── analysis/                  # agreement, bootstrap, effects, robustness, tables
+└── revision/
+    ├── make_tables.py         # regenerates every manuscript table from the result files
+    ├── reliability_depth.py   # agreement by batch: alpha intervals, AC1, specific agreement
+    ├── fu_analysis.py         # matched replication, follow-up arms, span analysis
+    ├── reanalysis.py          # re-analyses on the existing human labels
+    ├── results/               # JSON and CSV results behind the manuscript
+    ├── annotation_followup/   # follow-up annotation keys and de-identified labels
+    └── reviewer_artifact/     # self-contained archive with checksums
 ```
+
+The earlier salience pipeline (`Codes/main.py`, `Codes/results/`) is kept for reference only.
 
 ---
 
-## Quick Start
+## Reproducing the results
 
 ```bash
-# Clone
 git clone https://github.com/DevDaring/Attentional_Harms.git
 cd Attentional_Harms
+pip install -r Codes/v2/requirements_v2.txt
 
-# Install dependencies
-pip install -r Codes/requirements.txt
+# model outputs
+gunzip -k Codes/v2/outputs/generations.jsonl.gz Codes/v2/outputs/judgments.jsonl.gz
 
-# Configure API keys
-cp Codes/.env.example Codes/.env   # Edit with your Bedrock credentials
-
-# Run the full pipeline
+# tables and agreement statistics from the stored labels (no API calls needed)
 cd Codes/v2
-python run_all.py generate
-python run_all.py analyze --labels human
-python run_all.py tables
+python revision/make_tables.py
+python revision/reliability_depth.py
 ```
 
----
-
-## Earlier Salience Pipeline
-
-The `Codes/` root also contains the earlier attentional salience pipeline (`main.py`, `Re_Run/main_rerun.py`) which measures GSS, FI, VAR and multi-turn drift across 7 models. Results are in `Codes/results/`.
-
----
-
-## Configuration
-
-API keys go in `Codes/.env` (never committed):
+New generations need Amazon Bedrock access. Credentials go in `Codes/.env`, which is never
+committed:
 
 ```bash
 AWS_ACCESS_KEY=your_key
 AWS_SECRET_KEY=your_secret
 ```
 
+Then run `python run_all.py --help` in `Codes/v2` for the pipeline stages.
+
+---
+
+## Ethics
+
+Prompts were written for this study and contain no personal data; examples use synthetic people.
+Annotators were volunteers from the authors' institution, were informed about sensitive content
+and could skip any item. Annotator identities are replaced by R1-R3. Model outputs may contain
+stereotypes and are shared for evaluation only.
+
 ---
 
 ## Citation
 
 ```bibtex
-@misc{deb2026attentional,
-  title   = {When Identity Belongs in the Answer: Measuring Task-Relevant
-             Identity Use and Evaluating Inference-Time Remedies for
-             LLM-Generated Text},
-  author  = {Deb, Koushik and Sanyal, Debarshi Kumar and Mukherjee, Imon},
-  year    = {2026},
-  url     = {https://github.com/DevDaring/Attentional_Harms}
+@misc{deb2026iris,
+  title  = {{IRIS}: Evaluating Identity Relevance and Information Retention in Generated Documents},
+  author = {Deb, Koushik and Basu, Abhinaba},
+  year   = {2026},
+  url    = {https://github.com/DevDaring/Attentional_Harms}
 }
 ```
-
----
-
-*Repository: [github.com/DevDaring/Attentional_Harms](https://github.com/DevDaring/Attentional_Harms)*

@@ -1,0 +1,423 @@
+{
+  "units": 452,
+  "raters": [
+    "R1",
+    "R2",
+    "R3"
+  ],
+  "completeness": {
+    "R1": {
+      "rows": 452,
+      "duplicate_unit_ids": 0,
+      "units_missing_vs_key": 0,
+      "units_not_in_key": 0,
+      "missing_or_invalid_coded_cells": 0,
+      "missing_share_coded_cells": 0.0,
+      "missing_or_invalid_primary": 0,
+      "rows_with_consistency_problems": 0,
+      "passes_5pct_rule": true
+    },
+    "R2": {
+      "rows": 452,
+      "duplicate_unit_ids": 0,
+      "units_missing_vs_key": 0,
+      "units_not_in_key": 0,
+      "missing_or_invalid_coded_cells": 0,
+      "missing_share_coded_cells": 0.0,
+      "missing_or_invalid_primary": 0,
+      "rows_with_consistency_problems": 0,
+      "passes_5pct_rule": true
+    },
+    "R3": {
+      "rows": 452,
+      "duplicate_unit_ids": 0,
+      "units_missing_vs_key": 0,
+      "units_not_in_key": 0,
+      "missing_or_invalid_coded_cells": 0,
+      "missing_share_coded_cells": 0.0,
+      "missing_or_invalid_primary": 0,
+      "rows_with_consistency_problems": 0,
+      "passes_5pct_rule": true
+    }
+  },
+  "all_pass_5pct_rule": true,
+  "primary_alpha": 0.31112625475943223,
+  "primary_ac1": 0.9270086033918804,
+  "primary_raw_agreement": 0.9306784660766961,
+  "alpha_below_floor": true,
+  "field_reliability": {
+    "group_label_present": {
+      "n_units": 452,
+      "alpha": 0.6421654929577465,
+      "alpha_level": "nominal",
+      "raw_agreement": 0.9026548672566371,
+      "gwet_ac1": 0.8663137390805559,
+      "prevalence": {
+        "no": 0.8378,
+        "yes": 0.1622
+      }
+    },
+    "role_or_context_term_present": {
+      "n_units": 452,
+      "alpha": 0.4328187043965652,
+      "alpha_level": "nominal",
+      "raw_agreement": 0.7846607669616519,
+      "gwet_ac1": 0.6530224879200383,
+      "prevalence": {
+        "no": 0.7456,
+        "yes": 0.2544
+      }
+    },
+    "person_gendered_pronoun": {
+      "n_units": 452,
+      "alpha": 0.5181004791853849,
+      "alpha_level": "nominal",
+      "raw_agreement": 0.943952802359882,
+      "gwet_ac1": 0.9365824841234676,
+      "prevalence": {
+        "no": 0.9381,
+        "yes": 0.0619
+      }
+    },
+    "least_supported": {
+      "n_units": 452,
+      "alpha": 0.5297403981434308,
+      "alpha_level": "nominal",
+      "raw_agreement": 0.7809734513274337,
+      "gwet_ac1": 0.7521333486788779,
+      "prevalence": {
+        "entailed": 0.0243,
+        "explicit": 0.3105,
+        "na": 0.6615,
+        "unsupported": 0.0037
+      }
+    },
+    "least_relevant": {
+      "n_units": 452,
+      "alpha": 0.45770123487557257,
+      "alpha_level": "nominal",
+      "raw_agreement": 0.7205014749262537,
+      "gwet_ac1": 0.6791967997333318,
+      "prevalence": {
+        "na": 0.6615,
+        "required": 0.1866,
+        "unnecessary": 0.0531,
+        "useful_optional": 0.0988
+      }
+    },
+    "unsupported_personal_attribution": {
+      "n_units": 452,
+      "alpha": -0.002218934911242476,
+      "alpha_level": "nominal",
+      "raw_agreement": 0.9941002949852508,
+      "gwet_ac1": 0.9940828918775038,
+      "prevalence": {
+        "no": 0.9971,
+        "yes": 0.0029
+      }
+    },
+    "task_adequacy": {
+      "n_units": 452,
+      "alpha": 0.321529207651265,
+      "alpha_level": "ordinal",
+      "raw_agreement": 0.9697640117994101,
+      "gwet_ac1": NaN,
+      "prevalence": {
+        "0": 0.0037,
+        "1": 0.0184,
+        "2": 0.9779
+      }
+    },
+    "required_identity_retained": {
+      "n_units": 452,
+      "alpha": 0.30513903609950743,
+      "alpha_level": "nominal",
+      "raw_agreement": 0.7573746312684366,
+      "gwet_ac1": 0.7061021531585896,
+      "prevalence": {
+        "na": 0.7817,
+        "no": 0.0192,
+        "yes": 0.1991
+      }
+    },
+    "refusal": {
+      "n_units": 452,
+      "alpha": 1.0,
+      "alpha_level": "nominal",
+      "raw_agreement": 1.0,
+      "gwet_ac1": 1.0,
+      "prevalence": {
+        "no": 0.9978,
+        "yes": 0.0022
+      }
+    },
+    "stereotype": {
+      "n_units": 452,
+      "alpha": 1.0,
+      "alpha_level": "nominal",
+      "raw_agreement": 1.0,
+      "gwet_ac1": 1.0,
+      "prevalence": {
+        "no": 1.0
+      }
+    },
+    "derogation": {
+      "n_units": 452,
+      "alpha": 1.0,
+      "alpha_level": "nominal",
+      "raw_agreement": 1.0,
+      "gwet_ac1": 1.0,
+      "prevalence": {
+        "no": 1.0
+      }
+    },
+    "unnecessary": {
+      "n_units": 452,
+      "alpha": 0.31112625475943223,
+      "alpha_level": "nominal",
+      "raw_agreement": 0.9306784660766961,
+      "gwet_ac1": 0.9270086033918804,
+      "prevalence": {
+        "no": 0.9469,
+        "yes": 0.0531
+      }
+    }
+  },
+  "subset_reliability": {
+    "all": {
+      "all_raters": {
+        "n_units": 452,
+        "alpha": 0.31112625475943223,
+        "raw_agreement": 0.9306784660766961,
+        "gwet_ac1": 0.9270086033918804,
+        "prevalence": {
+          "no": 0.9469,
+          "yes": 0.0531
+        }
+      },
+      "without_R1": {
+        "n_units": 452,
+        "alpha": 0.39631700498359057,
+        "raw_agreement": 0.9513274336283186,
+        "gwet_ac1": 0.9492852297821774,
+        "prevalence": {
+          "no": 0.958,
+          "yes": 0.042
+        }
+      },
+      "without_R2": {
+        "n_units": 452,
+        "alpha": 0.19512195121951215,
+        "raw_agreement": 0.9269911504424779,
+        "gwet_ac1": 0.9235266145684465,
+        "prevalence": {
+          "no": 0.9524,
+          "yes": 0.0476
+        }
+      },
+      "without_R3": {
+        "n_units": 452,
+        "alpha": 0.3353151010701546,
+        "raw_agreement": 0.9137168141592921,
+        "gwet_ac1": 0.9077349447092705,
+        "prevalence": {
+          "no": 0.9303,
+          "yes": 0.0697
+        }
+      }
+    },
+    "fu_followup_arms": {
+      "all_raters": {
+        "n_units": 132,
+        "alpha": 0.3363575268817204,
+        "raw_agreement": 0.9242424242424242,
+        "gwet_ac1": 0.9196689386562804,
+        "prevalence": {
+          "no": 0.9394,
+          "yes": 0.0606
+        }
+      },
+      "without_R1": {
+        "n_units": 132,
+        "alpha": 0.378740157480315,
+        "raw_agreement": 0.9545454545454546,
+        "gwet_ac1": 0.9528262552861994,
+        "prevalence": {
+          "no": 0.9621,
+          "yes": 0.0379
+        }
+      },
+      "without_R2": {
+        "n_units": 132,
+        "alpha": 0.2046370967741935,
+        "raw_agreement": 0.9090909090909091,
+        "gwet_ac1": 0.9036027263875365,
+        "prevalence": {
+          "no": 0.9394,
+          "yes": 0.0606
+        }
+      },
+      "without_R3": {
+        "n_units": 132,
+        "alpha": 0.40721262208865505,
+        "raw_agreement": 0.9090909090909091,
+        "gwet_ac1": 0.9015721120984277,
+        "prevalence": {
+          "no": 0.9167,
+          "yes": 0.0833
+        }
+      }
+    },
+    "fu_matched_replication": {
+      "all_raters": {
+        "n_units": 320,
+        "alpha": 0.29897660818713456,
+        "raw_agreement": 0.9333333333333333,
+        "gwet_ac1": 0.9300087489063866,
+        "prevalence": {
+          "no": 0.95,
+          "yes": 0.05
+        }
+      },
+      "without_R1": {
+        "n_units": 320,
+        "alpha": 0.40336134453781514,
+        "raw_agreement": 0.95,
+        "gwet_ac1": 0.947816869827551,
+        "prevalence": {
+          "no": 0.9563,
+          "yes": 0.0437
+        }
+      },
+      "without_R2": {
+        "n_units": 320,
+        "alpha": 0.1892332789559542,
+        "raw_agreement": 0.934375,
+        "gwet_ac1": 0.9316115802355431,
+        "prevalence": {
+          "no": 0.9578,
+          "yes": 0.0422
+        }
+      },
+      "without_R3": {
+        "n_units": 320,
+        "alpha": 0.2974876827232379,
+        "raw_agreement": 0.915625,
+        "gwet_ac1": 0.9102433247368462,
+        "prevalence": {
+          "no": 0.9359,
+          "yes": 0.0641
+        }
+      }
+    }
+  },
+  "per_rater_profile": {
+    "least_relevant": {
+      "R1": {
+        "na": 312,
+        "required": 56,
+        "useful_optional": 50,
+        "unnecessary": 34
+      },
+      "R2": {
+        "na": 319,
+        "required": 68,
+        "useful_optional": 36,
+        "unnecessary": 29
+      },
+      "R3": {
+        "na": 266,
+        "required": 129,
+        "useful_optional": 48,
+        "unnecessary": 9
+      }
+    },
+    "unnecessary": {
+      "R1": {
+        "no": 418,
+        "yes": 34
+      },
+      "R2": {
+        "no": 423,
+        "yes": 29
+      },
+      "R3": {
+        "no": 443,
+        "yes": 9
+      }
+    },
+    "required_identity_retained": {
+      "R1": {
+        "na": 420,
+        "yes": 31,
+        "no": 1
+      },
+      "R2": {
+        "na": 340,
+        "yes": 95,
+        "no": 17
+      },
+      "R3": {
+        "na": 300,
+        "yes": 144,
+        "no": 8
+      }
+    },
+    "task_adequacy": {
+      "R1": {
+        "2": 450,
+        "1": 1,
+        "0": 1
+      },
+      "R2": {
+        "2": 442,
+        "1": 8,
+        "0": 2
+      },
+      "R3": {
+        "2": 434,
+        "1": 16,
+        "0": 2
+      }
+    },
+    "unsupported_personal_attribution": {
+      "R1": {
+        "no": 451,
+        "yes": 1
+      },
+      "R2": {
+        "no": 452
+      },
+      "R3": {
+        "no": 449,
+        "yes": 3
+      }
+    },
+    "least_supported": {
+      "R1": {
+        "na": 312,
+        "explicit": 138,
+        "unsupported": 2
+      },
+      "R2": {
+        "na": 319,
+        "explicit": 132,
+        "entailed": 1
+      },
+      "R3": {
+        "na": 266,
+        "explicit": 151,
+        "entailed": 32,
+        "unsupported": 3
+      }
+    }
+  },
+  "majority_primary_counts": {
+    "no": 437,
+    "yes": 15
+  },
+  "units_any_disagreement_primary": 47,
+  "units_no_majority_primary": 0,
+  "adjudication_status": "not_needed",
+  "adjudication_note": "Plan S1: no-majority items go to an author blind to condition (FU1_adjudication_pack_blind.xlsx). Until returned they are missing and are bounded in the analysis; no adjudicated value is invented."
+}

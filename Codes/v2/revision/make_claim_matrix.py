@@ -1,0 +1,70 @@
+"""revision/make_claim_matrix.py -> revision/claim_evidence_matrix.csv (review s6 item 8)."""
+import csv
+from pathlib import Path
+
+C = [
+ ("No current measure scores an identity mention against the request it serves", "Intro p.3; Table 1",
+  "literature_audit.md s2-s4", "novelty", "full-text reading of 13 papers", "-", "descriptive", "UNSUPPORTED",
+  "Contextual-integrity studies already score drafted messages for unneeded disclosure and for omitting needed information; this work applies the two-sided test to social-identity mentions."),
+ ("No remedy has been tested on whether it keeps required identity", "Intro p.3", "literature_audit.md s3",
+  "novelty", "CI-CoT, CIMemories prompts, ConfAIde CoT", "-", "descriptive", "UNSUPPORTED (bounded)",
+  "The six published bias remedies tested here had not been evaluated on retention of required identity in generated documents."),
+ ("Each annotator labelled 980 responses", "Sec 5.4; cover letter", "denominators/annotation_batches.csv",
+  "count", "keys + raw labels, 6 batches", "-", "reanalysis", "INCORRECT", "Each annotator labelled 1,200 responses (3,600 ratings)."),
+ ("Incidental identity raised unnecessary mentions from 1.0% to 13.2% (diff 12.2, CI 5.2-19.8)", "Abstract; 6.2",
+  "results/reanalysis.json prevalence", "IPW cell-mean difference", "160 responses, 12 positives; 121 families in sample",
+  "bootstrap [5.2,19.8]; Newcombe-ESS [4.2,21.4]", "original exploratory (outside Holm)", "SUPPORTED, wording",
+  "In the sampled benchmark outputs, incidental identity was associated with more unnecessary mentions (13.2% vs 1.0%; 11 vs 1 positive responses of 80)."),
+ ("Contrast rests on 14 positive labels among 360 units", "6.3", "results/reanalysis.json prevalence",
+  "count", "-", "-", "reanalysis", "INCORRECT", "The contrast rests on 12 positive responses among 160 (80 absent, 80 incidental)."),
+ ("Paired contrasts between conditions on the same prompt families", "3.2", "reanalysis.json incidental_minus_absent",
+  "design", "28 families in both conditions; 4 family-model cells", "-", "reanalysis", "INCORRECT",
+  "Absent and incidental responses were sampled independently per cell; the contrast is between conditions across the bank."),
+ ("The rise held under every check (+9.6 to +16.3)", "Abstract; 6.3", "outputs/analysis/robustness/robustness.json",
+  "sensitivity", "same 160 responses", "lowest bound +2.2", "original exploratory", "SUPPORTED", "Unchanged, labelled post hoc."),
+ ("None of nine remedies reduced unnecessary mentions", "Abstract; 6.5; Concl.", "results/remedies_unnecessary.csv",
+  "paired difference", "29 pairs, 24 families, 2 B0 positives", "all score CIs span 0", "prespecified (RGR) / secondary",
+  "OVERSTATED", "No remedy showed a statistically reliable reduction; with 2 baseline positives in 29 pairs a reduction above 6.9 points was impossible."),
+ ("Fairness instruction, moral self-correction and DAIQ produced no retention losses", "6.5",
+  "results/remedies_retention.csv", "count", "10-12 pairs", "-", "secondary", "INCORRECT",
+  "Moral self-correction lost required identity in 1 of 10 pairs; fairness instruction 0/11; DAIQ 0/12."),
+ ("Implication prompting lost required identity in 6 of 9 pairs; critique-revise 3 of 10", "Abstract; 6.5",
+  "results/remedies_retention.csv", "count", "9-10 pairs, 9-10 families", "CP upper 90%, 61%", "secondary",
+  "SUPPORTED (conservative)", "Kept; counting unresolved labels as losses gives 9/12 and 5/12."),
+ ("Retention non-inferiority at 5-point margin not established", "6.5", "reanalysis zero_loss_bounds",
+  "bound", "9-12 pairs", "zero-loss bound 22-28%", "prespecified", "SUPPORTED", "Kept, with the statement that 59 independent zero-loss pairs are needed for the bound to fall below 5%."),
+ ("A term-count score would have rated both rewriting methods as successful", "Discussion",
+  "results/lexical_vs_human_pairs.csv", "paired lexical vs human", "92 required pairs", "Wilson", "new reanalysis",
+  "NOW SUPPORTED (descriptive)", "12 of 13 retention losses coincided with a fall in identity-term count; 27% of count falls lost required identity vs 2% otherwise."),
+ ("Detector found a term in 62 of 63 positives, so detection explains at most one failure", "6.6",
+  "reanalysis.json rgr_audit", "coverage", "92 positives", "-", "reanalysis", "OVERSTATED",
+  "Response-level trigger coverage 91/92; span-level overlap with human-listed spans 84%; offending-span recall 173/213 = 81% [75, 86] (FU2, 25 Oct)."),
+ ("Gate judged incidental details required in 17.8%; restore causes RGR failure", "Abstract; 6.6; Concl.",
+  "reanalysis.json rgr_audit; followup.json S6", "trace counts; span labels", "960 locked incidental answers; 5 restore edits labelled; 5 incidental RGR positives with executed restore (FU2)",
+  "-", "original exploratory; FU2 frozen 24 Oct", "OVERSTATED", "Restore requests (17.8%) were all executed; all 3 unnecessary mentions RGR added in the labelled locked sets followed a restore. FU2: in all 5 incidental RGR positives with an executed restore, the restored detail lies inside a span marked by at least two raters. One failure mechanism, not shown to be the only cause."),
+ ("[25 Oct] The incidental contrast replicates on 160 matched pairs", "Abstract; 6.4; Concl.", "results/followup.json S1",
+  "mean paired difference (equal weight per pair)", "160 pairs, 80 locked families, 10 discordant pairs",
+  "bootstrap [2.5, 10.0]; one-sided lower +3.1; McNemar one-sided p 0.001", "prespecified (frozen 24 Oct)",
+  "SUPPORTED (direction); size depends on label rule", "+6.2 points (10/160 vs 0/160); alpha 0.31 below the 0.60 floor; all raters +1.9 (score CI spans 0), any rater +19.4."),
+ ("Judge ensemble precision 0.55, recall 0.43", "Abstract; 6.1", "reanalysis.json evaluator", "confusion",
+  "340 labelled of 360, 14 positives", "Wilson recall [0.21,0.67]", "prespecified gate", "SUPPORTED, add counts",
+  "6 TP, 5 FP, 8 FN, 321 TN; the test set had 14 positives, below the planned 50."),
+ ("No carryover effect was detected", "6.4; Concl.", "reanalysis.json dialogue", "difference", "120 responses, 1 positive",
+  "[-4.8, 0.0]; p 0.756", "prespecified primary", "OVERSTATED", "With one positive response the first-switch contrast is uninformative; 12 dialogue families also carried a bank defect."),
+ ("Protocol pre-registered", "Abstract; Sec 3, 5.5", "manifests/gates.json", "chronology", "-", "-", "-", "INACCURATE TERM",
+  "Internally frozen, timestamped protocol (SHA-256 hashes, 9 Oct 2026 11:43 UTC); no external registration."),
+ ("Single-call comparators add 1 call per answer", "Table 4, 10", "results/method_cost_v2.csv", "cost", "2,880 answers/arm",
+  "-", "reanalysis", "INCORRECT", "Single-call methods replace the ordinary answer (1 call in total); reprompt 2, critique-revise and implication 3, RGR 2.05."),
+ ("Human agreement sets the ceiling for any automated evaluator", "6.1", "-", "conceptual", "-", "-", "-", "INACCURATE",
+  "Inter-rater agreement characterises label uncertainty."),
+ ("Data released upon acceptance", "Data availability", "revision/reviewer_artifact", "access", "-", "-", "-",
+  "INADEQUATE", "Anonymised reviewer artifact prepared; access link to be added by the authors at submission."),
+]
+hdr = ["claim", "location_13oct", "supporting_output", "estimand", "sample", "uncertainty", "analysis_status",
+       "verdict", "revised_wording"]
+out = Path(__file__).resolve().parent / "claim_evidence_matrix.csv"
+with open(out, "w", newline="", encoding="utf-8") as fh:
+    w = csv.writer(fh)
+    w.writerow(hdr)
+    w.writerows(C)
+print(out, len(C))

@@ -1,0 +1,10 @@
+arm,split,condition,answers,skipped_no_identity,gate_unparsed,no_change,removal_requested,restore_requested,revised,restore_executed,guard_rejected,revision_failed
+RGR,dev,absent,480,422,0,31,27,0,27,0,0,0
+RGR,dev,incidental,480,0,0,156,228,120,324,120,0,0
+RGR,dev,required,480,11,0,352,74,63,113,63,4,0
+RGR,locked,absent,960,809,0,97,53,1,54,1,0,0
+RGR,locked,incidental,960,0,0,272,546,171,687,171,1,0
+RGR,locked,required,960,37,0,689,157,102,227,98,7,0
+RGR_RO,dev,absent,480,422,1,32,25,0,25,0,0,0
+RGR_RO,dev,incidental,482,0,3,252,227,121,226,0,1,0
+RGR_RO,dev,required,481,11,0,406,64,58,61,0,2,1

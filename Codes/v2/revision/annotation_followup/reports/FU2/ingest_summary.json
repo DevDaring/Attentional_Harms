@@ -1,0 +1,27 @@
+{
+  "units": 92,
+  "completeness": {
+    "R1": {
+      "rows": 92,
+      "units_missing_vs_key": 0,
+      "units_with_at_least_one_span": 61,
+      "units_with_no_span": 31,
+      "blank_rows_with_note": 31
+    },
+    "R2": {
+      "rows": 92,
+      "units_missing_vs_key": 0,
+      "units_with_at_least_one_span": 68,
+      "units_with_no_span": 24,
+      "blank_rows_with_note": 24
+    },
+    "R3": {
+      "rows": 92,
+      "units_missing_vs_key": 0,
+      "units_with_at_least_one_span": 40,
+      "units_with_no_span": 52,
+      "blank_rows_with_note": 41
+    }
+  },
+  "note": "A blank row means the rater found no unnecessary span in the displayed response. Blank rows are kept as data, not treated as missing; the stopping rule does not apply because 'no span' is a valid answer."
+}

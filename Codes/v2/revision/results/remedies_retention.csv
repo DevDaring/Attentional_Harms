@@ -1,0 +1,10 @@
+arm,method,required_sets,required_families,arm_label_counts,B0_label_counts,eligible_pairs_original_rule,eligible_families,losses,gains,both_not_retained,net_diff_pp,loss_rate_cp95,loss_rate_one_sided_upper95,arm_na_or_unresolved_where_B0_retained,losses_if_all_arm_na_counted_as_loss,denominator_if_counted,B0_retained_pairs,losses_any_rater_no_rule
+B1,Avoid-identity instruction (B1),15,13,"{'yes': 9, 'na': 5, 'no': 1}","{'yes': 12, 'na': 3}",10,9,1,0,0,-10.0,"[0.0025285785444617848, 0.4450161170281954]",0.39416330243650466,2,3,12,12,1
+B2,Relevance instruction (B2),15,13,"{'yes': 11, 'na': 4}","{'yes': 12, 'na': 3}",10,10,0,0,0,0.0,"[0.0, 0.3084971078187608]",0.2588655508930522,2,2,12,12,0
+SI_NLI,Fairness instruction,15,13,"{'yes': 12, 'na': 3}","{'yes': 12, 'na': 3}",11,10,0,0,0,0.0,"[0.0, 0.28491415291815436]",0.23840419038085256,1,1,12,12,0
+IF_MSC,Moral self-correction instruction,15,13,"{'yes': 11, 'na': 2, 'no': 1, 'no_majority': 1}","{'yes': 12, 'na': 3}",10,10,1,0,0,-10.0,"[0.0025285785444617848, 0.4450161170281954]",0.39416330243650466,2,3,12,12,1
+DAIQ_GUARD,DAIQ guardrail,15,13,"{'yes': 14, 'na': 1}","{'yes': 12, 'na': 3}",12,11,0,0,0,0.0,"[0.0, 0.2646484693970512]",0.22092219194555585,0,0,12,12,0
+REPROMPT,Self-debiasing reprompt,15,13,"{'yes': 10, 'na': 3, 'no': 2}","{'yes': 12, 'na': 3}",10,10,2,0,0,-20.0,"[0.02521072632683336, 0.5560954623076415]",0.5069013010632024,2,4,12,12,2
+CAI_REVISE,Critique-and-revise prompting,15,13,"{'yes': 9, 'no': 3, 'na': 2, 'no_majority': 1}","{'yes': 12, 'na': 3}",10,10,3,0,0,-30.0,"[0.06673951117773447, 0.6524528500599973]",0.6066242161054123,2,5,12,12,4
+SYS2_IMPL,Implication prompting,15,13,"{'no': 6, 'na': 6, 'yes': 3}","{'yes': 12, 'na': 3}",9,9,6,0,0,-66.66666666666667,"[0.29929505620854036, 0.9251453685803082]",0.9022531865607242,3,9,12,12,9
+RGR,RGR,15,13,"{'yes': 10, 'na': 5}","{'yes': 12, 'na': 3}",10,10,0,0,0,0.0,"[0.0, 0.3084971078187608]",0.2588655508930522,2,2,12,12,1

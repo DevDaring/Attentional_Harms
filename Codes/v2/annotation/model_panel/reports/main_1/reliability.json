@@ -1,0 +1,767 @@
+{
+  "group_label_present": {
+    "n_units": 220,
+    "alpha": 0.952766628440367,
+    "alpha_level": "nominal",
+    "raw_agreement": 0.9787878787878788,
+    "gwet_ac1": 0.9615435839382029,
+    "prevalence": {
+      "no": 0.6606,
+      "yes": 0.3394
+    },
+    "confusion": {
+      "R1_vs_R2": {
+        "yes": {
+          "yes": 72,
+          "no": 5
+        },
+        "no": {
+          "yes": 1,
+          "no": 142
+        }
+      },
+      "R1_vs_R3": {
+        "yes": {
+          "yes": 73,
+          "no": 4
+        },
+        "no": {
+          "yes": 1,
+          "no": 142
+        }
+      },
+      "R2_vs_R3": {
+        "yes": {
+          "yes": 72,
+          "no": 1
+        },
+        "no": {
+          "yes": 2,
+          "no": 145
+        }
+      }
+    }
+  },
+  "role_or_context_term_present": {
+    "n_units": 220,
+    "alpha": 0.8963592042148305,
+    "alpha_level": "nominal",
+    "raw_agreement": 0.9575757575757575,
+    "gwet_ac1": 0.9282502853681831,
+    "prevalence": {
+      "no": 0.7136,
+      "yes": 0.2864
+    },
+    "confusion": {
+      "R1_vs_R2": {
+        "yes": {
+          "yes": 57,
+          "no": 6
+        },
+        "no": {
+          "yes": 4,
+          "no": 153
+        }
+      },
+      "R1_vs_R3": {
+        "yes": {
+          "yes": 59,
+          "no": 4
+        },
+        "no": {
+          "yes": 6,
+          "no": 151
+        }
+      },
+      "R2_vs_R3": {
+        "yes": {
+          "yes": 59,
+          "no": 2
+        },
+        "no": {
+          "yes": 6,
+          "no": 153
+        }
+      }
+    }
+  },
+  "person_gendered_pronoun": {
+    "n_units": 220,
+    "alpha": 0.964451397130219,
+    "alpha_level": "nominal",
+    "raw_agreement": 0.9939393939393939,
+    "gwet_ac1": 0.992696044797592,
+    "prevalence": {
+      "no": 0.9061,
+      "yes": 0.0939
+    },
+    "confusion": {
+      "R1_vs_R2": {
+        "yes": {
+          "yes": 20,
+          "no": 0
+        },
+        "no": {
+          "yes": 0,
+          "no": 200
+        }
+      },
+      "R1_vs_R3": {
+        "yes": {
+          "yes": 20,
+          "no": 0
+        },
+        "no": {
+          "yes": 2,
+          "no": 198
+        }
+      },
+      "R2_vs_R3": {
+        "yes": {
+          "yes": 20,
+          "no": 0
+        },
+        "no": {
+          "yes": 2,
+          "no": 198
+        }
+      }
+    }
+  },
+  "least_supported": {
+    "n_units": 220,
+    "alpha": 0.8243421733145553,
+    "alpha_level": "nominal",
+    "raw_agreement": 0.8984848484848484,
+    "gwet_ac1": 0.8813715509019866,
+    "prevalence": {
+      "entailed": 0.0697,
+      "explicit": 0.3424,
+      "na": 0.547,
+      "unsupported": 0.0409
+    },
+    "confusion": {
+      "R1_vs_R2": {
+        "explicit": {
+          "explicit": 75,
+          "entailed": 3,
+          "unsupported": 0,
+          "unclear": 0,
+          "na": 0
+        },
+        "entailed": {
+          "explicit": 5,
+          "entailed": 6,
+          "unsupported": 7,
+          "unclear": 0,
+          "na": 0
+        },
+        "unsupported": {
+          "explicit": 0,
+          "entailed": 1,
+          "unsupported": 1,
+          "unclear": 0,
+          "na": 2
+        },
+        "unclear": {
+          "explicit": 0,
+          "entailed": 0,
+          "unsupported": 0,
+          "unclear": 0,
+          "na": 0
+        },
+        "na": {
+          "explicit": 2,
+          "entailed": 0,
+          "unsupported": 0,
+          "unclear": 0,
+          "na": 118
+        }
+      },
+      "R1_vs_R3": {
+        "explicit": {
+          "explicit": 66,
+          "entailed": 9,
+          "unsupported": 3,
+          "unclear": 0,
+          "na": 0
+        },
+        "entailed": {
+          "explicit": 0,
+          "entailed": 8,
+          "unsupported": 9,
+          "unclear": 0,
+          "na": 1
+        },
+        "unsupported": {
+          "explicit": 0,
+          "entailed": 0,
+          "unsupported": 3,
+          "unclear": 0,
+          "na": 1
+        },
+        "unclear": {
+          "explicit": 0,
+          "entailed": 0,
+          "unsupported": 0,
+          "unclear": 0,
+          "na": 0
+        },
+        "na": {
+          "explicit": 0,
+          "entailed": 1,
+          "unsupported": 0,
+          "unclear": 0,
+          "na": 119
+        }
+      },
+      "R2_vs_R3": {
+        "explicit": {
+          "explicit": 66,
+          "entailed": 12,
+          "unsupported": 3,
+          "unclear": 0,
+          "na": 1
+        },
+        "entailed": {
+          "explicit": 0,
+          "entailed": 5,
+          "unsupported": 4,
+          "unclear": 0,
+          "na": 1
+        },
+        "unsupported": {
+          "explicit": 0,
+          "entailed": 1,
+          "unsupported": 7,
+          "unclear": 0,
+          "na": 0
+        },
+        "unclear": {
+          "explicit": 0,
+          "entailed": 0,
+          "unsupported": 0,
+          "unclear": 0,
+          "na": 0
+        },
+        "na": {
+          "explicit": 0,
+          "entailed": 0,
+          "unsupported": 1,
+          "unclear": 0,
+          "na": 119
+        }
+      }
+    }
+  },
+  "least_relevant": {
+    "n_units": 220,
+    "alpha": 0.8109456030012137,
+    "alpha_level": "nominal",
+    "raw_agreement": 0.8818181818181818,
+    "gwet_ac1": 0.8599669502417528,
+    "prevalence": {
+      "na": 0.547,
+      "required": 0.2015,
+      "unnecessary": 0.0788,
+      "useful_optional": 0.1727
+    },
+    "confusion": {
+      "R1_vs_R2": {
+        "required": {
+          "required": 43,
+          "useful_optional": 5,
+          "unnecessary": 0,
+          "unclear": 0,
+          "na": 0
+        },
+        "useful_optional": {
+          "required": 6,
+          "useful_optional": 25,
+          "unnecessary": 2,
+          "unclear": 0,
+          "na": 1
+        },
+        "unnecessary": {
+          "required": 0,
+          "useful_optional": 2,
+          "unnecessary": 15,
+          "unclear": 0,
+          "na": 1
+        },
+        "unclear": {
+          "required": 0,
+          "useful_optional": 0,
+          "unnecessary": 0,
+          "unclear": 0,
+          "na": 0
+        },
+        "na": {
+          "required": 1,
+          "useful_optional": 1,
+          "unnecessary": 0,
+          "unclear": 0,
+          "na": 118
+        }
+      },
+      "R1_vs_R3": {
+        "required": {
+          "required": 34,
+          "useful_optional": 14,
+          "unnecessary": 0,
+          "unclear": 0,
+          "na": 0
+        },
+        "useful_optional": {
+          "required": 1,
+          "useful_optional": 28,
+          "unnecessary": 4,
+          "unclear": 0,
+          "na": 1
+        },
+        "unnecessary": {
+          "required": 0,
+          "useful_optional": 4,
+          "unnecessary": 13,
+          "unclear": 0,
+          "na": 1
+        },
+        "unclear": {
+          "required": 0,
+          "useful_optional": 0,
+          "unnecessary": 0,
+          "unclear": 0,
+          "na": 0
+        },
+        "na": {
+          "required": 0,
+          "useful_optional": 1,
+          "unnecessary": 0,
+          "unclear": 0,
+          "na": 119
+        }
+      },
+      "R2_vs_R3": {
+        "required": {
+          "required": 32,
+          "useful_optional": 17,
+          "unnecessary": 0,
+          "unclear": 0,
+          "na": 1
+        },
+        "useful_optional": {
+          "required": 3,
+          "useful_optional": 24,
+          "unnecessary": 5,
+          "unclear": 0,
+          "na": 1
+        },
+        "unnecessary": {
+          "required": 0,
+          "useful_optional": 5,
+          "unnecessary": 12,
+          "unclear": 0,
+          "na": 0
+        },
+        "unclear": {
+          "required": 0,
+          "useful_optional": 0,
+          "unnecessary": 0,
+          "unclear": 0,
+          "na": 0
+        },
+        "na": {
+          "required": 0,
+          "useful_optional": 1,
+          "unnecessary": 0,
+          "unclear": 0,
+          "na": 119
+        }
+      }
+    }
+  },
+  "unsupported_personal_attribution": {
+    "n_units": 220,
+    "alpha": -0.003044140030441289,
+    "alpha_level": "nominal",
+    "raw_agreement": 0.990909090909091,
+    "gwet_ac1": 0.9908677694526888,
+    "prevalence": {
+      "no": 0.9955,
+      "yes": 0.0045
+    },
+    "confusion": {
+      "R1_vs_R2": {
+        "yes": {
+          "yes": 0,
+          "no": 0,
+          "unclear": 0
+        },
+        "no": {
+          "yes": 0,
+          "no": 220,
+          "unclear": 0
+        },
+        "unclear": {
+          "yes": 0,
+          "no": 0,
+          "unclear": 0
+        }
+      },
+      "R1_vs_R3": {
+        "yes": {
+          "yes": 0,
+          "no": 0,
+          "unclear": 0
+        },
+        "no": {
+          "yes": 3,
+          "no": 217,
+          "unclear": 0
+        },
+        "unclear": {
+          "yes": 0,
+          "no": 0,
+          "unclear": 0
+        }
+      },
+      "R2_vs_R3": {
+        "yes": {
+          "yes": 0,
+          "no": 0,
+          "unclear": 0
+        },
+        "no": {
+          "yes": 3,
+          "no": 217,
+          "unclear": 0
+        },
+        "unclear": {
+          "yes": 0,
+          "no": 0,
+          "unclear": 0
+        }
+      }
+    }
+  },
+  "task_adequacy": {
+    "n_units": 220,
+    "alpha": 0.5250917190775681,
+    "alpha_level": "ordinal",
+    "raw_agreement": 0.9666666666666667,
+    "gwet_ac1": NaN,
+    "prevalence": {
+      "1": 0.0364,
+      "2": 0.9636
+    },
+    "confusion": {
+      "R1_vs_R2": {
+        "0": {
+          "0": 0,
+          "1": 0,
+          "2": 0
+        },
+        "1": {
+          "0": 0,
+          "1": 6,
+          "2": 7
+        },
+        "2": {
+          "0": 0,
+          "1": 0,
+          "2": 207
+        }
+      },
+      "R1_vs_R3": {
+        "0": {
+          "0": 0,
+          "1": 0,
+          "2": 0
+        },
+        "1": {
+          "0": 0,
+          "1": 4,
+          "2": 9
+        },
+        "2": {
+          "0": 0,
+          "1": 1,
+          "2": 206
+        }
+      },
+      "R2_vs_R3": {
+        "0": {
+          "0": 0,
+          "1": 0,
+          "2": 0
+        },
+        "1": {
+          "0": 0,
+          "1": 3,
+          "2": 3
+        },
+        "2": {
+          "0": 0,
+          "1": 2,
+          "2": 212
+        }
+      }
+    }
+  },
+  "required_identity_retained": {
+    "n_units": 220,
+    "alpha": 0.8787153768289316,
+    "alpha_level": "nominal",
+    "raw_agreement": 0.9454545454545454,
+    "gwet_ac1": 0.9296618975301735,
+    "prevalence": {
+      "na": 0.6712,
+      "no": 0.0121,
+      "yes": 0.3167
+    },
+    "confusion": {
+      "R1_vs_R2": {
+        "yes": {
+          "yes": 65,
+          "no": 0,
+          "na": 7
+        },
+        "no": {
+          "yes": 1,
+          "no": 2,
+          "na": 0
+        },
+        "na": {
+          "yes": 5,
+          "no": 0,
+          "na": 140
+        }
+      },
+      "R1_vs_R3": {
+        "yes": {
+          "yes": 63,
+          "no": 0,
+          "na": 9
+        },
+        "no": {
+          "yes": 0,
+          "no": 3,
+          "na": 0
+        },
+        "na": {
+          "yes": 3,
+          "no": 0,
+          "na": 142
+        }
+      },
+      "R2_vs_R3": {
+        "yes": {
+          "yes": 63,
+          "no": 1,
+          "na": 7
+        },
+        "no": {
+          "yes": 0,
+          "no": 2,
+          "na": 0
+        },
+        "na": {
+          "yes": 3,
+          "no": 0,
+          "na": 144
+        }
+      }
+    }
+  },
+  "refusal": {
+    "n_units": 220,
+    "alpha": 1.0,
+    "alpha_level": "nominal",
+    "raw_agreement": 1.0,
+    "gwet_ac1": 1.0,
+    "prevalence": {
+      "no": 1.0
+    },
+    "confusion": {
+      "R1_vs_R2": {
+        "yes": {
+          "yes": 0,
+          "no": 0
+        },
+        "no": {
+          "yes": 0,
+          "no": 220
+        }
+      },
+      "R1_vs_R3": {
+        "yes": {
+          "yes": 0,
+          "no": 0
+        },
+        "no": {
+          "yes": 0,
+          "no": 220
+        }
+      },
+      "R2_vs_R3": {
+        "yes": {
+          "yes": 0,
+          "no": 0
+        },
+        "no": {
+          "yes": 0,
+          "no": 220
+        }
+      }
+    }
+  },
+  "stereotype": {
+    "n_units": 220,
+    "alpha": 0.24657012195121963,
+    "alpha_level": "nominal",
+    "raw_agreement": 0.990909090909091,
+    "gwet_ac1": 0.9907982302859055,
+    "prevalence": {
+      "no": 0.9939,
+      "yes": 0.0061
+    },
+    "confusion": {
+      "R1_vs_R2": {
+        "yes": {
+          "yes": 0,
+          "no": 1
+        },
+        "no": {
+          "yes": 0,
+          "no": 219
+        }
+      },
+      "R1_vs_R3": {
+        "yes": {
+          "yes": 1,
+          "no": 0
+        },
+        "no": {
+          "yes": 2,
+          "no": 217
+        }
+      },
+      "R2_vs_R3": {
+        "yes": {
+          "yes": 0,
+          "no": 0
+        },
+        "no": {
+          "yes": 3,
+          "no": 217
+        }
+      }
+    }
+  },
+  "derogation": {
+    "n_units": 220,
+    "alpha": 1.0,
+    "alpha_level": "nominal",
+    "raw_agreement": 1.0,
+    "gwet_ac1": 1.0,
+    "prevalence": {
+      "no": 1.0
+    },
+    "confusion": {
+      "R1_vs_R2": {
+        "yes": {
+          "yes": 0,
+          "no": 0
+        },
+        "no": {
+          "yes": 0,
+          "no": 220
+        }
+      },
+      "R1_vs_R3": {
+        "yes": {
+          "yes": 0,
+          "no": 0
+        },
+        "no": {
+          "yes": 0,
+          "no": 220
+        }
+      },
+      "R2_vs_R3": {
+        "yes": {
+          "yes": 0,
+          "no": 0
+        },
+        "no": {
+          "yes": 0,
+          "no": 220
+        }
+      }
+    }
+  },
+  "unnecessary": {
+    "n_units": 220,
+    "alpha": 0.7498734817813766,
+    "alpha_level": "nominal",
+    "raw_agreement": 0.9636363636363636,
+    "gwet_ac1": 0.9607905263574795,
+    "prevalence": {
+      "no": 0.9212,
+      "yes": 0.0788
+    },
+    "confusion": {
+      "R1_vs_R2": {
+        "yes": {
+          "yes": 15,
+          "no": 3,
+          "unclear": 0
+        },
+        "no": {
+          "yes": 2,
+          "no": 200,
+          "unclear": 0
+        },
+        "unclear": {
+          "yes": 0,
+          "no": 0,
+          "unclear": 0
+        }
+      },
+      "R1_vs_R3": {
+        "yes": {
+          "yes": 13,
+          "no": 5,
+          "unclear": 0
+        },
+        "no": {
+          "yes": 4,
+          "no": 198,
+          "unclear": 0
+        },
+        "unclear": {
+          "yes": 0,
+          "no": 0,
+          "unclear": 0
+        }
+      },
+      "R2_vs_R3": {
+        "yes": {
+          "yes": 12,
+          "no": 5,
+          "unclear": 0
+        },
+        "no": {
+          "yes": 5,
+          "no": 198,
+          "unclear": 0
+        },
+        "unclear": {
+          "yes": 0,
+          "no": 0,
+          "unclear": 0
+        }
+      }
+    }
+  }
+}

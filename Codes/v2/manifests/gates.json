@@ -14,5 +14,21 @@
       "lexicon": "3a73279ac1d0f6fa736ae3d09feff3f88cd23da1250cdb82471a1c7e6c5e3919",
       "label_schema": "bf30b77fad286f778e6dbaf99b02eb9cbdb17829e9ab6b59a3b9ad32913d97e7"
     }
+  },
+  "followup_exploratory": {
+    "set_at": "2026-10-24T13:08:08+00:00",
+    "note": "Exploratory follow-up arms GEN_REVISE, REGEN, CI_REASON (Lan et al. 2025 CI-CoT, verbatim) on the 44 human-labelled locked matched sets, requested by co-author review R11/D6 (24 Oct 2026). Original protocol_frozen record of 9 Oct is unchanged. Results are exploratory, outside the original Holm family, and are not reported until human-labelled.",
+    "evidence": {},
+    "hashes": {
+      "protocol": "b9b76cbf481015e5e57f9d4aca965e51911422d907854de29a6a3309978a9bf1",
+      "prompt_bank": "cd6bc54090ee12d9bb13cbe1404205844065db5c671ec0dfdd38cf8c0bf4b6db",
+      "dialogue_bank": "be2c3f0300923160454785c28470425f2b7f8ca5df6cb6a0da94d3518cec10c9",
+      "config": "75f26b516058065004011cd606ad35cb23baf20bd51790b5b8841e08b22f212f",
+      "prices": "c01c292f816edc855430ac8dcf2287efbb17c0ee3bd15831c3ac4e59c9ffc263",
+      "remedies": "b715db404938aa252fdb98e4275c4171520be74908e78ce31252ac1f327bf221",
+      "judges": "f80e8b4c83204dea613a651416d3fc0b103aae7649786f37ed42714fcce02666",
+      "lexicon": "3a73279ac1d0f6fa736ae3d09feff3f88cd23da1250cdb82471a1c7e6c5e3919",
+      "label_schema": "bf30b77fad286f778e6dbaf99b02eb9cbdb17829e9ab6b59a3b9ad32913d97e7"
+    }
   }
 }

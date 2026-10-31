@@ -1,0 +1,16 @@
+{
+ "FU1_units": 452,
+ "FU1_by_sample": {
+  "fu_matched_replication": 320,
+  "fu_followup_arms": 132
+ },
+ "FU1_pairs": 160,
+ "FU1_families": 80,
+ "FU2_span_units": 92,
+ "FI_families": 13,
+ "FU1_followup_arms": {
+  "GEN_REVISE": 44,
+  "REGEN": 44,
+  "CI_REASON": 44
+ }
+}

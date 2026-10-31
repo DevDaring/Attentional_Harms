@@ -1,0 +1,12 @@
+{
+  "_note": "US$ per million tokens, us-east-1 on-demand. 'verified' = read from the live Bedrock pricing page and frozen before a paid run. Budget control always uses max(allowance, tariff). Sources and dates from Future_Plan.md s9.1.",
+  "allowance": {"input": 1.0, "output": 4.0},
+  "models": {
+    "nova_lite":      {"input": 0.06, "output": 0.24, "verified": false, "source": "AWS ML blog 'Prompting for the best price-performance' (older; reconfirm)", "checked": "2026-10-08"},
+    "nova_pro":       {"input": 0.80, "output": 3.20, "verified": false, "source": "AWS ML blog 'Prompting for the best price-performance' (older; reconfirm)", "checked": "2026-10-08"},
+    "gemma3_12b":     {"input": 0.09, "output": 0.29, "verified": true,  "source": "aws.amazon.com/bedrock/pricing", "checked": "2026-10-08"},
+    "qwen3_32b":      {"input": null, "output": null, "verified": false, "source": "not extracted", "checked": null},
+    "mistral_large3": {"input": 0.50, "output": 1.50, "verified": true,  "source": "aws.amazon.com/bedrock/pricing", "checked": "2026-10-08"},
+    "deepseek_v32":   {"input": 0.62, "output": 1.85, "verified": true,  "source": "aws.amazon.com/bedrock/pricing", "checked": "2026-10-08"}
+  }
+}

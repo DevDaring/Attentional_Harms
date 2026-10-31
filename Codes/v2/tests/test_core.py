@@ -145,8 +145,10 @@ def test_synthetic_bank_units_match_design(tmp_path):
     bank = B.assign_splits_and_subsets(B.load_bank(bank_p))
     assert B.validate_bank(bank, "freeze").ok, B.validate_bank(bank, "freeze").text()
     dia = B.load_dialogue(dia_p)
-    # rgr_ro is post hoc (10 Oct 2026) and outside the frozen design counts
-    counts = {e: sum(u.n_calls for u in D.build_units(e, bank, dia)) for e in D.EXPERIMENTS if e != "rgr_ro"}
+    # rgr_ro (10 Oct 2026) and followup_matched (24 Oct 2026) are post hoc and outside the frozen design
+    # counts; followup_matched also reads the real annotation keys, not the synthetic bank.
+    counts = {e: sum(u.n_calls for u in D.build_units(e, bank, dia)) for e in D.EXPERIMENTS
+              if e not in ("rgr_ro", "followup_matched")}
     assert counts == D.design_call_counts()
 
 

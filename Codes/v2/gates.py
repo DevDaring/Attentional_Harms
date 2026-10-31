@@ -48,7 +48,9 @@ def current_hashes() -> dict:
 def set_gate(name: str, note: str, evidence: dict | None = None, path: Path = C.GATES_FILE) -> dict:
     gates = load_gates(path)
     entry = {"set_at": utc_now(), "note": note, "evidence": evidence or {}}
-    if name == "protocol_frozen":
+    if name in ("protocol_frozen", "followup_exploratory"):
+        if name == "protocol_frozen" and name in gates:
+            raise GateError("protocol_frozen is already set; it is never overwritten. Use followup_exploratory.")
         entry["hashes"] = current_hashes()
     gates[name] = entry
     save_gates(gates, path)
@@ -66,6 +68,21 @@ def require_protocol_frozen(path: Path = C.GATES_FILE) -> None:
     if changed:
         raise GateError(f"Frozen files changed since the protocol was frozen: {changed}. "
                         "Record a deviation in protocol.md and re-freeze, or restore the files.")
+
+
+def require_followup_exploratory(path: Path = C.GATES_FILE) -> None:
+    """Post-hoc exploratory follow-up runs (review 24 Oct 2026). Never re-freezes the original
+    protocol: requires the original protocol_frozen record AND a separate followup_exploratory
+    record whose hashes match the current files. Results are exploratory, not confirmatory."""
+    gates = load_gates(path)
+    if "protocol_frozen" not in gates:
+        raise GateError("protocol_frozen record missing.")
+    if "followup_exploratory" not in gates:
+        raise GateError("Set the followup_exploratory gate (records current hashes and the reason).")
+    snap = gates["followup_exploratory"]["hashes"]
+    changed = [k for k, h in current_hashes().items() if snap.get(k) != h]
+    if changed:
+        raise GateError(f"Files changed since the followup_exploratory record: {changed}.")
 
 
 def require_evaluator_validated(path: Path = C.GATES_FILE) -> None:
